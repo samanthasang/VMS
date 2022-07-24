@@ -1,9 +1,11 @@
 import { Avatar, Button, Card, Checkbox, Col, Form, Input, Row } from 'antd';
 import React, { useState } from 'react'
 
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
 
 import Picture2 from "../../assets/Untitled2.png"
 import './login.styles.scss'
+import { Link } from 'react-router-dom';
 
 const { Meta } = Card;
 
@@ -20,7 +22,7 @@ const Login = () => {
     setInputs(values => ({...values, [name]: value}))
   }
   const onFinish = (inputs) => {
-    if (inputs.username === "admin" || inputs.password == "admin") console.log('Success:', inputs);
+    if (inputs.username === "admin" || inputs.password === "admin") console.log('Success:', inputs);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -59,74 +61,50 @@ const Login = () => {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)'}}
-      name="basic"
       labelCol={{
         span: 8,
       }}
-      wrapperCol={{
-        span: 16,
-      }}
-      initialValues={{
-        remember: true,
-      }}
+      name="normal_login"
+      className="login-form"
+      initialValues={{ remember: true }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
-      autoComplete="off"onSubmit={handleSubmit}
+      autoComplete="off"
+      onSubmit={handleSubmit}
     >
       <Form.Item
-        label="Username"
-        type="text" 
         name="username"
         value={inputs.username} 
         onChange={handleChange}
-        rules={[
-          {
-            required: true,
-            message: 'Please input your username!',
-          },
-        ]}
+        rules={[{ required: true, message: 'Please input your Username!' }]}
       >
-        <Input 
-        name="username"/>
+        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
       </Form.Item>
-
       <Form.Item
-        label="Password"
         name="password"
-        type="text" 
-        value={inputs.password} 
-        onChange={handleChange}
-        rules={[
-          {
-            required: true,
-            message: 'Please input your password!',
-          },
-        ]}
+        rules={[{ required: true, message: 'Please input your Password!' }]}
       >
-        <Input.Password 
-        name="password"/>
+        <Input.Password
+          prefix={<LockOutlined className="site-form-item-icon" />}
+          type="password"
+          placeholder="Password"
+          value={inputs.password} 
+          onChange={handleChange}
+        />
+      </Form.Item>
+      <Form.Item>
+        <Form.Item name="remember" valuePropName="checked" noStyle>
+          <Checkbox>Remember me</Checkbox>
+        </Form.Item>
+
+        <Link to={'/register'}>Forgot password!</Link>
       </Form.Item>
 
-      <Form.Item
-        name="remember"
-        valuePropName="checked"
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
-        <Checkbox>Remember me</Checkbox>
-      </Form.Item>
-
-      <Form.Item
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
-        <Button type="primary" htmlType="submit">
-          Submit
+      <Form.Item>
+        <Button type="primary" htmlType="submit" className="login-form-button">
+          Log in
         </Button>
+        Or <Link to={'/register'}>register now!</Link>
       </Form.Item>
     </Form>
         </Col>
