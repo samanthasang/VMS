@@ -11,4 +11,4 @@ const MainMenuPage = () => {
   )
 }
 
-export default MainMenuPage
+export default MainMenuPage;

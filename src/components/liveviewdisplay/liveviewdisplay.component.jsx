@@ -1,12 +1,8 @@
-import { Col, Row, Menu } from 'antd';
-import { Link, Outlet, useLocation } from 'react-router-dom';
-import LoginPage from './pages/loginpage/loginpage.component';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import React from 'react'
 
-const Layout = ({ hideHeaderPaths = [] }) => {
-  const { pathname } = useLocation();
-
+const LiveViewDisplay = () => {
   return (
+    
     <Row>
       <Col span={20}>
      <Menu mode="horizontal" defaultSelectedKeys={['mail']}>
@@ -26,8 +22,7 @@ const Layout = ({ hideHeaderPaths = [] }) => {
   </Menu>
       </Col>
     </Row>
-  );
+  )
 }
 
-
-export default Layout;
+export default LiveViewDisplay
