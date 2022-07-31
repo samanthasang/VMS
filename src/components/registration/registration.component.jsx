@@ -30,16 +30,7 @@ const Registration = ({current, ChangeCurrent, next, prev}) => {
         <Step
           className="registerration_left"
           style={{
-            background: `url(${Step11})`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            position: "absolute",
-            left: "0",
-            width: "52%",
-            backgroundSize: "100%",
-            zIndex: "2",
-            height: '50px'
+            background: current === 0 ? `url(${Step11}) 100%` : `url(${Step110}) 100%`,
           }}
           status="process"
           title="Registration"
@@ -47,16 +38,7 @@ const Registration = ({current, ChangeCurrent, next, prev}) => {
         <Step
           className="registerration_right"
           style={{
-            background: `url(${Step110})`,
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            position: "absolute",
-            right: "0",
-            width: "52%",
-            backgroundSize: "100%",
-            zIndex: "1",
-            height: '50px'
+            background: current === 1 ? `url(${Step11}) 100%` : `url(${Step110}) 100%`,
           }}
           status="wait"
           title="Password Protection"

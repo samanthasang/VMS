@@ -17,7 +17,7 @@ const steps = [
   },
 ];
 
-const RegistrationNavigation = ({ current, next, prev }) => {
+const RegistrationNavigation = ({ current, next, prev, form }) => {
   return (
     <>
       <div className="steps-action">
@@ -27,12 +27,18 @@ const RegistrationNavigation = ({ current, next, prev }) => {
               margin: "0 8px",
             }}
             onClick={prev}
+
+            disabled={
+              !form.isFieldsTouched(true) ||
+              !!form.getFieldsError().filter(({ errors }) => errors.length).length
+            }
           >
             Previous
           </Button>
         )}
         {current < steps.length - 1 && (
-          <Button type="primary" onClick={next}>
+          <Button type="primary" onClick={next}
+          >
             Next
           </Button>
         )}
@@ -40,6 +46,11 @@ const RegistrationNavigation = ({ current, next, prev }) => {
           <Button
             type="primary"
             onClick={() => message.success("Processing complete!")}
+
+            disabled={
+              !form.isFieldsTouched(true) ||
+              !!form.getFieldsError().filter(({ errors }) => errors.length).length
+            }
           >
             Done
           </Button>

@@ -1,17 +1,19 @@
 .input_form .ant-form-item-control-input-content > span:first-child {
-    height: 36px;
-    border: 1px solid #2175C2;
-    border-radius: 8px;
+  height: 36px !important;
+  border: 1px solid #2175c2 !important;
+  border-radius: 8px !important;
 }
 .input_form input {
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 24px;
-/* identical to box height */
-letter-spacing: 0.005em;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height */
+  letter-spacing: 0.005em;
 
-/* Typeface/60 */
-color: #3D495D;
+  /* Typeface/60 */
+  &::placeholder {
+    color: #3d495d !important;
+  }
 }

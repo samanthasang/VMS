@@ -8,7 +8,7 @@ import "./inputformwithlabel.styles.scss";
 const InputFormWithLabel = ({ inputs, handleChange, type, placeholder, label }) => {
   return (
     <Form.Item
-      className="input_form"
+      className="input_form_label"
       onChange={handleChange}
       type={type}
       label={label}

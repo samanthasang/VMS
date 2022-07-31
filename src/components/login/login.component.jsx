@@ -8,6 +8,7 @@ import InputForm from "../inputform/inputform.component";
 import InputPasswordForm from "../inputpasswordform/inputpasswordform.component";
 import CheckBox from "../checkbox/checkbox.component";
 import LinkTo from "../linkto/linkto.componrnt";
+import PrimaryBtn from "../primerybtn/primerybtn.component";
 
 
 import LogoVISTAVMS from "../logovistavms/logovistavms.component";
@@ -18,7 +19,7 @@ import LoginFormBG from "../../assets/login-form-bg.svg";
 import "./login.styles.scss";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ LoginAuth }) => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     username: "",
@@ -30,14 +31,12 @@ const Login = () => {
     const value = event.target.value;
     setInputs(
       (inputs) => ({ ...inputs, [name]: value }),
-      console.log(
-        "username:" + inputs.username + "  name " + name + "  value " + value
-      )
     );
   };
   const onFinish = (inputs) => {
     if (inputs.username === "admin" || inputs.password === "admin")
-        navigate("/mainmenupage");
+    // navigate("/mainmenupage");
+    LoginAuth()
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -47,7 +46,8 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputs.username === "admin" || inputs.password === "admin")
-      navigate("/mainmenupage");
+      // navigate("/mainmenupage");
+      LoginAuth();
   };
 
   return (
@@ -72,7 +72,7 @@ const Login = () => {
           backdropFilter: "blur(100px)",
         }}
       >
-        <Row span={16}>
+        <Row >
           <Col
             span={24}
             style={{
@@ -144,7 +144,10 @@ const Login = () => {
                         <CheckBox />
                       </Col>
                       <Col className="fg_password" span={12} offset={0}>
-                        <LinkTo torouting={'/register'} text={"Forgot password?"} />
+                        <LinkTo
+                          torouting={"/register"}
+                          text={"Forgot password?"}
+                        />
                       </Col>
                     </Row>
                   </Form.Item>
@@ -153,16 +156,7 @@ const Login = () => {
 
               <Row>
                 <Col span={10} offset={7}>
-                  <Form.Item>
-                    <Button
-                      type="primary"
-                      htmlType="submit"
-                      className="login-form-button"
-                      onClick={handleSubmit}
-                    >
-                      Log in
-                    </Button>
-                  </Form.Item>
+                  <PrimaryBtn handleSubmit={handleSubmit} />
                 </Col>
               </Row>
               <Row>

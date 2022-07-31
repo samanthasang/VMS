@@ -1,5 +1,5 @@
 import { Avatar, Button, Card, Checkbox, Col, Form, Input, Row } from 'antd';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 import { useNavigate } from "react-router-dom";
@@ -18,12 +18,18 @@ import './register.styles.scss'
 const { Meta } = Card;
 
 const Register = () => {
+
+  const [form] = Form.useForm();
+  const [, forceUpdate] = useState({});
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
   });
 
+  useEffect(() => {
+    forceUpdate({});
+  }, []);
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -122,6 +128,7 @@ const Register = () => {
           >
             {current === 0 && (
               <Form
+                form={form}
                 labelCol={{
                   span: 8,
                 }}
@@ -154,7 +161,7 @@ const Register = () => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col span={4} offset={7}>
+                  <Col span={10} offset={7}>
                     <InputForm
                       inputs={"email"}
                       handleChange={handleChange}
@@ -191,7 +198,12 @@ const Register = () => {
         </Row>
         <Row>
           <Col className="navigation_registeration" span={24}>
-            <RegistrationNavigation current={current} next={next} prev={prev} />
+            <RegistrationNavigation shouldUpdate
+              current={current}
+              next={next}
+              prev={prev}
+              form={form}
+            />
           </Col>
         </Row>
       </Col>

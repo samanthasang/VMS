@@ -82,9 +82,8 @@ const SetPassword = () => {
         >
           <Row>
             <Col span={20} offset={2}>
-              <Form.Item label="Question 1">
+              <Form.Item label="Question 1" className="select_form">
                 <Select
-                  showSearch
                   placeholder="Select a Question"
                   optionFilterProp="children"
                   onChange={onChange}
@@ -118,9 +117,8 @@ const SetPassword = () => {
           </Row>
           <Row>
             <Col span={20} offset={2}>
-              <Form.Item label="Question 2">
+              <Form.Item label="Question 2" className="select_form">
                 <Select
-                  showSearch
                   placeholder="Select a Question"
                   optionFilterProp="children"
                   onChange={onChange}
@@ -154,9 +152,8 @@ const SetPassword = () => {
           </Row>
           <Row>
             <Col span={20} offset={2}>
-              <Form.Item label="Question 3">
+              <Form.Item label="Question 3" className="select_form">
                 <Select
-                  showSearch
                   placeholder="Select a Question"
                   optionFilterProp="children"
                   onChange={onChange}

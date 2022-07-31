@@ -8,13 +8,13 @@ import './loginpage.styles.scss'
 
 
 
-const LoginPage = () => (
-    <Row>
-        <Col span={24}>
-            <Login />
-        </Col>
-    </Row>
-)
+const LoginPage = ({ LoginAuth }) => (
+  <Row>
+    <Col span={24}>
+            <Login LoginAuth={LoginAuth} />
+    </Col>
+  </Row>
+);
 
 
 
