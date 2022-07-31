@@ -1,0 +1,29 @@
+.steps-action {
+  position: absolute;
+  bottom: 0;
+}
+.ant-steps-navigation .ant-steps-item::before {
+  display: none !important;
+}
+.ant-steps-navigation .ant-steps-item-container {
+    padding: 15px!important;
+}
+.ant-steps-navigation .ant-steps-item::after {
+    display: none!important;
+}
+
+.registerration_left {
+    position: absolute;
+    left: 0;
+    width: 52%;
+    background-size: 100%;
+}
+.registerration_right {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    background-size: 100%;
+}
+.ant-steps .ant-steps-item:not(.ant-steps-item-active) > .ant-steps-item-container[role='button'] .ant-steps-item-title{
+    color: #fff!important;
+}

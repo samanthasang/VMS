@@ -1,10 +1,15 @@
 import { Avatar, Button, Card, Checkbox, Col, Form, Input, Row } from "antd";
 import React, { useState } from "react";
 
+import { useNavigate } from "react-router-dom";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 
 import InputForm from "../inputform/inputform.component";
 import InputPasswordForm from "../inputpasswordform/inputpasswordform.component";
+import CheckBox from "../checkbox/checkbox.component";
+import LinkTo from "../linkto/linkto.componrnt";
+
+
 import LogoVISTAVMS from "../logovistavms/logovistavms.component";
 
 import LogoLogin from "../../assets/Logo-Login.svg";
@@ -14,6 +19,7 @@ import "./login.styles.scss";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
@@ -22,11 +28,16 @@ const Login = () => {
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
+    setInputs(
+      (inputs) => ({ ...inputs, [name]: value }),
+      console.log(
+        "username:" + inputs.username + "  name " + name + "  value " + value
+      )
+    );
   };
   const onFinish = (inputs) => {
     if (inputs.username === "admin" || inputs.password === "admin")
-      console.log("Success:", inputs);
+        navigate("/mainmenupage");
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -35,7 +46,8 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(inputs);
+    if (inputs.username === "admin" || inputs.password === "admin")
+      navigate("/mainmenupage");
   };
 
   return (
@@ -68,7 +80,7 @@ const Login = () => {
               background: "transparent",
               margin: "0",
               position: "absolute",
-              top: "25%",
+              top: "15%",
               left: "50%",
               transform: "translate(-50%, -50%)",
               width: "100%",
@@ -106,18 +118,18 @@ const Login = () => {
               <Row>
                 <Col span={10} offset={7}>
                   <InputForm
-                    inputs={inputs}
+                    inputs={"username"}
                     handleChange={handleChange}
-                    type={Text}
+                    type={"text"}
                     placeholder={"Email"}
                   />
                 </Col>
               </Row>
 
-              <Row>
+              <Row style={{ height: "40px" }}>
                 <Col span={10} offset={7}>
                   <InputPasswordForm
-                    inputs={inputs}
+                    inputs={"password"}
                     handleChange={handleChange}
                     type={Text}
                     placeholder={"Password"}
@@ -128,35 +140,38 @@ const Login = () => {
                 <Col span={10} offset={7}>
                   <Form.Item>
                     <Row>
-                      <Col span={10} offset={7}>
-                        <Form.Item
-                          name="remember"
-                          valuePropName="checked"
-                          noStyle
-                        >
-                          <Checkbox>Remember me</Checkbox>
-                        </Form.Item>
+                      <Col className="txt_remember" span={12} offset={0}>
+                        <CheckBox />
                       </Col>
-                    </Row>
-                    <Row>
-                      <Col span={10} offset={7}>
-                        <Link to={"/register"}>Forgot password!</Link>
+                      <Col className="fg_password" span={12} offset={0}>
+                        <LinkTo torouting={'/register'} text={"Forgot password?"} />
                       </Col>
                     </Row>
                   </Form.Item>
                 </Col>
               </Row>
 
-              <Form.Item>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  className="login-form-button"
-                >
-                  Log in
-                </Button>
-                Or <Link to={"/register"}>register now!</Link>
-              </Form.Item>
+              <Row>
+                <Col span={10} offset={7}>
+                  <Form.Item>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      className="login-form-button"
+                      onClick={handleSubmit}
+                    >
+                      Log in
+                    </Button>
+                  </Form.Item>
+                </Col>
+              </Row>
+              <Row>
+                <Col span={10} offset={7}>
+                  <Link className="go_to_register" to={"/register"}>
+                    Don't have an account yet? <b> register now!</b>
+                  </Link>
+                </Col>
+              </Row>
             </Form>
           </Col>
         </Row>

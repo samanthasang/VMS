@@ -1,8 +1,66 @@
 .login-form-button {
-    width: 100%;
+  width: 100%;
+  /* Secondary/40 */
+
+  background: #2b87db;
+  /* Secondary/40 */
+
+  border: 1px solid #2b87db;
+  border-radius: 8px;
 }
 
-.Logo_Login span{
-    border-radius: 0;
-    width: 100%;
+.Logo_Login span {
+  border-radius: 0;
+  width: 100%;
+}
+
+.txt_remember .ant-checkbox-wrapper {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #e1e5eb;
+}
+.fg_password {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  /* identical to box height */
+
+  text-align: center;
+  letter-spacing: 0.0025em;
+
+  /* Link */
+
+  color: #2584db;
+
+  text-align: right;
+}
+.go_to_register {
+    display: block;
+    background: #21242c;
+    border-radius: 8px;
+    padding: 8px 10px;
+    text-align: center;
+    margin-top: 25px;
+    color: #E1E5EB;
+}
+.go_to_register:hover {
+    color: #E1E5EB;
+}
+.go_to_register b{
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+/* identical to box height */
+
+text-align: center;
+letter-spacing: 0.0025em;
+
+color: #50ABFF;
 }
