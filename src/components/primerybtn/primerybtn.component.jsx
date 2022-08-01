@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Form, Input } from "antd";
+import { Button, Form } from "antd";
 
 import "./primerybtn.styles.scss";
 

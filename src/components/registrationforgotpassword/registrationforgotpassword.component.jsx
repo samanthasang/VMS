@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { Row, Col, Steps } from "antd";
 
-import "./registration.styles.scss";
+import "./registrationforgotpassword.styles.scss";
 import Register from "../register/register.component";
 
 import Step11 from "../../assets/Step1-1.svg";
 import Step110 from "../../assets/Step22-1.svg";
-const { Step } = Steps;const steps = [
+const { Step } = Steps;
+const steps = [
+  {
+    title: "First",
+    content: "First-content",
+  },
   {
     title: "First",
     content: "First-content",
@@ -17,7 +22,7 @@ const { Step } = Steps;const steps = [
   }
 ];
 
-const Registration = ({current, ChangeCurrent, next, prev}) => {
+const StepForgotPassword = ({current, ChangeCurrent, next, prev}) => {
   return (
     <>
       <Row span={16}>
@@ -55,7 +60,7 @@ const Registration = ({current, ChangeCurrent, next, prev}) => {
               title="Registration"
             />
             <Step
-              className="registerration_right"
+              className="registerration_middle"
               style={{
                 background:
                   current === 1
@@ -65,6 +70,17 @@ const Registration = ({current, ChangeCurrent, next, prev}) => {
               status="wait"
               title="Password Protection"
             />
+            <Step
+              className="registerration_right"
+              style={{
+                background:
+                  current === 2
+                    ? `url(${Step11}) 100%`
+                    : `url(${Step110}) 100%`,
+              }}
+              status="wait"
+              title="Reset Password Protection"
+            />
           </Steps>
         </Col>
       </Row>
@@ -72,4 +88,4 @@ const Registration = ({current, ChangeCurrent, next, prev}) => {
   );
 };
 
-export default Registration;
+export default StepForgotPassword;

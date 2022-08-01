@@ -12,7 +12,7 @@ import Layout from "./Layout";
 
 import LoginPage from "./pages/loginpage/loginpage.component";
 import RegisterPage from "./pages/registerpage/registerpage.component";
-
+import ForgotPasswordPage from "./pages/forgotpasswordpage/forgotpasswordpage.component";
 import Privateroute from "./privateroute";
 import MainMenuPage from "./pages/mainmenupage/mainmenupage.component";
 import DevicesPage from "./pages/devicespage/devicespage.component";
@@ -39,6 +39,7 @@ function App() {
   return (
     <>
       {window.location.pathname !== "/" &&
+      window.location.pathname !== "/forgotpassword" &&
       window.location.pathname !== "/register" ? (
         <Layout />
       ) : (
@@ -47,6 +48,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage LoginAuth={LoginAuth} />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
         <Route element={<Privateroute isLogedIn={isLogedIn} />}>
           <Route path="/dashboard" element={<MainMenuPage />} />
           <Route path="/mainmenupage" element={<MainMenuPage />} />

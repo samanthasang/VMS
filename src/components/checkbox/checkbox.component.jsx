@@ -1,20 +1,22 @@
 import React from "react";
 
-import { Form, Checkbox } from "antd";
+import { Col, Form, Checkbox } from "antd";
 
 
 import "./checkbox.styles.scss";
 
-const CheckBox = ({ inputs, handleChange, type, placeholder }) => {
+const CheckBox = ({ span, offset }) => {
   return (
-    <Form.Item
-      className="fg_password"
-      name="remember"
-      valuePropName="checked"
-      noStyle
-    >
-      <Checkbox>Remember me</Checkbox>
-    </Form.Item>
+    <Col className="txt_remember" span={span} offset={offset}>
+      <Form.Item
+        className="fg_password"
+        name="remember"
+        valuePropName="checked"
+        noStyle
+      >
+        <Checkbox>Remember me</Checkbox>
+      </Form.Item>
+    </Col>
   );
 };
 

@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   Avatar,
   Button,
@@ -9,14 +10,15 @@ import {
   Row,
   Select,
 } from "antd";
-import React, { useState } from "react";
-
 import { useNavigate } from "react-router-dom";
-import "./setpassword.styles.scss";
+import InputForm from "../inputform/inputform.component";
+import InputPasswordForm from "../inputpasswordform/inputpasswordform.component";
 import InputFormWithLabel from "../inputformwithlabel/inputformwithlabel.component";
-import { Link } from "react-router-dom";
+
+import "./forgotpasswordform.styles.scss";
 const { Option } = Select;
-const SetPassword = () => {
+
+const FormForgotPassword = ({ LoginAuth }) => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     username: "",
@@ -54,7 +56,6 @@ const SetPassword = () => {
     if (inputs.username === "admin" || inputs.password === "admin")
       navigate("/mainmenupage");
   };
-
   return (
     <Row>
       <Col
@@ -84,6 +85,7 @@ const SetPassword = () => {
             <Col span={18} offset={3}>
               <Form.Item label="Question 1" className="select_form">
                 <Select
+                  disabled
                   placeholder="Select a Question"
                   optionFilterProp="children"
                   onChange={onChange}
@@ -117,10 +119,12 @@ const SetPassword = () => {
           </Row>
           <Row>
             <Col span={18} offset={3}>
-            <Form.Item label="Question 2" className="select_form">
+              <Form.Item label="Question 2" className="select_form">
                 <Select
-                  placeholder="Select a Question"
+                  disabled
+                  placeholder="What is your favorite children’s Book?"
                   optionFilterProp="children"
+                  defaultValue="What is your favorite children’s Book?"
                   onChange={onChange}
                   onSearch={onSearch}
                   filterOption={(input, option) =>
@@ -152,8 +156,9 @@ const SetPassword = () => {
           </Row>
           <Row>
             <Col span={18} offset={3}>
-            <Form.Item label="Question 3" className="select_form">
+              <Form.Item label="Question 3" className="select_form">
                 <Select
+                  disabled
                   placeholder="Select a Question"
                   optionFilterProp="children"
                   onChange={onChange}
@@ -191,4 +196,4 @@ const SetPassword = () => {
   );
 };
 
-export default SetPassword;
+export default FormForgotPassword;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Button, message, Steps } from "antd";
 
-import "./registerationnavigation.styles.scss";
+import "./resetpasswordnavigation.styles.scss";
 import Register from "../register/register.component";
 
 import Step11 from "../../assets/Step1-1.svg";
@@ -12,12 +12,16 @@ const steps = [
     content: "First-content",
   },
   {
+    title: "First",
+    content: "First-content",
+  },
+  {
     title: "Second",
     content: "Second-content",
   },
 ];
 
-const RegistrationNavigation = ({ current, next, prev, form }) => {
+const ResetPasswordNavigation = ({ current, next, prev, form }) => {
   return (
     <>
       <Row>
@@ -63,4 +67,4 @@ const RegistrationNavigation = ({ current, next, prev, form }) => {
   );
 };
 
-export default RegistrationNavigation;
+export default ResetPasswordNavigation;

@@ -1,21 +1,25 @@
+
 import { Avatar, Button, Card, Checkbox, Col, Form, Input, Row } from "antd";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 
-import Registration from "../registration/registration.component";
-import SetPassword from "../setpassword/setpassword.component";
+import SetNewPassword from "../setnewpassword/setnewpassword.component";
 import RegistrationNavigation from "../registerationnavigation/registerationnavigation.component";
-import FormRegister from "../formregister/formregister.component";
+import FormForgot from "../formforgot/formforgot.component";
+import StepForgotPassword from "../registrationforgotpassword/registrationforgotpassword.component";
+import FormForgotPassword from "../forgotpasswordform/forgotpasswordform.component";
+import ResetPasswordNavigation from "../resetpasswordnavigation/resetpasswordnavigation.component";
+
 import LoginBG from "../../assets/login-bg.svg";
 import LoginFormBG from "../../assets/login-form-bg.svg";
 
-import "./register.styles.scss";
+import "./forgotpassword.styles.scss";
 
 const { Meta } = Card;
 
-const Register = () => {
+const ForgotPassword = () => {
   const [form] = Form.useForm();
   const [, forceUpdate] = useState({});
   const navigate = useNavigate();
@@ -63,7 +67,7 @@ const Register = () => {
           backdropFilter: "blur(100px)",
         }}
       >
-        <Registration
+        <StepForgotPassword
           current={current}
           ChangeCurrent={onChange}
           next={next}
@@ -81,20 +85,21 @@ const Register = () => {
               transform: "translate(-50%, -50%)",
             }}
           >
-            {current === 0 && <FormRegister />}
-            {current === 1 && <SetPassword />}
+            {current === 0 && <FormForgot />}
+            {current === 1 && <FormForgotPassword />}
+            {current === 2 && <SetNewPassword />}
           </Col>
         </Row>
-            <RegistrationNavigation
-              shouldUpdate
-              current={current}
-              next={next}
-              prev={prev}
-              form={form}
-            />
+        <ResetPasswordNavigation
+          shouldUpdate
+          current={current}
+          next={next}
+          prev={prev}
+          form={form}
+        />
       </Col>
     </Row>
   );
 };
 
-export default Register;
+export default ForgotPassword;
