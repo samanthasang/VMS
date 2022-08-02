@@ -80,7 +80,7 @@ const ForgotPassword = () => {
               width: "100%",
               margin: "0",
               position: "absolute",
-              top: "50%",
+              top: "45%",
               left: "50%",
               transform: "translate(-50%, -50%)",
             }}

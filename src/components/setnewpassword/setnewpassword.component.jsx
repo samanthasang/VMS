@@ -1,11 +1,6 @@
 import {
-  Avatar,
-  Button,
-  Card,
-  Checkbox,
   Col,
   Form,
-  Input,
   Row,
   Select,
 } from "antd";
@@ -14,8 +9,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./setnewpassword.styles.scss";
 import InputPasswordForm from "../inputpasswordform/inputpasswordform.component";
-import { Link } from "react-router-dom";
-const { Option } = Select;
+import StrengthBar from "../stregthbar/stregthbar.component";
+import ResetPasswordTXT from "../resetpasswordtxt/resetpasswordtxt.component";
+
+
+
+
 const SetNewPassword = () => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
@@ -80,6 +79,11 @@ const SetNewPassword = () => {
           autoComplete="off"
           onSubmit={handleSubmit}
         >
+          <ResetPasswordTXT
+            span={10}
+            offset={7}
+            title={"Enter Your New Password"}
+          />
           <InputPasswordForm
             span={10}
             offset={7}
@@ -88,6 +92,13 @@ const SetNewPassword = () => {
             type={Text}
             placeholder={"Password"}
           />
+          <StrengthBar
+            minLength={8}
+            password={inputs.password}
+            span={10}
+            offset={7}
+          />
+
           <InputPasswordForm
             span={10}
             offset={7}

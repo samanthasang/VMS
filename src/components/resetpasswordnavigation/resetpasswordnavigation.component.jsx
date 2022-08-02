@@ -1,9 +1,9 @@
 import React from "react";
-import { Row, Col, Button, message, Steps } from "antd";
+import { Row, Col, Button, notification, Steps } from "antd";
 
 import "./resetpasswordnavigation.styles.scss";
 import Register from "../register/register.component";
-
+import OpenNotification from "../notification/notification.component";
 import Step11 from "../../assets/Step1-1.svg";
 const { Step } = Steps;
 const steps = [
@@ -29,6 +29,7 @@ const ResetPasswordNavigation = ({ current, next, prev, form }) => {
           <div className="steps-action">
             {current > 0 && (
               <Button
+                className="btn_pre"
                 style={{
                   margin: "0 8px",
                 }}
@@ -43,14 +44,15 @@ const ResetPasswordNavigation = ({ current, next, prev, form }) => {
               </Button>
             )}
             {current < steps.length - 1 && (
-              <Button type="primary" onClick={next}>
+              <Button className="btn_next" type="primary" onClick={next}>
                 Next
               </Button>
             )}
             {current === steps.length - 1 && (
               <Button
+                className="btn_next"
                 type="primary"
-                onClick={() => message.success("Processing complete!")}
+                onClick={() => OpenNotification("topRight")}
                 disabled={
                   !form.isFieldsTouched(true) ||
                   !!form.getFieldsError().filter(({ errors }) => errors.length)

@@ -3,7 +3,7 @@ import { Row, Col, Form } from "antd";
 
 
 import InputForm from "../inputform/inputform.component";
-import InputPasswordForm from "../inputpasswordform/inputpasswordform.component";
+import ResetPasswordTXT from "../resetpasswordtxt/resetpasswordtxt.component";
 import "./formforgot.styles.scss";
 
 const FormForgot = ({ LoginAuth }) => {
@@ -41,7 +41,7 @@ const FormForgot = ({ LoginAuth }) => {
           width: "100%",
           margin: "0",
           position: "absolute",
-          top: "60%",
+          top: "0",
           left: "50%",
           transform: "translate(-50%, -50%)",
         }}
@@ -58,6 +58,12 @@ const FormForgot = ({ LoginAuth }) => {
           autoComplete="off"
           onSubmit={handleSubmit}
         >
+          <ResetPasswordTXT
+            span={10}
+            offset={7}
+            title={"Reset Password"}
+            description={"Please Enter Your Email Address"}
+          />
           <InputForm
             span={10}
             offset={7}

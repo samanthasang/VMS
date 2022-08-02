@@ -4,8 +4,8 @@ import { Row, Col, Steps } from "antd";
 import "./registrationforgotpassword.styles.scss";
 import Register from "../register/register.component";
 
-import Step11 from "../../assets/Step1-1.svg";
-import Step110 from "../../assets/Step22-1.svg";
+import Step11 from "../../assets/Step2-2.svg";
+import Step110 from "../../assets/Step22-2.svg";
 const { Step } = Steps;
 const steps = [
   {
@@ -49,7 +49,7 @@ const StepForgotPassword = ({current, ChangeCurrent, next, prev}) => {
             className="site-navigation-steps"
           >
             <Step
-              className="registerration_left"
+              className="registerration_left_2"
               style={{
                 background:
                   current === 0
@@ -60,7 +60,7 @@ const StepForgotPassword = ({current, ChangeCurrent, next, prev}) => {
               title="Registration"
             />
             <Step
-              className="registerration_middle"
+              className="registerration_middle_2"
               style={{
                 background:
                   current === 1
@@ -71,7 +71,7 @@ const StepForgotPassword = ({current, ChangeCurrent, next, prev}) => {
               title="Password Protection"
             />
             <Step
-              className="registerration_right"
+              className="registerration_right_2"
               style={{
                 background:
                   current === 2

@@ -25,6 +25,7 @@ const RegistrationNavigation = ({ current, next, prev, form }) => {
           <div className="steps-action">
             {current > 0 && (
               <Button
+                className="btn_pre"
                 style={{
                   margin: "0 8px",
                 }}
@@ -39,12 +40,13 @@ const RegistrationNavigation = ({ current, next, prev, form }) => {
               </Button>
             )}
             {current < steps.length - 1 && (
-              <Button type="primary" onClick={next}>
+              <Button className="btn_next" type="primary" onClick={next}>
                 Next
               </Button>
             )}
             {current === steps.length - 1 && (
               <Button
+                className="btn_next"
                 type="primary"
                 onClick={() => message.success("Processing complete!")}
                 disabled={

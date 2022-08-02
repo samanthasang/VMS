@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Row, Col, Form } from "antd";
 
-
 import InputForm from "../inputform/inputform.component";
 import InputPasswordForm from "../inputpasswordform/inputpasswordform.component";
+import StrengthBar from "../stregthbar/stregthbar.component";
+
 import "./formregister.styles.scss";
 
 const FormRegister = ({ LoginAuth }) => {
@@ -91,6 +92,7 @@ const FormRegister = ({ LoginAuth }) => {
             type={Text}
             placeholder={"Password"}
           />
+          <StrengthBar minLength={8} password={inputs.password} span={10} offset={7} />
           <InputPasswordForm
             span={10}
             offset={7}
@@ -106,4 +108,3 @@ const FormRegister = ({ LoginAuth }) => {
 };
 
 export default FormRegister;
-

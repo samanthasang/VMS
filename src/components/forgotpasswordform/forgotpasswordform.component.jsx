@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import InputForm from "../inputform/inputform.component";
 import InputPasswordForm from "../inputpasswordform/inputpasswordform.component";
 import InputFormWithLabel from "../inputformwithlabel/inputformwithlabel.component";
+import ResetPasswordTXT from "../resetpasswordtxt/resetpasswordtxt.component";
 
 import "./forgotpasswordform.styles.scss";
 const { Option } = Select;
@@ -64,7 +65,7 @@ const FormForgotPassword = ({ LoginAuth }) => {
           width: "100%",
           margin: "0",
           position: "absolute",
-          top: "60%",
+          top: "2000%",
           left: "50%",
           transform: "translate(-50%, -50%)",
         }}
@@ -81,6 +82,11 @@ const FormForgotPassword = ({ LoginAuth }) => {
           autoComplete="off"
           onSubmit={handleSubmit}
         >
+          <ResetPasswordTXT
+            span={10}
+            offset={7}
+            description={"Answer the Questions for Reset Password"}
+          />
           <Row>
             <Col span={18} offset={3}>
               <Form.Item label="Question 1" className="select_form">

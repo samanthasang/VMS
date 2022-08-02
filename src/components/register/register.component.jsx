@@ -61,6 +61,7 @@ const Register = () => {
           height: "66vh",
           background: `url(${LoginFormBG})`,
           backdropFilter: "blur(100px)",
+          borderRadius: '8px'
         }}
       >
         <Registration
