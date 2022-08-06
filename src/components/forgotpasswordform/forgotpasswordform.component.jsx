@@ -88,11 +88,11 @@ const FormForgotPassword = ({ LoginAuth }) => {
             description={"Answer the Questions for Reset Password"}
           />
           <Row>
-            <Col span={18} offset={3}>
+            <Col span={18} offset={3} className="select_disabled">
               <Form.Item label="Question 1" className="select_form">
                 <Select
                   disabled
-                  placeholder="Select a Question"
+                  placeholder="What is your favorite children’s Book?"
                   optionFilterProp="children"
                   onChange={onChange}
                   onSearch={onSearch}
@@ -124,13 +124,12 @@ const FormForgotPassword = ({ LoginAuth }) => {
             </Col>
           </Row>
           <Row>
-            <Col span={18} offset={3}>
+            <Col span={18} offset={3} className="select_disabled">
               <Form.Item label="Question 2" className="select_form">
                 <Select
                   disabled
                   placeholder="What is your favorite children’s Book?"
                   optionFilterProp="children"
-                  defaultValue="What is your favorite children’s Book?"
                   onChange={onChange}
                   onSearch={onSearch}
                   filterOption={(input, option) =>
@@ -161,11 +160,11 @@ const FormForgotPassword = ({ LoginAuth }) => {
             </Col>
           </Row>
           <Row>
-            <Col span={18} offset={3}>
+            <Col span={18} offset={3} className="select_disabled">
               <Form.Item label="Question 3" className="select_form">
                 <Select
                   disabled
-                  placeholder="Select a Question"
+                  placeholder="What is the name of your favorite fruit?"
                   optionFilterProp="children"
                   onChange={onChange}
                   onSearch={onSearch}

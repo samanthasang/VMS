@@ -5,6 +5,7 @@ import "./registerationnavigation.styles.scss";
 import Register from "../register/register.component";
 
 import Step11 from "../../assets/Step1-1.svg";
+import OpenNotification from "../notification/notification.component";
 const { Step } = Steps;
 const steps = [
   {
@@ -48,7 +49,7 @@ const RegistrationNavigation = ({ current, next, prev, form }) => {
               <Button
                 className="btn_next"
                 type="primary"
-                onClick={() => message.success("Processing complete!")}
+                onClick={() => OpenNotification("topRight")}
                 disabled={
                   !form.isFieldsTouched(true) ||
                   !!form.getFieldsError().filter(({ errors }) => errors.length)

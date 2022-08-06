@@ -9,15 +9,15 @@ import Step110 from "../../assets/Step22-2.svg";
 const { Step } = Steps;
 const steps = [
   {
-    title: "First",
+    title: "Email",
     content: "First-content",
   },
   {
-    title: "First",
+    title: "Validation",
     content: "First-content",
   },
   {
-    title: "Second",
+    title: "Password Reset",
     content: "Second-content",
   }
 ];
@@ -57,7 +57,7 @@ const StepForgotPassword = ({current, ChangeCurrent, next, prev}) => {
                     : `url(${Step110}) 100%`,
               }}
               status="process"
-              title="Registration"
+              title="Email"
             />
             <Step
               className="registerration_middle_2"
@@ -67,8 +67,8 @@ const StepForgotPassword = ({current, ChangeCurrent, next, prev}) => {
                     ? `url(${Step11}) 100%`
                     : `url(${Step110}) 100%`,
               }}
-              status="wait"
-              title="Password Protection"
+              status="process"
+              title="Validation"
             />
             <Step
               className="registerration_right_2"
@@ -79,7 +79,7 @@ const StepForgotPassword = ({current, ChangeCurrent, next, prev}) => {
                     : `url(${Step110}) 100%`,
               }}
               status="wait"
-              title="Reset Password Protection"
+              title="Password Reset"
             />
           </Steps>
         </Col>
