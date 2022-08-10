@@ -1,27 +1,51 @@
 import React from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Tooltip } from "antd";
 
 import { Form, Input } from "antd";
 
-import { UserOutlined } from "@ant-design/icons";
+import { InfoCircleOutlined, UserOutlined } from "@ant-design/icons";
 
 import "./inputform.styles.scss";
 
-const InputForm = ({ span, offset,inputs, handleChange, type, placeholder }) => {
+const InputForm = ({
+  span,
+  offset,
+  inputs,
+  handleChange,
+  type,
+  placeholder,
+  empty
+}) => {
   return (
     <Row>
       <Col span={span} offset={offset}>
         <Form.Item
-          className="input_form"
+          className={` ${empty ? "border_red" : "input_form"}`}
           onChange={handleChange}
           type={type}
-          rules={[{ required: true, message: "Please input your Username!" }]}
         >
-          <Input
-            name={inputs}
-            prefix={<UserOutlined className="site-form-item-icon" />}
-            placeholder={placeholder}
-          />
+          {empty ? (
+            <Input
+              name={inputs}
+              prefix={<UserOutlined className="site-form-item-icon" />}
+              placeholder={placeholder}
+              suffix={
+                <Tooltip title="Required">
+                  <InfoCircleOutlined
+                    style={{
+                      color: "rgba(255,0,0,.8)",
+                    }}
+                  />
+                </Tooltip>
+              }
+            />
+          ) : (
+            <Input
+              name={inputs}
+              prefix={<UserOutlined className="site-form-item-icon" />}
+              placeholder={placeholder}
+            />
+          )}
         </Form.Item>
       </Col>
     </Row>

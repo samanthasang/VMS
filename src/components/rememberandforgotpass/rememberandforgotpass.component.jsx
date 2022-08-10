@@ -10,7 +10,7 @@ import "./rememberandforgotpass.styles.scss";
 const RememberAndForgotPass = ({ span, offset }) => {
   return (
     <Row>
-      <Col span={span} offset={offset}>
+      <Col span={span} offset={offset}className='remember_forgotpasswod'>
         <Form.Item>
           <Row>
             <CheckBox span={12} offset={0} />

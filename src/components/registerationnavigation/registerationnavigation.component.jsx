@@ -37,7 +37,7 @@ const RegistrationNavigation = ({ current, next, prev, form }) => {
                     .length
                 }
               >
-                Previous
+                Back
               </Button>
             )}
             {current < steps.length - 1 && (

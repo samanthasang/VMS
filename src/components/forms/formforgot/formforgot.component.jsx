@@ -1,17 +1,12 @@
 import React, { useState } from "react";
 import { Row, Col, Form } from "antd";
 
-import { useNavigate } from "react-router-dom";
 
-import InputForm from "../inputform/inputform.component";
-import InputPasswordForm from "../inputpasswordform/inputpasswordform.component";
-import SubminBTN from "../submitbtn/submitbtn.component";
-import RememberAndForgotPass from "../rememberandforgotpass/rememberandforgotpass.component";
-import GoToRegister from "../gotoregister/gotoregister.omponent";
-import "./formlogin.styles.scss";
+import InputForm from "../../inputform/inputform.component";
+import ResetPasswordTXT from "../../resetpasswordtxt/resetpasswordtxt.component";
+import "./formforgot.styles.scss";
 
-const FormLogin = ({ LoginAuth }) => {
-  const navigate = useNavigate();
+const FormForgot = ({ LoginAuth }) => {
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
@@ -46,7 +41,7 @@ const FormLogin = ({ LoginAuth }) => {
           width: "100%",
           margin: "0",
           position: "absolute",
-          top: "60%",
+          top: "0",
           left: "50%",
           transform: "translate(-50%, -50%)",
         }}
@@ -63,31 +58,25 @@ const FormLogin = ({ LoginAuth }) => {
           autoComplete="off"
           onSubmit={handleSubmit}
         >
+          <ResetPasswordTXT
+            span={10}
+            offset={7}
+            title={"Reset Password"}
+            description={"Please Enter Your Email Address"}
+          />
           <InputForm
             span={10}
             offset={7}
-            inputs={"username"}
+            inputs={"email"}
             handleChange={handleChange}
             type={"text"}
             placeholder={"Email"}
           />
-
-          <InputPasswordForm
-            span={10}
-            offset={7}
-            inputs={"password"}
-            handleChange={handleChange}
-            type={Text}
-            placeholder={"Password"}
-          />
-          <RememberAndForgotPass span={10} offset={7} />
-          <SubminBTN handleSubmit={handleSubmit} span={10} offset={7} />
-          <GoToRegister span={10} offset={7}/>
         </Form>
       </Col>
     </Row>
   );
 };
 
-export default FormLogin;
+export default FormForgot;
 

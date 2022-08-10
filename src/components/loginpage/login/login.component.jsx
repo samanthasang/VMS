@@ -1,12 +1,12 @@
 import React from "react";
 import { Col, Row } from "antd";
 
-import LogoVISTAVMS from "../logovistavms/logovistavms.component";
-import FormLogin from "../formlogin/formlogin.component";
+import LogoVISTAVMS from "../../logovistavms/logovistavms.component";
+import FormLogin from '../../forms/formlogin/formlogin.component'
 
-import LogoLogin from "../../assets/Logo-Login.svg";
-import LoginBG from "../../assets/login-bg.svg";
-import LoginFormBG from "../../assets/login-form-bg.svg";
+import LogoLogin from "../../../assets/Logo-Login.svg";
+import LoginBG from "../../../assets/login-bg.svg";
+import LoginFormBG from "../../../assets/login-form-bg.svg";
 import "./login.styles.scss";
 
 const Login = ({ LoginAuth }) => {

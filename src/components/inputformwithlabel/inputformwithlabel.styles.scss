@@ -1,3 +1,21 @@
+.input_form_label,
+.border_red_label {
+  height: 36px !important;
+}
+.input_form_label .ant-form-item-control-input-content input {
+  height: 36px !important;
+  // border: 1px solid #2175c2 !important;
+  border-radius: 8px !important;
+  margin-bottom: 16px !important;
+  // color: #3d495d !important;
+}
+.border_red_label .ant-form-item-control-input-content > span:first-child {
+  height: 36px !important;
+  // border: 1px solid #2175c2 !important;
+  border-radius: 8px !important;
+  margin-bottom: 16px !important;
+  // color: #3d495d !important;
+}
 .input_form_label input {
   font-family: "Poppins";
   font-style: normal;
@@ -6,10 +24,7 @@
   line-height: 24px;
   /* identical to box height */
   letter-spacing: 0.005em;
-  height: 36px !important;
-  border: 1px solid #2175c2 !important;
-  border-radius: 8px !important;
-  color: #3d495d !important;
+  // color: #3d495d !important;
 
   /* Typeface/60 */
   &::placeholder {

@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd';
 import React from 'react'
 
-import Login from '../../components/login/login.component';
+import Login from '../../components/loginpage/login/login.component';
 
 
 import './loginpage.styles.scss'

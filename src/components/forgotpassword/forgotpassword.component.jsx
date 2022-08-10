@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 import SetNewPassword from "../setnewpassword/setnewpassword.component";
 import RegistrationNavigation from "../registerationnavigation/registerationnavigation.component";
-import FormForgot from "../formforgot/formforgot.component";
+import FormForgot from "../forms/formforgot/formforgot.component";
 import StepForgotPassword from "../registrationforgotpassword/registrationforgotpassword.component";
 import FormForgotPassword from "../forgotpasswordform/forgotpasswordform.component";
 import ResetPasswordNavigation from "../resetpasswordnavigation/resetpasswordnavigation.component";

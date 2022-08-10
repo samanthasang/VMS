@@ -32,9 +32,8 @@
   z-index: 1;
   height: 50px;
 }
-.ant-steps
-  .ant-steps-item:not(.ant-steps-item-active)
-  > .ant-steps-item-container[role="button"]
+.ant-steps .ant-steps-item-activ
+  > .ant-steps-item-container
   .ant-steps-item-title {
   color: #fff !important;
 }

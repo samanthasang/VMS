@@ -78,7 +78,7 @@ const StepForgotPassword = ({current, ChangeCurrent, next, prev}) => {
                     ? `url(${Step11}) 100%`
                     : `url(${Step110}) 100%`,
               }}
-              status="wait"
+              status="process"
               title="Password Reset"
             />
           </Steps>

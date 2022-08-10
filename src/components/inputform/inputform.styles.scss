@@ -1,6 +1,15 @@
+.input_form, .border_red {
+  height: 36px !important;
+  margin-bottom: 12px !important;
+}
 .input_form .ant-form-item-control-input-content > span:first-child {
   height: 36px !important;
   border: 1px solid #2175c2 !important;
+  border-radius: 8px !important;
+}
+.border_red .ant-form-item-control-input-content > span:first-child {
+  height: 36px !important;
+  border: 2px solid #ff0000 !important;
   border-radius: 8px !important;
 }
 .input_form input {

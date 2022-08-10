@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Registration from "../registration/registration.component";
 import SetPassword from "../setpassword/setpassword.component";
 import RegistrationNavigation from "../registerationnavigation/registerationnavigation.component";
-import FormRegister from "../formregister/formregister.component";
+import FormRegister from "../forms/formregister/formregister.component";
 import LoginBG from "../../assets/login-bg.svg";
 import LoginFormBG from "../../assets/login-form-bg.svg";
 
@@ -20,8 +20,17 @@ const Register = () => {
   const [, forceUpdate] = useState({});
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
-    username: "",
+    firstName: "",
+    lastName: "",
+    email: "",
     password: "",
+    repeatPassword: "",
+    question1: "",
+    question2: "",
+    question3: "",
+    question1Answer: "",
+    question2Answer: "",
+    question3Answer: "",
   });
 
   useEffect(() => {
@@ -61,14 +70,14 @@ const Register = () => {
           height: "66vh",
           background: `url(${LoginFormBG})`,
           backdropFilter: "blur(100px)",
-          borderRadius: '8px'
+          borderRadius: "8px",
         }}
       >
         <Registration
           current={current}
-          ChangeCurrent={onChange}
-          next={next}
-          prev={prev}
+          // ChangeCurrent={onChange}
+          // next={next}
+          // prev={prev}
         />
         <Row>
           <Col
@@ -82,17 +91,17 @@ const Register = () => {
               transform: "translate(-50%, -50%)",
             }}
           >
-            {current === 0 && <FormRegister />}
-            {current === 1 && <SetPassword />}
+            {current === 0 && <FormRegister form={form} />}
+            {current === 1 && <SetPassword form={form} />}
           </Col>
         </Row>
-            <RegistrationNavigation
-              shouldUpdate
-              current={current}
-              next={next}
-              prev={prev}
-              form={form}
-            />
+        <RegistrationNavigation
+          shouldUpdate
+          current={current}
+          next={next}
+          prev={prev}
+          form={form}
+        />
       </Col>
     </Row>
   );
