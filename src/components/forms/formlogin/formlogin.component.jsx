@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Row, Col, Form } from "antd";
+import { connect } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 
@@ -10,8 +11,9 @@ import RememberAndForgotPass from "../../rememberandforgotpass/rememberandforgot
 import GoToRegister from "../../gotoregister/gotoregister.omponent";
 import "./formlogin.styles.scss";
 import axios from "axios";
+import { loginUser } from "../../../redux/action/registerAction";
 
-const FormLogin = ({ LoginAuth }) => {
+const FormLogin = ({ LoginAuth, isLogedIn, loginUser }) => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     username: "",
@@ -35,8 +37,8 @@ const FormLogin = ({ LoginAuth }) => {
   };
   const onFinish = (inputs) => {
     // if (inputs.username === "admin" || inputs.password === "admin")
-      // navigate("/mainmenupage");
-      LoginAuth();
+    // navigate("/mainmenupage");
+    LoginAuth();
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -52,26 +54,27 @@ const FormLogin = ({ LoginAuth }) => {
       setEmtyUserName(true);
     }
     if (inputs.username === "" || inputs.password === "") {
-      return
+      return;
     }
-      axios({
-        method: "post",
-        url: "http://192.168.1.86:8000/api/auth/login",
-        data: {
-          email: `${inputs.username}`,
-          password: `${inputs.password}`,
-        },
-      }).then(
-        (response) => {
-          response.data.ok && LoginAuth();
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    // if (inputs.username === "admin" || inputs.password === "admin")
-      // navigate("/mainmenupage");
-      // LoginAuth();
+    // loginUser(inputs);
+    axios({
+      method: "post",
+      url: "http://192.168.1.86:8000/api/auth/login",
+      data: {
+        email: `${inputs.username}`,
+        password: `${inputs.password}`,
+      },
+    }).then(
+      (response) => {
+        response.data.ok && LoginAuth();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    if (inputs.username === "admin" || inputs.password === "admin")
+    navigate("/mainmenupage");
+    LoginAuth();
   };
   return (
     <Row>
@@ -126,5 +129,9 @@ const FormLogin = ({ LoginAuth }) => {
   );
 };
 
-export default FormLogin;
+const mapStateToProps = (state) => ({
+  isLogedIn: state.isLogedIn,
+});
 
+// export default connect(mapStateToProps, { loginUser })(FormLogin);
+export default FormLogin;

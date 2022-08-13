@@ -3,8 +3,13 @@ import {
   Form,
   Row,
   Select,
+  Steps,
+  Button
 } from "antd";
 import React, { useState } from "react";
+
+import axios from "axios";
+import OpenNotification from "../notification/notification.component";
 
 import { useNavigate } from "react-router-dom";
 import "./setnewpassword.styles.scss";
@@ -12,14 +17,29 @@ import InputPasswordForm from "../inputpasswordform/inputpasswordform.component"
 import StrengthBar from "../stregthbar/stregthbar.component";
 import ResetPasswordTXT from "../resetpasswordtxt/resetpasswordtxt.component";
 
+const { Step } = Steps;
+const steps = [
+  {
+    title: "First",
+    content: "First-content",
+  },
+  {
+    title: "First",
+    content: "First-content",
+  },
+  {
+    title: "Second",
+    content: "Second-content",
+  },
+];
 
 
 
-const SetNewPassword = () => {
+const SetNewPassword = ({ token, current, prev, form  }) => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
-    username: "",
     password: "",
+    repeatPassword: "",
   });
 
   const onChange = (value) => {
@@ -50,13 +70,32 @@ const SetNewPassword = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (inputs.username === "admin" || inputs.password === "admin")
-      navigate("/mainmenupage");
+    console.log(token);
+    console.log(inputs.password);
+    console.log(inputs.repeatPassword);
+    axios({
+      method: "post",
+      url: "http://192.168.1.32:8000/api/auth/recover-password",
+      data: {
+        token: `${token}`,
+        password: `${inputs.password}`,
+        repeatPassword: `${inputs.repeatPassword}`,
+      },
+    }).then(
+      (response) => {
+        console.log(response.data.ok);
+        response.data.ok && OpenNotification("topRight");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   };
 
   return (
     <Row>
       <Col
+        className="form_forgot_3"
         span={24}
         style={{
           width: "100%",
@@ -102,11 +141,42 @@ const SetNewPassword = () => {
           <InputPasswordForm
             span={10}
             offset={7}
-            inputs={"password"}
+            inputs={"repeatPassword"}
             handleChange={handleChange}
             type={Text}
             placeholder={"Confirm Password"}
           />
+          <Row>
+            <Col className="navigation_registeration" span={24}>
+              <div className="steps-action">
+                {current > 0 && (
+                  <Button
+                    className="btn_pre"
+                    style={{
+                      margin: "0 8px",
+                    }}
+                    onClick={prev}
+                  >
+                    Back
+                  </Button>
+                )}
+                {current < steps.length - 1 && (
+                  <Button className="btn_next" type="primary">
+                    Next
+                  </Button>
+                )}
+                {current === steps.length - 1 && (
+                  <Button
+                    className="btn_next"
+                    type="primary"
+                    onClick={handleSubmit}
+                  >
+                    Done
+                  </Button>
+                )}
+              </div>
+            </Col>
+          </Row>
         </Form>
       </Col>
     </Row>

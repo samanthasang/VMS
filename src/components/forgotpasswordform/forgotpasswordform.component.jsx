@@ -9,21 +9,50 @@ import {
   Input,
   Row,
   Select,
+  Steps
 } from "antd";
 import { useNavigate } from "react-router-dom";
 import InputForm from "../inputform/inputform.component";
 import InputPasswordForm from "../inputpasswordform/inputpasswordform.component";
 import InputFormWithLabel from "../inputformwithlabel/inputformwithlabel.component";
 import ResetPasswordTXT from "../resetpasswordtxt/resetpasswordtxt.component";
+import axios from "axios";
+import OpenNotification from "../notification/notification.component";
 
 import "./forgotpasswordform.styles.scss";
 const { Option } = Select;
+const { Step } = Steps;
+const steps = [
+  {
+    title: "First",
+    content: "First-content",
+  },
+  {
+    title: "First",
+    content: "First-content",
+  },
+  {
+    title: "Second",
+    content: "Second-content",
+  },
+];
 
-const FormForgotPassword = ({ LoginAuth }) => {
+const FormForgotPassword = ({
+  LoginAuth,
+  current,
+  email,
+  question1,
+  question2,
+  question3,
+  next_2,
+  prev,
+  form,
+}) => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
-    username: "",
-    password: "",
+    question1Answer: "",
+    question2Answer: "",
+    question3Answer: "",
   });
 
   const onChange = (value) => {
@@ -54,12 +83,33 @@ const FormForgotPassword = ({ LoginAuth }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (inputs.username === "admin" || inputs.password === "admin")
-      navigate("/mainmenupage");
+    console.log(email);
+    console.log(inputs.question1Answer);
+    console.log(inputs.question2Answer);
+    console.log(inputs.question3Answer);
+    axios({
+      method: "post",
+      url: "http://192.168.1.32:8000/api/auth/get-recovery-token",
+      data: {
+        email: `${email}`,
+        question1Answer: `${inputs.question1Answer}`,
+        question2Answer: `${inputs.question2Answer}`,
+        question3Answer: `${inputs.question3Answer}`,
+      },
+    }).then(
+      (response) => {
+        console.log(response.data.data.token);
+        response.data.ok && next_2(response.data.data.token);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   };
   return (
     <Row>
       <Col
+        className="form_forgot_2"
         span={24}
         style={{
           width: "100%",
@@ -92,7 +142,7 @@ const FormForgotPassword = ({ LoginAuth }) => {
               <Form.Item label="Question 1" className="select_form">
                 <Select
                   disabled
-                  placeholder="What is your favorite children’s Book?"
+                  placeholder={question1}
                   optionFilterProp="children"
                   onChange={onChange}
                   onSearch={onSearch}
@@ -116,7 +166,7 @@ const FormForgotPassword = ({ LoginAuth }) => {
           <Row>
             <Col span={18} offset={3}>
               <InputFormWithLabel
-                inputs={"answer1"}
+                inputs={"question1Answer"}
                 handleChange={handleChange}
                 type={"text"}
                 label="Answer"
@@ -128,7 +178,7 @@ const FormForgotPassword = ({ LoginAuth }) => {
               <Form.Item label="Question 2" className="select_form">
                 <Select
                   disabled
-                  placeholder="What is your favorite children’s Book?"
+                  placeholder={question2}
                   optionFilterProp="children"
                   onChange={onChange}
                   onSearch={onSearch}
@@ -152,7 +202,7 @@ const FormForgotPassword = ({ LoginAuth }) => {
           <Row>
             <Col span={18} offset={3}>
               <InputFormWithLabel
-                inputs={"answer2"}
+                inputs={"question2Answer"}
                 handleChange={handleChange}
                 type={"text"}
                 label="Answer"
@@ -164,7 +214,7 @@ const FormForgotPassword = ({ LoginAuth }) => {
               <Form.Item label="Question 3" className="select_form">
                 <Select
                   disabled
-                  placeholder="What is the name of your favorite fruit?"
+                  placeholder={question3}
                   optionFilterProp="children"
                   onChange={onChange}
                   onSearch={onSearch}
@@ -188,11 +238,52 @@ const FormForgotPassword = ({ LoginAuth }) => {
           <Row>
             <Col span={18} offset={3}>
               <InputFormWithLabel
-                inputs={"answer3"}
+                inputs={"question3Answer"}
                 handleChange={handleChange}
                 type={"text"}
                 label="Answer"
               />
+            </Col>
+          </Row>
+          <Row>
+            <Col className="navigation_registeration" span={24}>
+              <div className="steps-action">
+                {current > 0 && (
+                  <Button
+                    className="btn_pre"
+                    style={{
+                      margin: "0 8px",
+                    }}
+                    onClick={prev}
+                  >
+                    Back
+                  </Button>
+                )}
+                {current < steps.length - 1 && (
+                  <Button
+                    className="btn_next"
+                    type="primary"
+                    onClick={handleSubmit}
+                  >
+                    Next
+                  </Button>
+                )}
+                {current === steps.length - 1 && (
+                  <Button
+                    className="btn_next"
+                    type="primary"
+                    onClick={() => OpenNotification("topRight")}
+                    disabled={
+                      !form.isFieldsTouched(true) ||
+                      !!form
+                        .getFieldsError()
+                        .filter(({ errors }) => errors.length).length
+                    }
+                  >
+                    Done
+                  </Button>
+                )}
+              </div>
             </Col>
           </Row>
         </Form>

@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-  useNavigate,
-} from "react-router-dom";
+// import { connect } from "react-redux";
+
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import Layout from "./Layout";
+
+// import { Provider } from "react-redux";
+// import store from "./store";
 
 import LoginPage from "./pages/loginpage/loginpage.component";
 import RegisterPage from "./pages/registerpage/registerpage.component";
@@ -38,6 +37,7 @@ function App() {
   };
   return (
     <>
+      {/* <Provider store={store}> */}
       {window.location.pathname !== "/" &&
       window.location.pathname !== "/forgotpassword" &&
       window.location.pathname !== "/register" ? (
@@ -59,8 +59,14 @@ function App() {
           <Route path="*" element={() => <h1>Page not found</h1>} />
         </Route>
       </Routes>
+      {/* </Provider> */}
     </>
   );
 }
 
+const mapStateToProps = (state) => ({
+  isLogedIn: state.isLogedIn,
+});
+
+// export default connect(mapStateToProps, null)(App);
 export default App;

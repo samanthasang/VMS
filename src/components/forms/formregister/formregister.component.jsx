@@ -1,14 +1,26 @@
 import React, { useState } from "react";
-import { Row, Col, Form } from "antd";
+import { Row, Col, Form, Steps, Button } from "antd";
 
 import InputForm from "../../inputform/inputform.component";
 import InputPasswordForm from "../../inputpasswordform/inputpasswordform.component";
 import StrengthBar from "../../stregthbar/stregthbar.component";
 import SubminBTN from "../../submitbtn/submitbtn.component";
+import OpenNotification from "../../notification/notification.component";
 
 import "./formregister.styles.scss";
+const { Step } = Steps;
+const steps = [
+  {
+    title: "First",
+    content: "First-content",
+  },
+  {
+    title: "Second",
+    content: "Second-content",
+  },
+];
 
-const FormRegister = ({ LoginAuth }) => {
+const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
   const [inputs, setInputs] = useState({
     firstName: "",
     lastName: "",
@@ -52,7 +64,7 @@ const FormRegister = ({ LoginAuth }) => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputs.firstName === "") {
@@ -89,7 +101,14 @@ const FormRegister = ({ LoginAuth }) => {
     console.log("email:", inputs.email);
     console.log("password:", inputs.password);
     console.log("repeatPassword:", inputs.repeatPassword);
-    
+    next(
+      inputs.firstName,
+      inputs.lastName,
+      inputs.email,
+      inputs.password,
+      inputs.repeatPassword
+    );
+
     // if (inputs.username === "admin" || inputs.password === "admin")
     //   // navigate("/mainmenupage");
     //   LoginAuth();
@@ -97,6 +116,7 @@ const FormRegister = ({ LoginAuth }) => {
   return (
     <Row>
       <Col
+        className="form_register"
         span={24}
         style={{
           width: "100%",
@@ -173,7 +193,55 @@ const FormRegister = ({ LoginAuth }) => {
             empty={emptyRepeatPassword}
             tittle={passwordTittle}
           />
-          <SubminBTN handleSubmit={handleSubmit} span={10} offset={7} />
+          {/* <SubminBTN handleSubmit={handleSubmit} span={10} offset={7} /> */}
+
+          <Row>
+            <Col className="navigation_registeration" span={24}>
+              <div className="steps-action">
+                {current > 0 && (
+                  <Button
+                    className="btn_pre"
+                    style={{
+                      margin: "0 8px",
+                    }}
+                    onClick={prev}
+                    disabled={
+                      !form.isFieldsTouched(true) ||
+                      !!form
+                        .getFieldsError()
+                        .filter(({ errors }) => errors.length).length
+                    }
+                  >
+                    Back
+                  </Button>
+                )}
+                {current < steps.length - 1 && (
+                  <Button
+                    className="btn_next"
+                    type="primary"
+                    onClick={handleSubmit}
+                  >
+                    Next
+                  </Button>
+                )}
+                {current === steps.length - 1 && (
+                  <Button
+                    className="btn_next"
+                    type="primary"
+                    onClick={() => OpenNotification("topRight")}
+                    disabled={
+                      !form.isFieldsTouched(true) ||
+                      !!form
+                        .getFieldsError()
+                        .filter(({ errors }) => errors.length).length
+                    }
+                  >
+                    Done
+                  </Button>
+                )}
+              </div>
+            </Col>
+          </Row>
         </Form>
       </Col>
     </Row>

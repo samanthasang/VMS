@@ -1,15 +1,30 @@
 import React, { useState } from "react";
-import { Row, Col, Form } from "antd";
-
+import { Row, Col, Form, Steps, Button } from "antd";
 
 import InputForm from "../../inputform/inputform.component";
 import ResetPasswordTXT from "../../resetpasswordtxt/resetpasswordtxt.component";
+import OpenNotification from "../../notification/notification.component";
 import "./formforgot.styles.scss";
+import axios from "axios";
+const { Step } = Steps;
+const steps = [
+  {
+    title: "First",
+    content: "First-content",
+  },
+  {
+    title: "First",
+    content: "First-content",
+  },
+  {
+    title: "Second",
+    content: "Second-content",
+  },
+];
 
-const FormForgot = ({ LoginAuth }) => {
+const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
   const [inputs, setInputs] = useState({
-    username: "",
-    password: "",
+    email: "",
   });
 
   const handleChange = (event) => {
@@ -29,13 +44,27 @@ const FormForgot = ({ LoginAuth }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (inputs.username === "admin" || inputs.password === "admin")
-      // navigate("/mainmenupage");
-      LoginAuth();
+
+    axios({
+      method: "post",
+      url: "http://192.168.1.32:8000/api/auth/get-questions",
+      data: {
+        email: `${inputs.email}`,
+      },
+    }).then(
+      (response) => {
+        console.log(response.data.data);
+        response.data.ok && next(inputs.email, response.data.data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   };
   return (
     <Row>
       <Col
+        className="form_forgot_1"
         span={24}
         style={{
           width: "100%",
@@ -72,6 +101,53 @@ const FormForgot = ({ LoginAuth }) => {
             type={"text"}
             placeholder={"Email"}
           />
+          <Row>
+            <Col className="navigation_registeration" span={24}>
+              <div className="steps-action">
+                {current > 0 && (
+                  <Button
+                    className="btn_pre"
+                    style={{
+                      margin: "0 8px",
+                    }}
+                    onClick={prev}
+                    disabled={
+                      !form.isFieldsTouched(true) ||
+                      !!form
+                        .getFieldsError()
+                        .filter(({ errors }) => errors.length).length
+                    }
+                  >
+                    Back
+                  </Button>
+                )}
+                {current < steps.length - 1 && (
+                  <Button
+                    className="btn_next"
+                    type="primary"
+                    onClick={handleSubmit}
+                  >
+                    Next
+                  </Button>
+                )}
+                {current === steps.length - 1 && (
+                  <Button
+                    className="btn_next"
+                    type="primary"
+                    onClick={() => OpenNotification("topRight")}
+                    disabled={
+                      !form.isFieldsTouched(true) ||
+                      !!form
+                        .getFieldsError()
+                        .filter(({ errors }) => errors.length).length
+                    }
+                  >
+                    Done
+                  </Button>
+                )}
+              </div>
+            </Col>
+          </Row>
         </Form>
       </Col>
     </Row>
@@ -79,4 +155,3 @@ const FormForgot = ({ LoginAuth }) => {
 };
 
 export default FormForgot;
-
