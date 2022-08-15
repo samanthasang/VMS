@@ -1,13 +1,10 @@
-import { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-// import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 
 import Layout from "./Layout";
-
-// import { Provider } from "react-redux";
-// import store from "./store";
 
 import LoginPage from "./pages/loginpage/loginpage.component";
 import RegisterPage from "./pages/registerpage/registerpage.component";
@@ -19,25 +16,30 @@ import LiveViewPage from "./pages/liveviewpage/liveviewpage.component";
 import UserPage from "./pages/userpage/userpage.component";
 import PlayBackPage from "./pages/playback/playback.component";
 
+import registerReduser from "./redux/redusers/registerReduser";
+import { getUser } from "./redux/action/registerAction";
+
 import "./App.css";
 
-function App() {
+function App({  }) {
   let navigate = useNavigate();
-  const [isLogedIn, setIslogedIn] = useState(false);
+
+  const isLogedIn = useSelector((state) => state.isLogedIn);
 
   useEffect(() => {
-    // isLogedIn ? console.log({ isLogedIn }) : console.log("isLogedIn");
-    isLogedIn ? navigate("/dashboard") : console.log("isLogedIn");
+    console.log(isLogedIn);
+    isLogedIn ? <Navigate to="/dashboard" /> : console.log("isLogedIn");
   }, [isLogedIn]);
-
   const LoginAuth = () => {
-    setIslogedIn(true);
-    if (isLogedIn) console.log({ isLogedIn });
-    // <Navigate to="/dashboard" />;
+    console.log(isLogedIn);
   };
+  // const LoginAuth = () => {
+  //   setIslogedIn(true);
+  //   if (isLogedIn) console.log({ isLogedIn });
+  //   // <Navigate to="/dashboard" />;
+  // };
   return (
     <>
-      {/* <Provider store={store}> */}
       {window.location.pathname !== "/" &&
       window.location.pathname !== "/forgotpassword" &&
       window.location.pathname !== "/register" ? (
@@ -59,13 +61,12 @@ function App() {
           <Route path="*" element={() => <h1>Page not found</h1>} />
         </Route>
       </Routes>
-      {/* </Provider> */}
     </>
   );
 }
 
-const mapStateToProps = (state) => ({
-  isLogedIn: state.isLogedIn,
+const mapStateToProps = () => ({
+  isLogedIn: registerReduser.isLogedIn,
 });
 
 // export default connect(mapStateToProps, null)(App);

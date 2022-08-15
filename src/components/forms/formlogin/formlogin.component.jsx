@@ -3,6 +3,7 @@ import { Row, Col, Form } from "antd";
 import { connect } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../../../redux/action/registerAction";
 
 import InputForm from "../../inputform/inputform.component";
 import InputPasswordForm from "../../inputpasswordform/inputpasswordform.component";
@@ -10,8 +11,6 @@ import SubminBTN from "../../submitbtn/submitbtn.component";
 import RememberAndForgotPass from "../../rememberandforgotpass/rememberandforgotpass.component";
 import GoToRegister from "../../gotoregister/gotoregister.omponent";
 import "./formlogin.styles.scss";
-import axios from "axios";
-import { loginUser } from "../../../redux/action/registerAction";
 
 const FormLogin = ({ LoginAuth, isLogedIn, loginUser }) => {
   const navigate = useNavigate();
@@ -36,8 +35,6 @@ const FormLogin = ({ LoginAuth, isLogedIn, loginUser }) => {
     }
   };
   const onFinish = (inputs) => {
-    // if (inputs.username === "admin" || inputs.password === "admin")
-    // navigate("/mainmenupage");
     LoginAuth();
   };
 
@@ -56,24 +53,8 @@ const FormLogin = ({ LoginAuth, isLogedIn, loginUser }) => {
     if (inputs.username === "" || inputs.password === "") {
       return;
     }
-    // loginUser(inputs);
-    axios({
-      method: "post",
-      url: "http://192.168.1.86:8000/api/auth/login",
-      data: {
-        email: `${inputs.username}`,
-        password: `${inputs.password}`,
-      },
-    }).then(
-      (response) => {
-        response.data.ok && LoginAuth();
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-    if (inputs.username === "admin" || inputs.password === "admin")
-    navigate("/mainmenupage");
+    console.log(inputs.username + ' ' + inputs.password);
+    loginUser(inputs);
     LoginAuth();
   };
   return (
@@ -133,5 +114,5 @@ const mapStateToProps = (state) => ({
   isLogedIn: state.isLogedIn,
 });
 
-// export default connect(mapStateToProps, { loginUser })(FormLogin);
-export default FormLogin;
+export default connect(mapStateToProps, { loginUser })(FormLogin);
+// export default FormLogin;

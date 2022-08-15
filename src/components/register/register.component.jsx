@@ -9,7 +9,7 @@ import Registration from "../registration/registration.component";
 import SetPassword from "../setpassword/setpassword.component";
 import RegistrationNavigation from "../registerationnavigation/registerationnavigation.component";
 import FormRegister from "../forms/formregister/formregister.component";
-import LoginBG from "../../assets/login-bg.svg";
+import LoginBG from "../../assets/login-bg.jpg";
 import LoginFormBG from "../../assets/login-form-bg.svg";
 import OpenNotification from "../notification/notification.component";
 

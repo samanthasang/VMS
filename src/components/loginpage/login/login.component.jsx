@@ -5,7 +5,7 @@ import LogoVISTAVMS from "../../logovistavms/logovistavms.component";
 import FormLogin from '../../forms/formlogin/formlogin.component'
 
 import LogoLogin from "../../../assets/Logo-Login.svg";
-import LoginBG from "../../../assets/login-bg.svg";
+import LoginBG from "../../../assets/login-bg.jpg";
 import LoginFormBG from "../../../assets/login-form-bg.svg";
 import "./login.styles.scss";
 

@@ -26,6 +26,7 @@ const InputForm = ({
         >
           {empty ? (
             <Input
+              autocomplete="on"
               name={inputs}
               prefix={<UserOutlined className="site-form-item-icon" />}
               placeholder={placeholder}

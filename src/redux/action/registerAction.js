@@ -1,4 +1,4 @@
-import { RESET_PASSWORD_USER, LOGIN_USER, REGISTER_USER } from "./types";
+import { RESET_PASSWORD_USER, LOGIN_USER, REGISTER_USER, GET_USER} from "./types";
 import axios from "axios";
 
 export const loginUser = (inputs) => {
@@ -16,7 +16,10 @@ export const loginUser = (inputs) => {
         response.data.ok &&
           dispatch({
             type: LOGIN_USER,
+            payload: response.data.data
           });
+          console.log(response.data.ok);
+          console.log(response.data.data);
       },
       (error) => {
         console.log(error);
@@ -30,3 +33,6 @@ export const registerUser = () => {
     type: REGISTER_USER,
   };
 };
+export const getUser = () => ({
+    type: GET_USER
+});
