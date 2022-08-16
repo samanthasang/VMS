@@ -1,23 +1,39 @@
 import React from "react";
 import { Row, Col,notification } from "antd";
-import { CheckCircleOutlined } from '@ant-design/icons';
+import { CheckCircleOutlined,CloseCircleOutlined } from '@ant-design/icons';
 
 import "./notification.styles.scss";
 
-const OpenNotification = (placement) => {
+const OpenNotification = (placement, dec, message, iconNotif) => {
+  {
+    iconNotif === "error" ? 
   notification.open({
-    message: `Notification`,
-    description: "Your account will confirm by Admin.",
+    message: `${ message }`,
+    description: `${ dec }`,
+    placement,
+    duration: 0,
+    icon: (
+      <CloseCircleOutlined
+      style={{
+          color: "#f00",
+        }}
+      />)
+    
+    }) :
+  notification.open({
+    message: `${ message }`,
+    description: `${ dec }`,
     placement,
     duration: 0,
     icon: (
       <CheckCircleOutlined
-        style={{
+      style={{
           color: "#4fef7c",
         }}
       />
-    ),
-  });
+      )
+    })
+  }
 };
 
 export default OpenNotification;

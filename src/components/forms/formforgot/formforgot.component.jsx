@@ -27,10 +27,21 @@ const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
     email: "",
   });
 
+  const [emptyEmail, setEmtyEmail] = useState(false);
+
+  function isValidEmail(email) {
+    const a = /\S+@\S+\.\S+/.test(email);
+    console.log(a);
+    return /\S+@\S+\.\S+/.test(email);
+  }
+
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((inputs) => ({ ...inputs, [name]: value }));
+    if (inputs.email !== "") {
+      setEmtyEmail(false);
+    }
   };
   const onFinish = (inputs) => {
     if (inputs.username === "admin" || inputs.password === "admin")
@@ -45,6 +56,19 @@ const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    if (inputs.email === "") {
+      setEmtyEmail(true);
+    }
+    if (
+      inputs.email === ""
+    ) {
+      return;
+    }
+    if (isValidEmail(inputs.email) === false) {
+      setEmtyEmail(true);
+      OpenNotification("topRight", "Email Dosn`t Valid", "", "error");
+      return;
+    }
     axios({
       method: "post",
       url: "http://192.168.1.32:8000/api/auth/get-questions",
@@ -57,6 +81,7 @@ const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
         response.data.ok && next(inputs.email, response.data.data);
       },
       (error) => {
+          OpenNotification("topRight", "", error.response.data.msg, "error");
         console.log(error);
       }
     );
@@ -100,6 +125,7 @@ const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
             handleChange={handleChange}
             type={"text"}
             placeholder={"Email"}
+            empty={emptyEmail}
           />
           <Row>
             <Col className="navigation_registeration" span={24}>

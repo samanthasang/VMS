@@ -14,7 +14,8 @@ const InputForm = ({
   handleChange,
   type,
   placeholder,
-  empty
+  empty,
+  value
 }) => {
   return (
     <Row>
@@ -22,11 +23,12 @@ const InputForm = ({
         <Form.Item
           className={` ${empty ? "border_red" : "input_form"}`}
           onChange={handleChange}
+          value={value}
           type={type}
         >
           {empty ? (
             <Input
-              autocomplete="on"
+              autoComplete="on"
               name={inputs}
               prefix={<UserOutlined className="site-form-item-icon" />}
               placeholder={placeholder}

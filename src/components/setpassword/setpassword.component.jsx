@@ -113,16 +113,16 @@ const SetPassword = ({ current, next, prev, form, endForm }) => {
       setEmtyQuestion3Answer(true);
       setEmtyQuestion3("Required");
     }
-    // if (
-    //   inputs.question1 === "" ||
-    //   inputs.question2 === "" ||
-    //   inputs.question3 === "" ||
-    //   inputs.question1Answer === "" ||
-    //   inputs.question2Answer === "" ||
-    //   inputs.question3Answer === ""
-    // ) {
-    //   return;
-    // }
+    if (
+      inputs.question1 === "" ||
+      inputs.question2 === "" ||
+      inputs.question3 === "" ||
+      inputs.question1Answer === "" ||
+      inputs.question2Answer === "" ||
+      inputs.question3Answer === ""
+    ) {
+      return;
+    }
     console.log("question1:", inputs.question1);
     console.log("question2:", inputs.question2);
     console.log("question3:", inputs.question3);

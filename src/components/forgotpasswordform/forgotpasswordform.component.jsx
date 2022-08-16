@@ -59,18 +59,27 @@ const FormForgotPassword = ({
     console.log(`selected ${value}`);
   };
 
-  const onSearch = (value) => {
-    console.log("search:", value);
-  };
+  const [emptyQuestion1, setEmtyQuestion1] = useState("");
+  const [emptyQuestion2, setEmtyQuestion2] = useState("");
+  const [emptyQuestion3, setEmtyQuestion3] = useState("");
+  const [emptyQuestion1Answer, setEmtyQuestion1Answer] = useState(false);
+  const [emptyQuestion2Answer, setEmtyQuestion2Answer] = useState(false);
+  const [emptyQuestion3Answer, setEmtyQuestion3Answer] = useState(false);
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs(
       (inputs) => ({ ...inputs, [name]: value }),
-      console.log(
-        "username:" + inputs.username + "  name " + name + "  value " + value
-      )
     );
+    if (inputs.question1Answer !== "") {
+      setEmtyQuestion1Answer(false);
+    }
+    if (inputs.question2Answer !== "") {
+      setEmtyQuestion2Answer(false);
+    }
+    if (inputs.question3Answer !== "") {
+      setEmtyQuestion3Answer(false);
+    }
   };
   const onFinish = (inputs) => {
     if (inputs.username === "admin" || inputs.password === "admin")
@@ -87,14 +96,36 @@ const FormForgotPassword = ({
     console.log(inputs.question1Answer);
     console.log(inputs.question2Answer);
     console.log(inputs.question3Answer);
+    if (inputs.question1Answer === "") {
+      setEmtyQuestion1Answer(true);
+      setEmtyQuestion1("Required");
+    }
+    if (inputs.question2Answer === "") {
+      setEmtyQuestion2Answer(true);
+      setEmtyQuestion2("Required");
+    }
+    if (inputs.question3Answer === "") {
+      setEmtyQuestion3Answer(true);
+      setEmtyQuestion3("Required");
+    }
+    if (
+      inputs.question1 === "" ||
+      inputs.question2 === "" ||
+      inputs.question3 === "" ||
+      inputs.question1Answer === "" ||
+      inputs.question2Answer === "" ||
+      inputs.question3Answer === ""
+    ) {
+      return;
+    }
     axios({
       method: "post",
       url: "http://192.168.1.32:8000/api/auth/get-recovery-token",
       data: {
-        email: `${email}`,
-        question1Answer: `${inputs.question1Answer}`,
-        question2Answer: `${inputs.question2Answer}`,
-        question3Answer: `${inputs.question3Answer}`,
+        email: email,
+        question1Answer: inputs.question1Answer,
+        question2Answer: inputs.question2Answer,
+        question3Answer: inputs.question3Answer,
       },
     }).then(
       (response) => {
@@ -102,6 +133,7 @@ const FormForgotPassword = ({
         response.data.ok && next_2(response.data.data.token);
       },
       (error) => {
+          OpenNotification("topRight", "", error.response.data.msg, "error");
         console.log(error);
       }
     );
@@ -145,7 +177,6 @@ const FormForgotPassword = ({
                   placeholder={question1}
                   optionFilterProp="children"
                   onChange={onChange}
-                  onSearch={onSearch}
                   filterOption={(input, option) =>
                     option.children.toLowerCase().includes(input.toLowerCase())
                   }
@@ -170,6 +201,8 @@ const FormForgotPassword = ({
                 handleChange={handleChange}
                 type={"text"}
                 label="Answer"
+                empty={emptyQuestion1Answer}
+                tittle={emptyQuestion1}
               />
             </Col>
           </Row>
@@ -181,7 +214,6 @@ const FormForgotPassword = ({
                   placeholder={question2}
                   optionFilterProp="children"
                   onChange={onChange}
-                  onSearch={onSearch}
                   filterOption={(input, option) =>
                     option.children.toLowerCase().includes(input.toLowerCase())
                   }
@@ -206,6 +238,8 @@ const FormForgotPassword = ({
                 handleChange={handleChange}
                 type={"text"}
                 label="Answer"
+                empty={emptyQuestion2Answer}
+                tittle={emptyQuestion2}
               />
             </Col>
           </Row>
@@ -217,7 +251,6 @@ const FormForgotPassword = ({
                   placeholder={question3}
                   optionFilterProp="children"
                   onChange={onChange}
-                  onSearch={onSearch}
                   filterOption={(input, option) =>
                     option.children.toLowerCase().includes(input.toLowerCase())
                   }
@@ -242,6 +275,8 @@ const FormForgotPassword = ({
                 handleChange={handleChange}
                 type={"text"}
                 label="Answer"
+                empty={emptyQuestion3Answer}
+                tittle={emptyQuestion3}
               />
             </Col>
           </Row>

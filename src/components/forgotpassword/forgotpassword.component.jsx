@@ -104,9 +104,6 @@ const ForgotPassword = () => {
       >
         <StepForgotPassword
           current={current}
-          ChangeCurrent={onChange}
-          next={next}
-          prev={prev}
         />
         <Row>
           <Col

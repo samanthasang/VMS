@@ -1,6 +1,6 @@
 import { Avatar, Button, Card, Checkbox, Col, Form, Input, Row } from "antd";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
 import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
@@ -68,42 +68,68 @@ const Register = () => {
     question2Answer,
     question3Answer
   ) => {
-    setInputs({
-      question1,
-      question2,
-      question3,
-      question1Answer,
-      question2Answer,
-      question3Answer,
-    },
-    axios({
-      method: "post",
-      url: "http://192.168.1.32:8000/api/auth/register",
-      data: {
-        firstName: `${inputs.firstName}`,
-        lastName: `${inputs.lastName}`,
-        email: `${inputs.email}`,
-        password: `${inputs.password}`,
-        repeatPassword: `${inputs.repeatPassword}`,
-        question1: `${inputs.question1}`,
-        question2: `${inputs.password}`,
-        question3: `${inputs.question3}`,
-        question1Answer: `${inputs.password}`,
-        question2Answer: `${inputs.username}`,
-        question3Answer: `${inputs.question3Answer}`,
+    setInputs(
+      {
+        question1,
+        question2,
+        question3,
+        question1Answer,
+        question2Answer,
+        question3Answer,
       },
-    }).then(
-      (response) => {
-        response.data.ok && OpenNotification("topRight");
-      },
-      (error) => {
-        console.log(error);
-      }
-    ));
+      console.log("question1:", inputs.firstName),
+      console.log("question2:", inputs.lastName),
+      console.log("question3:", inputs.email),
+      console.log("question1:", inputs.password),
+      console.log("question2:", inputs.repeatPassword),
+      console.log("question1:", question1),
+      console.log("question2:", question2),
+      console.log("question3:", question3),
+      console.log("question1Answer:", question1Answer),
+      console.log("question2Answer:", question2Answer),
+      console.log("question3Answer:", question3Answer),
+      axios({
+        method: "post",
+        url: "http://192.168.1.32:8000/api/auth/register",
+        data: {
+          firstName: inputs.firstName,
+          lastName: inputs.lastName,
+          email: inputs.email,
+          password: inputs.password,
+          repeatPassword: inputs.repeatPassword,
+          question1ID: parseInt(question1),
+          question2ID: parseInt(question2),
+          question3ID: parseInt(question3),
+          question1Answer: question1Answer,
+          question2Answer: question2Answer,
+          question3Answer: question3Answer,
+        },
+      }).then(
+        (response) => {
+          console.log(response.data.ok);
+          response.data.ok &&
+            OpenNotification(
+              "topRight",
+              "Your account will confirm by Admin",
+              "Notification",
+              ""
+            );
+            navigate("/login"); 
+        },
+        (error) => {
+          OpenNotification(
+            "topRight",
+            "",
+            error.response.data.msg,
+            "error"
+          );
+          console.log(error);
+        }
+      )
+    );
     
 
   };
-
   return (
     <Row
       className="login_bg"

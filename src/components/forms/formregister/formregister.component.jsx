@@ -35,6 +35,15 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
   const [emptyEmail, setEmtyEmail] = useState(false);
   const [emptyPassword, setEmtyPassword] = useState(false);
   const [emptyRepeatPassword, setEmtyRepeatPassword] = useState(false);
+
+
+  function isValidEmail(email) {
+    const a = /\S+@\S+\.\S+/.test(email);
+    console.log(a);
+    return /\S+@\S+\.\S+/.test(email);
+  }
+
+
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -91,11 +100,25 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
     ) {
       return;
     }
+    if (inputs.password.length < 8) {
+      setEmtyPassword(true);
+      OpenNotification("topRight", "Password is too Short", "", "error");
+      return;
+    }
     if (inputs.password !== inputs.repeatPassword) {
       setPasswordTittle(true);
       setEmtyPassword(true);
       setEmtyRepeatPassword(true);
+      OpenNotification("topRight", "Password Dosn`t Match", "", "error");
+      return;
     }
+    console.log(isValidEmail(inputs.email));
+    if (isValidEmail(inputs.email) === false) {
+      setEmtyEmail(true);
+      OpenNotification("topRight", "Email Dosn`t Valid", "", "error");
+      return;
+    }
+    
     console.log("firstName:", inputs.firstName);
     console.log("lastName:", inputs.lastName);
     console.log("email:", inputs.email);
@@ -173,7 +196,9 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
             inputs={"password"}
             handleChange={handleChange}
             type={"password"}
-            placeholder={"Password"}
+            placeholder={
+              "Password (alphabet and number)"
+            }
             empty={emptyPassword}
             tittle={passwordTittle}
           />

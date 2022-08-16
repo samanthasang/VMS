@@ -34,9 +34,6 @@ const FormLogin = ({ LoginAuth, isLogedIn, loginUser }) => {
       setEmtyUserName(false);
     }
   };
-  const onFinish = (inputs) => {
-    LoginAuth();
-  };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -55,7 +52,6 @@ const FormLogin = ({ LoginAuth, isLogedIn, loginUser }) => {
     }
     console.log(inputs.username + ' ' + inputs.password);
     loginUser(inputs);
-    LoginAuth();
   };
   return (
     <Row>
@@ -77,7 +73,6 @@ const FormLogin = ({ LoginAuth, isLogedIn, loginUser }) => {
           name="normal_login"
           className="login-form"
           initialValues={{ remember: true }}
-          onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
           onSubmit={handleSubmit}
