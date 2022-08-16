@@ -120,7 +120,7 @@ const FormForgotPassword = ({
     }
     axios({
       method: "post",
-      url: "http://192.168.1.32:8000/api/auth/get-recovery-token",
+      url: "http://81.29.243.50:8000/api/auth/get-recovery-token",
       data: {
         email: email,
         question1Answer: inputs.question1Answer,
@@ -133,7 +133,7 @@ const FormForgotPassword = ({
         response.data.ok && next_2(response.data.data.token);
       },
       (error) => {
-          OpenNotification("topRight", "", error.response.data.msg, "error");
+        OpenNotification("topRight", "", error.response.data.msg, "error");
         console.log(error);
       }
     );

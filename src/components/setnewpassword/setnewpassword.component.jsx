@@ -103,7 +103,7 @@ const SetNewPassword = ({ token, current, prev, form  }) => {
     console.log(inputs.repeatPassword);
     axios({
       method: "post",
-      url: "http://192.168.1.32:8000/api/auth/recover-password",
+      url: "http://81.29.243.50:8000/api/auth/recover-password",
       data: {
         token: `${token}`,
         password: `${inputs.password}`,
@@ -119,10 +119,10 @@ const SetNewPassword = ({ token, current, prev, form  }) => {
             "Notification",
             ""
           );
-        navigate("/login"); 
+        navigate("/login");
       },
       (error) => {
-          OpenNotification("topRight", "", error.response.data.msg, "error");
+        OpenNotification("topRight", "", error.response.data.msg, "error");
         console.log(error);
       }
     );

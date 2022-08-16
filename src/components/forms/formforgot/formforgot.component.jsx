@@ -71,7 +71,7 @@ const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
     }
     axios({
       method: "post",
-      url: "http://192.168.1.32:8000/api/auth/get-questions",
+      url: "http://81.29.243.50:8000/api/auth/get-questions",
       data: {
         email: `${inputs.email}`,
       },
@@ -81,7 +81,7 @@ const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
         response.data.ok && next(inputs.email, response.data.data);
       },
       (error) => {
-          OpenNotification("topRight", "", error.response.data.msg, "error");
+        OpenNotification("topRight", "", error.response.data.msg, "error");
         console.log(error);
       }
     );

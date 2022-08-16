@@ -90,7 +90,7 @@ const Register = () => {
       console.log("question3Answer:", question3Answer),
       axios({
         method: "post",
-        url: "http://192.168.1.32:8000/api/auth/register",
+        url: "http://81.29.243.50:8000/api/auth/register",
         data: {
           firstName: inputs.firstName,
           lastName: inputs.lastName,
@@ -114,15 +114,10 @@ const Register = () => {
               "Notification",
               ""
             );
-            navigate("/login"); 
+          navigate("/login");
         },
         (error) => {
-          OpenNotification(
-            "topRight",
-            "",
-            error.response.data.msg,
-            "error"
-          );
+          OpenNotification("topRight", "", error.response.data.msg, "error");
           console.log(error);
         }
       )
