@@ -30,11 +30,20 @@ const InputPasswordForm = ({ span, offset,inputs, handleChange, type, placeholde
               }
             />
           ) : (
+          <Tooltip
+            // trigger={["focus"]}
+            title={
+              "Use 8 or more characters with a mix of letters, numbers & symbols"
+            }
+            placement="topLeft"
+            overlayClassName="numeric-input"
+          >
             <Input.Password
               name={inputs}
               prefix={<LockOutlined className="site-form-item-icon" />}
               placeholder={placeholder}
             />
+          </Tooltip>
           )}
         </Form.Item>
       </Col>

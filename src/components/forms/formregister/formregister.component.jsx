@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col, Form, Steps, Button } from "antd";
+import { Row, Col, Form, Steps, Button, Tooltip } from "antd";
 
 import InputForm from "../../inputform/inputform.component";
 import InputPasswordForm from "../../inputpasswordform/inputpasswordform.component";
@@ -36,13 +36,11 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
   const [emptyPassword, setEmtyPassword] = useState(false);
   const [emptyRepeatPassword, setEmtyRepeatPassword] = useState(false);
 
-
   function isValidEmail(email) {
     const a = /\S+@\S+\.\S+/.test(email);
     console.log(a);
     return /\S+@\S+\.\S+/.test(email);
   }
-
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -115,10 +113,10 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
     console.log(isValidEmail(inputs.email));
     if (isValidEmail(inputs.email) === false) {
       setEmtyEmail(true);
-      OpenNotification("topRight", "Email Dosn`t Valid", "", "error");
+      OpenNotification("topRight", "Email Isn`t Valid", "", "error");
       return;
     }
-    
+
     console.log("firstName:", inputs.firstName);
     console.log("lastName:", inputs.lastName);
     console.log("email:", inputs.email);
@@ -189,21 +187,18 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
             placeholder={"Email"}
             empty={emptyEmail}
           />
-
           <InputPasswordForm
             span={10}
             offset={7}
             inputs={"password"}
             handleChange={handleChange}
             type={"password"}
-            placeholder={
-              "Password (alphabet and number)"
-            }
+            placeholder={"Password (alphabet and number)"}
             empty={emptyPassword}
             tittle={passwordTittle}
           />
           <StrengthBar
-            minLength={8}
+            minLength={1}
             password={inputs.password}
             span={10}
             offset={7}

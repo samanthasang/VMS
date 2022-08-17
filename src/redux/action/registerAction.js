@@ -1,8 +1,9 @@
-import { RESET_PASSWORD_USER, LOGIN_USER, REGISTER_USER, GET_USER} from "./types";
+import React from "react";
+import { RESET_PASSWORD_USER, LOGIN_USER, REGISTER_USER, GET_USER } from "./types";
 import axios from "axios";
 import OpenNotification from "../../components/notification/notification.component";
 
-export const loginUser = (inputs) => {
+export const LoginUser = (inputs) => {
   return async (dispatch) => {
     await axios({
       method: "post",

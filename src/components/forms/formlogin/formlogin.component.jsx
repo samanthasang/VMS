@@ -3,16 +3,17 @@ import { Row, Col, Form } from "antd";
 import { connect } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../../../redux/action/registerAction";
+import { LoginUser } from "../../../redux/action/registerAction";
 
 import InputForm from "../../inputform/inputform.component";
 import InputPasswordForm from "../../inputpasswordform/inputpasswordform.component";
 import SubminBTN from "../../submitbtn/submitbtn.component";
 import RememberAndForgotPass from "../../rememberandforgotpass/rememberandforgotpass.component";
 import GoToRegister from "../../gotoregister/gotoregister.omponent";
+import OpenNotification from "../../notification/notification.component";
 import "./formlogin.styles.scss";
 
-const FormLogin = ({ LoginAuth, isLogedIn, loginUser }) => {
+const FormLogin = ({ LoginAuth, isLogedIn, LoginUser }) => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     username: "",
@@ -20,6 +21,13 @@ const FormLogin = ({ LoginAuth, isLogedIn, loginUser }) => {
   });
   const [emptyEmail, setEmtyEmail] = useState(false);
   const [emptyUserName, setEmtyUserName] = useState(false);
+  const [passwordTittle, setPasswordTittle] = useState(false);
+
+  function isValidEmail(email) {
+    const a = /\S+@\S+\.\S+/.test(email);
+    console.log(a);
+    return /\S+@\S+\.\S+/.test(email);
+  }
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -50,8 +58,13 @@ const FormLogin = ({ LoginAuth, isLogedIn, loginUser }) => {
     if (inputs.username === "" || inputs.password === "") {
       return;
     }
-    console.log(inputs.username + ' ' + inputs.password);
-    loginUser(inputs);
+    if (isValidEmail(inputs.username) === false) {
+      setEmtyEmail(true);
+      OpenNotification("topRight", "Email Isn`t Valid", "", "error");
+      return;
+    }
+    console.log(inputs.username + " " + inputs.password);
+    LoginUser(inputs);
   };
   return (
     <Row>
@@ -82,7 +95,7 @@ const FormLogin = ({ LoginAuth, isLogedIn, loginUser }) => {
             offset={7}
             inputs={"username"}
             handleChange={handleChange}
-            type={"text"}
+            type={"Email"}
             placeholder={"Email"}
             empty={emptyEmail}
           />
@@ -109,5 +122,5 @@ const mapStateToProps = (state) => ({
   isLogedIn: state.isLogedIn,
 });
 
-export default connect(mapStateToProps, { loginUser })(FormLogin);
+export default connect(mapStateToProps, { LoginUser })(FormLogin);
 // export default FormLogin;

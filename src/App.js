@@ -26,7 +26,9 @@ function App({}) {
   const isLogedIn = useSelector((state) => state.isLogedIn);
 
   useEffect(() => {
-    isLogedIn ? <Navigate to="/dashboard" /> : console.log("isLogedIn");
+    console.log(isLogedIn);
+    isLogedIn && navigate("/liveViewpage");
+
   }, [isLogedIn]);
 
   return (

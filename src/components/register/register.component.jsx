@@ -114,7 +114,7 @@ const Register = () => {
               "Notification",
               ""
             );
-          navigate("/login");
+          navigate("/");
         },
         (error) => {
           OpenNotification("topRight", "", error.response.data.msg, "error");

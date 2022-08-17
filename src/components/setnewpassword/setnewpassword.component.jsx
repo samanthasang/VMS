@@ -1,11 +1,4 @@
-import {
-  Col,
-  Form,
-  Row,
-  Select,
-  Steps,
-  Button
-} from "antd";
+import { Col, Form, Row, Select, Steps, Button } from "antd";
 import React, { useState } from "react";
 
 import axios from "axios";
@@ -33,9 +26,7 @@ const steps = [
   },
 ];
 
-
-
-const SetNewPassword = ({ token, current, prev, form  }) => {
+const SetNewPassword = ({ token, current, prev, form }) => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     password: "",
@@ -119,7 +110,7 @@ const SetNewPassword = ({ token, current, prev, form  }) => {
             "Notification",
             ""
           );
-        navigate("/login");
+        navigate("/");
       },
       (error) => {
         OpenNotification("topRight", "", error.response.data.msg, "error");
@@ -170,7 +161,7 @@ const SetNewPassword = ({ token, current, prev, form  }) => {
             tittle={passwordTittle}
           />
           <StrengthBar
-            minLength={8}
+            minLength={1}
             password={inputs.password}
             span={10}
             offset={7}
