@@ -6,7 +6,7 @@ import LiveView from '../../components/liveview/liveview.component'
 
 const LiveViewPage = () => {
   return (
-    <Row>
+    <Row >
       <Col span={4}>
         <SideBar />
       </Col>

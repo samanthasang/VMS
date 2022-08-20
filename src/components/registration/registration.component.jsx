@@ -20,21 +20,9 @@ const { Step } = Steps;const steps = [
 const Registration = ({current, ChangeCurrent, next, prev}) => {
   return (
     <>
-      <Row span={16}>
+      <Row >
         <Col
           span={24}
-          style={{
-            border: "none",
-            background: "transparent",
-            margin: "0",
-            position: "absolute",
-            top: "40px",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "100%",
-            height: "100px",
-            alignItems: "center",
-          }}
         >
           <Steps
             type="navigation"

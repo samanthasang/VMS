@@ -13,30 +13,34 @@
 }
 
 .registerration_left {
-  position: absolute!important;
+  position: absolute !important;
   left: 0;
   width: 52%;
-  background-size: 100%!important;
-  background-repeat: no-repeat!important;
-  background-position: center!important;
+  background-size: 100% !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
   z-index: 2;
   height: 50px;
 }
 .registerration_right {
-  position: absolute!important;
+  position: absolute !important;
   right: 0;
-  width: 52%!important;
-  background-size: 100%!important;
-  background-repeat: no-repeat!important;
-  background-position: center!important;
+  width: 52% !important;
+  background-size: 100% !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
   z-index: 1;
   height: 50px;
 }
-.ant-steps .ant-steps-item-activ
+.ant-steps
+  .ant-steps-item-activ
   > .ant-steps-item-container
   .ant-steps-item-title {
   color: #fff !important;
 }
 .ant-steps-item-title {
   color: #fff !important;
+}
+.ant-steps-navigation {
+  padding-top: 0!important;
 }

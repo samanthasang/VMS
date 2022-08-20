@@ -1,25 +1,28 @@
 import { Col, Row, Menu } from "antd";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import LoginPage from "./pages/loginpage/loginpage.component";
+import LoginPage from "../../pages/loginpage/loginpage.component";
 
-import { LiveviewIcon } from "../src/assets/liveview";
-import { PalybackIcon } from "../src/assets/playback.jsx";
-import { UsersIcon } from "../src/assets/users.jsx";
-import { DevicesIcon } from "../src/assets/devices.jsx";
-import { AboutIcon } from "../src/assets/about.jsx";
-import { SettingIcon } from "../src/assets/setting.jsx";
+import { LiveviewIcon } from "../../assets/liveview";
+import { PalybackIcon } from "../../assets/playback.jsx";
+import { UsersIcon } from "../../assets/users.jsx";
+import { DevicesIcon } from "../../assets/devices.jsx";
+import { AboutIcon } from "../../assets/about.jsx";
+import { SettingIcon } from "../../assets/setting.jsx";
+
+import "./layout.styles.scss";
 
 const Layout = ({ hideHeaderPaths = [] }) => {
   const { pathname } = useLocation();
 
   return (
-    <Row>
-      <Col span={20}>
+    <Row className="side_nav">
+      <Col style={{ height: "100%" }}>
         <Menu
           defaultSelectedKeys={["Liveview"]}
           mode="inline"
           theme="dark"
           inlineCollapsed={true}
+          style={{ height: "100%" }}
         >
           <Menu.Item key="Liveview" icon={<LiveviewIcon />}>
             <Link to={"/liveViewpage"}>Liveview</Link>
@@ -33,10 +36,26 @@ const Layout = ({ hideHeaderPaths = [] }) => {
           <Menu.Item key="devices" icon={<DevicesIcon />}>
             <Link to={"/devicespage"}>devices</Link>
           </Menu.Item>
-          <Menu.Item key="About" icon={<AboutIcon />}>
+          <Menu.Item
+            key="About"
+            icon={<AboutIcon />}
+            style={{
+              bottom: "50px",
+              position: "absolute",
+              width: "55px",
+            }}
+          >
             <Link to={"/playBackpage"}>About</Link>
           </Menu.Item>
-          <Menu.Item key="Setting" icon={<SettingIcon />}>
+          <Menu.Item
+            key="Setting"
+            icon={<SettingIcon />}
+            style={{
+              bottom: "0",
+              position: "absolute",
+              width: "55px",
+            }}
+          >
             <Link to={"/playBackpage"}>Setting</Link>
           </Menu.Item>
         </Menu>

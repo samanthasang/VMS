@@ -122,8 +122,6 @@ const Register = () => {
         }
       )
     );
-    
-
   };
   return (
     <Row
@@ -154,18 +152,8 @@ const Register = () => {
           // next={next}
           // prev={prev}
         />
-        <Row>
-          <Col
-            span={24}
-            style={{
-              width: "100%",
-              margin: "0",
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-            }}
-          >
+        <Row className="main_container_form">
+          <Col span={24}>
             {current === 0 && (
               <FormRegister
                 form={form}
@@ -187,13 +175,6 @@ const Register = () => {
             )}
           </Col>
         </Row>
-        {/* <RegistrationNavigation
-          shouldUpdate
-          current={current}
-          next={next}
-          prev={prev}
-          form={form}
-        /> */}
       </Col>
     </Row>
   );

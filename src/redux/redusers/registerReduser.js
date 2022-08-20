@@ -23,7 +23,7 @@ const initialState = {
   expAccessToken: "",
   createdAt: 0,
   updatedAt: 0,
-  isLogedIn: false,
+  isLogedIn: true,
   isAdmin: false,
 };
 

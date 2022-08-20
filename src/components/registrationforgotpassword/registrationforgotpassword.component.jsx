@@ -25,22 +25,8 @@ const steps = [
 const StepForgotPassword = ({current, ChangeCurrent, next, prev}) => {
   return (
     <>
-      <Row span={16}>
-        <Col
-          span={24}
-          style={{
-            border: "none",
-            background: "transparent",
-            margin: "0",
-            position: "absolute",
-            top: "40px",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "100%",
-            height: "100px",
-            alignItems: "center",
-          }}
-        >
+      <Row>
+        <Col span={24}>
           <Steps
             type="navigation"
             size="small"

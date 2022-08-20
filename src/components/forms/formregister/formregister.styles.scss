@@ -1,6 +1,15 @@
+.form_register {
+  height: 100%;
+}
+.form_register form {
+  height: 100%;
+}
 .form_register .navigation_registeration {
-    width: 100%;
-    margin: 0;
-    position: absolute !important;
-    bottom: -37%;
+  width: 100%;
+  margin: 0;
+  position: absolute !important;
+  bottom: 0;
+}
+.main_register_container{
+  height: 100%;
 }

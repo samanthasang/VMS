@@ -1,0 +1,15 @@
+.side_nav {
+  display: inline-block !important;
+  height: 95vh;
+  color: rgba(255, 255, 255, 0.65);
+  background: #21242C;
+  width: 60px;
+  padding: 0 0;
+}
+.side_nav .ant-menu.ant-menu-dark, .ant-menu-dark .ant-menu-sub, .ant-menu.ant-menu-dark .ant-menu-sub {
+  background: #21242C;
+  color: #EFEFEF;
+}
+.ant-menu.ant-menu-inline-collapsed {
+  width: 55px !important;
+}

@@ -102,21 +102,13 @@ const ForgotPassword = () => {
           backdropFilter: "blur(100px)",
         }}
       >
-        <StepForgotPassword
-          current={current}
+        <StepForgotPassword current={current} 
+          // ChangeCurrent={onChange}
+          // next={next}
+        // prev={prev}
         />
-        <Row>
-          <Col
-            span={24}
-            style={{
-              width: "100%",
-              margin: "0",
-              position: "absolute",
-              top: "45%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-            }}
-          >
+        <Row className="main_container_form">
+          <Col span={24}>
             {current === 0 && (
               <FormForgot
                 shouldUpdate
@@ -148,13 +140,6 @@ const ForgotPassword = () => {
             )}
           </Col>
         </Row>
-        {/* <ResetPasswordNavigation
-          shouldUpdate
-          current={current}
-          next={next}
-          prev={prev}
-          form={form}
-        /> */}
       </Col>
     </Row>
   );

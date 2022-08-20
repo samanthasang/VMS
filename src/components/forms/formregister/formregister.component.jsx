@@ -135,18 +135,10 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
     //   LoginAuth();
   };
   return (
-    <Row>
+    <Row className="main_register_container">
       <Col
         className="form_register"
         span={24}
-        style={{
-          width: "100%",
-          margin: "0",
-          position: "absolute",
-          top: "60%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-        }}
       >
         <Form
           labelCol={{
