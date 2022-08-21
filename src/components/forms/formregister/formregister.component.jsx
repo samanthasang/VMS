@@ -8,6 +8,7 @@ import SubminBTN from "../../submitbtn/submitbtn.component";
 import OpenNotification from "../../notification/notification.component";
 
 import "./formregister.styles.scss";
+import axios from "axios";
 const { Step } = Steps;
 const steps = [
   {
@@ -122,12 +123,24 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
     console.log("email:", inputs.email);
     console.log("password:", inputs.password);
     console.log("repeatPassword:", inputs.repeatPassword);
+    axios({
+      method: "post",
+      url: "http://81.29.243.50:8000/api/auth/register",
+      data: {
+        email: `${inputs.email}`,
+      },
+    }).then(
+      (response) => {
+        console.log(response.data.data);
+        response.data.ok && next(inputs.email, response.data.data);
+      },
+      (error) => {
+        OpenNotification("topRight", "", error.response.data.msg, "error");
+        console.log(error);
+      }
+    );
     next(
-      inputs.firstName,
-      inputs.lastName,
       inputs.email,
-      inputs.password,
-      inputs.repeatPassword
     );
 
     // if (inputs.username === "admin" || inputs.password === "admin")

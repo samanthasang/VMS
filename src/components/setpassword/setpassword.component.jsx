@@ -19,6 +19,7 @@ import InputFormWithLabel from "../inputformwithlabel/inputformwithlabel.compone
 import { Link } from "react-router-dom";
 
 import OpenNotification from "../notification/notification.component";
+import axios from "axios";
 
 const { Option } = Select;
 const { Step } = Steps;
@@ -36,7 +37,7 @@ const steps = [
 
 
 
-const SetPassword = ({ current, next, prev, form, endForm }) => {
+const SetPassword = ({ current, next, prev, form, endForm, email }) => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     question1: "",
@@ -129,14 +130,36 @@ const SetPassword = ({ current, next, prev, form, endForm }) => {
     console.log("question1Answer:", inputs.question1Answer);
     console.log("question2Answer:", inputs.question2Answer);
     console.log("question3Answer:", inputs.question3Answer);
-    endForm(
-      inputs.question1,
-      inputs.question2,
-      inputs.question3,
-      inputs.question1Answer,
-      inputs.question2Answer,
-      inputs.question3Answer
-    );
+    
+      axios({
+        method: "post",
+        url: "http://81.29.243.50:8000/api/auth/register/questions",
+        data: {
+          email: email,
+          question1ID: parseInt(inputs.question1),
+          question2ID: parseInt(inputs.question2),
+          question3ID: parseInt(inputs.question3),
+          question1Answer: inputs.question1Answer,
+          question2Answer: inputs.question2Answer,
+          question3Answer: inputs.question3Answer,
+        },
+      }).then(
+        (response) => {
+          console.log(response.data.ok);
+          response.data.ok &&
+            OpenNotification(
+              "topRight",
+              "Your account will confirm by Admin",
+              "Notification",
+              ""
+            );
+          navigate("/");
+        },
+        (error) => {
+          OpenNotification("topRight", "", error.response.data.msg, "error");
+          console.log(error);
+        }
+      )
     // if (inputs.username === "admin" || inputs.password === "admin")
     //   navigate("/mainmenupage");
   };

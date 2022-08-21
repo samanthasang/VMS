@@ -1,5 +1,5 @@
 import React from "react";
-import { RESET_PASSWORD_USER, LOGIN_USER, REGISTER_USER, GET_USER } from "./types";
+import { RESET_PASSWORD_USER, LOGIN_USER, REGISTER_USER, GET_USER, LOGOUT_USER } from "./types";
 import axios from "axios";
 import OpenNotification from "../../components/notification/notification.component";
 
@@ -7,7 +7,7 @@ export const LoginUser = (inputs) => {
   return async (dispatch) => {
     await axios({
       method: "post",
-      url: "http://81.29.243.50:8000/api/auth/login",
+      url: process.env.REACT_APP_LOCAL_HHTP+"/api/auth/login",
       data: {
         email: `${inputs.username}`,
         password: `${inputs.password}`,
@@ -36,6 +36,11 @@ export const LoginUser = (inputs) => {
 export const registerUser = () => {
   return {
     type: REGISTER_USER,
+  };
+};
+export const logoutUser = () => {
+  return {
+    type: LOGOUT_USER,
   };
 };
 export const getUser = () => ({

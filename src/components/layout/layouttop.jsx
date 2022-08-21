@@ -7,33 +7,57 @@ import { NitificationIcon } from "../../assets/Notification";
 import { UserAvatarIcon } from "../../assets/UserAvatar";
 import { DeropDownIcon } from "../../assets/DropDown";
 import LogoIcon from "../../assets/Logo.svg";
+import { logoutUser } from "../../redux/action/registerAction";
 
 import LogoLogin from "../../assets/Logo-Login.svg";
 import "./layout.styles.scss";
-const menu = (
-  <Menu
-    items={[
-      {
-        label: <a href="https://www.antgroup.com">1st menu item</a>,
-        key: "0",
-      },
-      {
-        label: <a href="https://www.aliyun.com">2nd menu item</a>,
-        key: "1",
-      },
-      {
-        type: "divider",
-      },
-      {
-        label: "3rd menu item",
-        key: "3",
-      },
-    ]}
-  />
-);
+import { useDispatch, useSelector } from "react-redux";
+
 const LayoutTop = ({ hideHeaderPaths = [] }) => {
   const { pathname } = useLocation();
+  const dispatch = useDispatch();
 
+  const isLogedIn = useSelector((state) => state.register.isLogedIn);
+  const handleOnClick = ({ key }) => {
+    console.log(key);
+    switch (key) {
+      case "0":
+        console.log("0");
+        break;
+      case "1":
+        console.log("1");
+        break;
+      case "3":
+        console.log("log: " + isLogedIn);
+        dispatch(logoutUser());
+        break;
+
+      default:
+        break;
+    }
+  };
+  const menu = (
+    <Menu
+      onClick={handleOnClick}
+      items={[
+        {
+          label: " Edit Profile",
+          key: "0",
+        },
+        {
+          label: "About",
+          key: "1",
+        },
+        {
+          type: "divider",
+        },
+        {
+          label: "Logout",
+          key: "3",
+        },
+      ]}
+    />
+  );
   return (
     <Row className="side_nav">
       <Col
@@ -58,7 +82,6 @@ const LayoutTop = ({ hideHeaderPaths = [] }) => {
           defaultSelectedKeys={["Liveview"]}
           mode="horizontal"
           theme="dark"
-          inlineCollapsed={true}
           style={{ height: "50px" }}
         >
           <Dropdown overlay={menu} trigger={["click"]}>

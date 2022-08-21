@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Row, Col, Form } from "antd";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 import { LoginUser } from "../../../redux/action/registerAction";
@@ -13,8 +13,10 @@ import GoToRegister from "../../gotoregister/gotoregister.omponent";
 import OpenNotification from "../../notification/notification.component";
 import "./formlogin.styles.scss";
 
-const FormLogin = ({ LoginAuth, isLogedIn, LoginUser }) => {
+const FormLogin = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isLogedIn = useSelector((state) => state.register.isLogedIn);
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
@@ -64,7 +66,9 @@ const FormLogin = ({ LoginAuth, isLogedIn, LoginUser }) => {
       return;
     }
     console.log(inputs.username + " " + inputs.password);
-    LoginUser(inputs);
+    console.log("1: " + isLogedIn);
+    dispatch(LoginUser(inputs));
+    console.log("2:" + isLogedIn);
   };
   return (
     <Row>
@@ -122,5 +126,5 @@ const mapStateToProps = (state) => ({
   isLogedIn: state.isLogedIn,
 });
 
-export default connect(mapStateToProps, { LoginUser })(FormLogin);
-// export default FormLogin;
+// export default connect(mapStateToProps, { LoginUser })(FormLogin);
+export default FormLogin;

@@ -42,7 +42,7 @@ const Layout = ({ hideHeaderPaths = [] }) => {
             style={{
               bottom: "50px",
               position: "absolute",
-              width: "55px",
+              width: "60px",
             }}
           >
             <Link to={"/playBackpage"}>About</Link>
@@ -53,7 +53,7 @@ const Layout = ({ hideHeaderPaths = [] }) => {
             style={{
               bottom: "0",
               position: "absolute",
-              width: "55px",
+              width: "60px",
             }}
           >
             <Link to={"/playBackpage"}>Setting</Link>

@@ -24,10 +24,10 @@ import "./App.css";
 function App({}) {
   let navigate = useNavigate();
 
-  const isLogedIn = useSelector((state) => state.isLogedIn);
+  const isLogedIn = useSelector((state) => state.register.isLogedIn);
 
   useEffect(() => {
-    console.log(isLogedIn);
+    console.log("3: " + isLogedIn);
     isLogedIn && navigate("/liveViewpage");
   }, [isLogedIn]);
 
@@ -40,7 +40,7 @@ function App({}) {
       ) : (
         ""
       )}
-      <div
+      {/* <div
         className="inline-flex"
         style={{
           display: "inline-flex",
@@ -51,29 +51,29 @@ function App({}) {
           top: "5vh",
           height: "94vh",
         }}
-      >
-        {window.location.pathname !== "/" &&
-        window.location.pathname !== "/forgotpassword" &&
-        window.location.pathname !== "/register" ? (
-          <Layout />
-        ) : (
-          ""
-        )}
-        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
-          <Route element={<Privateroute isLogedIn={isLogedIn} />}>
-            <Route path="/dashboard" element={<MainMenuPage />} />
-            <Route path="/mainmenupage" element={<MainMenuPage />} />
-            <Route path="/devicespage" element={<DevicesPage />} />
-            <Route path="/liveViewpage" element={<LiveViewPage />} />
-            <Route path="/userpage" element={<UserPage />} />
-            <Route path="/playBackpage" element={<PlayBackPage />} />
-            <Route path="*" element={() => <h1>Page not found</h1>} />
-          </Route>
-        </Routes>
-      </div>
+      > */}
+      {/* {window.location.pathname !== "/" &&
+      window.location.pathname !== "/forgotpassword" &&
+      window.location.pathname !== "/register" ? (
+        <Layout />
+      ) : (
+        ""
+      )} */}
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
+        <Route element={<Privateroute isLogedIn={isLogedIn} />}>
+          <Route path="/dashboard" element={<MainMenuPage />} />
+          <Route path="/mainmenupage" element={<MainMenuPage />} />
+          <Route path="/devicespage" element={<DevicesPage />} />
+          <Route path="/liveViewpage" element={<LiveViewPage />} />
+          <Route path="/userpage" element={<UserPage />} />
+          <Route path="/playBackpage" element={<PlayBackPage />} />
+          <Route path="*" element={() => <h1>Page not found</h1>} />
+        </Route>
+      </Routes>
+      {/* </div> */}
     </>
   );
 }
