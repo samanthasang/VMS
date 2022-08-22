@@ -124,6 +124,7 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
     ) {
       return;
     }
+    console.log("q:", email);
     console.log("question1:", inputs.question1);
     console.log("question2:", inputs.question2);
     console.log("question3:", inputs.question3);
@@ -133,7 +134,7 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
     
       axios({
         method: "post",
-        url: "http://81.29.243.50:8000/api/auth/register/questions",
+        url: process.env.REACT_APP_HHTP + "/api/auth/register/questions",
         data: {
           email: email,
           question1ID: parseInt(inputs.question1),
@@ -159,7 +160,7 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
           OpenNotification("topRight", "", error.response.data.msg, "error");
           console.log(error);
         }
-      )
+      );
     // if (inputs.username === "admin" || inputs.password === "admin")
     //   navigate("/mainmenupage");
   };

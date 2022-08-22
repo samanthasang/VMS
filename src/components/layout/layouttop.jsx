@@ -84,14 +84,15 @@ const LayoutTop = ({ hideHeaderPaths = [] }) => {
           theme="dark"
           style={{ height: "50px" }}
         >
-          <Dropdown overlay={menu} trigger={["click"]}>
+          <Dropdown overlay={menu} trigger={["click"]} placement="bottomRight">
             <a
               onClick={(e) => e.preventDefault()}
               style={{
-                right: "100px",
+                right: "115px",
                 position: "absolute",
-                width: "60px",
+                width: "45px",
                 padding: "5px",
+                height: "45px",
               }}
             >
               <Space>
@@ -102,6 +103,7 @@ const LayoutTop = ({ hideHeaderPaths = [] }) => {
           <Dropdown overlay={menu} trigger={["click"]}>
             <a
               onClick={(e) => e.preventDefault()}
+              className="drop_down_menu"
               style={{
                 right: "0",
                 position: "absolute",

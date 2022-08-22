@@ -125,22 +125,29 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
     console.log("repeatPassword:", inputs.repeatPassword);
     axios({
       method: "post",
-      url: "http://81.29.243.50:8000/api/auth/register",
+      url: process.env.REACT_APP_HHTP + "/api/auth/register/personal",
       data: {
-        email: `${inputs.email}`,
+        firstName: inputs.firstName,
+        lastName: inputs.lastName,
+        email: inputs.email,
+        password: inputs.password,
+        repeatPassword: inputs.repeatPassword,
       },
     }).then(
       (response) => {
         console.log(response.data.data);
         response.data.ok && next(inputs.email, response.data.data);
+        next(inputs.email);
       },
       (error) => {
-        OpenNotification("topRight", "", error.response.data.msg, "error");
+        OpenNotification(
+          "topRight",
+          "",
+          error.response.data.data.errors.email,
+          "error"
+        );
         console.log(error);
       }
-    );
-    next(
-      inputs.email,
     );
 
     // if (inputs.username === "admin" || inputs.password === "admin")
@@ -149,10 +156,7 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
   };
   return (
     <Row className="main_register_container">
-      <Col
-        className="form_register"
-        span={24}
-      >
+      <Col className="form_register" span={24}>
         <Form
           labelCol={{
             span: 8,

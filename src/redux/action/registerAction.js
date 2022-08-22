@@ -7,7 +7,7 @@ export const LoginUser = (inputs) => {
   return async (dispatch) => {
     await axios({
       method: "post",
-      url: process.env.REACT_APP_LOCAL_HHTP+"/api/auth/login",
+      url: process.env.REACT_APP_HHTP+"/api/auth/login",
       data: {
         email: `${inputs.username}`,
         password: `${inputs.password}`,

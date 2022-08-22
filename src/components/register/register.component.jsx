@@ -34,24 +34,14 @@ const Register = () => {
     console.log("onChange:", value);
     setCurrent(value);
   };
-  const next = (firstName, lastName, email, password, repeatPassword) => {
-    console.log(
-      "onChange:",
-      firstName,
-      lastName,
-      email,
-      password,
-      repeatPassword
-    );
-    setCurrent(current + 1);
-    setInputs({ email });
+  const next = (email) => {
+    console.log("onChange:", email);
+    setInputs(({ email }), setCurrent(current + 1));
   };
 
   const prev = () => {
     setCurrent(current - 1);
   };
-
-
 
   return (
     <Row

@@ -64,6 +64,7 @@ function App({}) {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
         <Route element={<Privateroute isLogedIn={isLogedIn} />}>
+          
           <Route path="/dashboard" element={<MainMenuPage />} />
           <Route path="/mainmenupage" element={<MainMenuPage />} />
           <Route path="/devicespage" element={<DevicesPage />} />

@@ -71,7 +71,7 @@ const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
     }
     axios({
       method: "post",
-      url: "http://81.29.243.50:8000/api/auth/get-questions",
+      url: process.env.REACT_APP_HHTP + "/api/auth/get-questions",
       data: {
         email: `${inputs.email}`,
       },

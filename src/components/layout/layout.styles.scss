@@ -31,3 +31,20 @@
   > .ant-menu-submenu-title {
   padding: 0 !important;
 }
+
+.drop_down_menu {
+  height: 45px;
+  div {
+    height: 45px;
+    .ant-space-item:first-child {
+      height: 45px;
+    }
+    .ant-space-item:nth-child(2) {
+      height: 55px;
+      color: #EFEFEF;
+    }
+    .ant-space-item:last-child {
+      height: 60px;
+    }
+  }
+}
