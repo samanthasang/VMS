@@ -131,7 +131,7 @@ const SetNewPassword = ({ token, current, prev, form }) => {
           initialValues={{ remember: true }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
-          autoComplete="off"
+          autoComplete="on"
           onSubmit={handleSubmit}
         >
           <ResetPasswordTXT
@@ -145,7 +145,7 @@ const SetNewPassword = ({ token, current, prev, form }) => {
             inputs={"password"}
             handleChange={handleChange}
             type={Text}
-            placeholder={"Password (alphabet and number)"}
+            placeholder={"Password"}
             empty={emptyPassword}
             tittle={passwordTittle}
           />

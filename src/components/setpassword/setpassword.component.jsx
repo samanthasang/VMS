@@ -10,7 +10,7 @@ import {
   Select,
   Steps,
 } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 import SubminBTN from "../submitbtn/submitbtn.component";
@@ -34,9 +34,6 @@ const steps = [
   },
 ];
 
-
-
-
 const SetPassword = ({ current, next, prev, form, endForm, email }) => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
@@ -54,6 +51,23 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
   const [emptyQuestion1Answer, setEmtyQuestion1Answer] = useState(false);
   const [emptyQuestion2Answer, setEmtyQuestion2Answer] = useState(false);
   const [emptyQuestion3Answer, setEmtyQuestion3Answer] = useState(false);
+  const [questions1, setQuestions1] = useState([]);
+  const [questions2, setQuestions2] = useState([]);
+  const [questions3, setQuestions3] = useState([]);
+
+  const getUsers = async () => {
+    const users = await axios.get(
+      process.env.REACT_APP_HHTP + "/api/auth/questions"
+    );
+    // setQuestions(users.data.data);
+    setQuestions1(users.data.data.FirstType);
+    setQuestions2(users.data.data.SecondType);
+    setQuestions3(users.data.data.ThirdType);
+  };
+
+  useEffect(() => {
+    getUsers()
+  }, []);
 
   const onChange = (event) => {
     // console.log(`selected ${event.target.value}`);
@@ -131,36 +145,36 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
     console.log("question1Answer:", inputs.question1Answer);
     console.log("question2Answer:", inputs.question2Answer);
     console.log("question3Answer:", inputs.question3Answer);
-    
-      axios({
-        method: "post",
-        url: process.env.REACT_APP_HHTP + "/api/auth/register/questions",
-        data: {
-          email: email,
-          question1ID: parseInt(inputs.question1),
-          question2ID: parseInt(inputs.question2),
-          question3ID: parseInt(inputs.question3),
-          question1Answer: inputs.question1Answer,
-          question2Answer: inputs.question2Answer,
-          question3Answer: inputs.question3Answer,
-        },
-      }).then(
-        (response) => {
-          console.log(response.data.ok);
-          response.data.ok &&
-            OpenNotification(
-              "topRight",
-              "Your account will confirm by Admin",
-              "Notification",
-              ""
-            );
-          navigate("/");
-        },
-        (error) => {
-          OpenNotification("topRight", "", error.response.data.msg, "error");
-          console.log(error);
-        }
-      );
+
+    axios({
+      method: "post",
+      url: process.env.REACT_APP_HHTP + "/api/auth/register/questions",
+      data: {
+        email: email,
+        question1ID: parseInt(inputs.question1),
+        question2ID: parseInt(inputs.question2),
+        question3ID: parseInt(inputs.question3),
+        question1Answer: inputs.question1Answer,
+        question2Answer: inputs.question2Answer,
+        question3Answer: inputs.question3Answer,
+      },
+    }).then(
+      (response) => {
+        console.log(response.data.ok);
+        response.data.ok &&
+          OpenNotification(
+            "topRight",
+            "Your account will confirm by Admin",
+            "Notification",
+            ""
+          );
+        navigate("/");
+      },
+      (error) => {
+        OpenNotification("topRight", "", error.response.data.msg, "error");
+        console.log(error);
+      }
+    );
     // if (inputs.username === "admin" || inputs.password === "admin")
     //   navigate("/mainmenupage");
   };
@@ -206,27 +220,16 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
                     option.children.toLowerCase().includes(input.toLowerCase())
                   }
                 >
-                  <Option
-                    value="What is your favorite children’s Book?"
-                    name="question1"
-                    id="1"
-                  >
-                    What is your favorite children’s Book?
-                  </Option>
-                  <Option
-                    value="What was the first name of your first boos?"
-                    name="question2"
-                    id="2"
-                  >
-                    What was the first name of your first boos?
-                  </Option>
-                  <Option
-                    value="What is the name of your favorite fruit?"
-                    name="question3"
-                    id="3"
-                  >
-                    What is the name of your favorite fruit?
-                  </Option>
+                  {questions1.map((question) => (
+                    <Option
+                      key={question.id}
+                      id={question.id}
+                      value={question.title}
+                      name="question1"
+                    >
+                      {question.title}
+                    </Option>
+                  ))}
                 </Select>
               </Form.Item>
             </Col>
@@ -265,27 +268,16 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
                     option.children.toLowerCase().includes(input.toLowerCase())
                   }
                 >
-                  <Option
-                    value="What is your favorite children’s Book?"
-                    name="question1"
-                    id="1"
-                  >
-                    What is your favorite children’s Book?
-                  </Option>
-                  <Option
-                    value="What was the first name of your first boos?"
-                    name="question2"
-                    id="2"
-                  >
-                    What was the first name of your first boos?
-                  </Option>
-                  <Option
-                    value="What is the name of your favorite fruit?"
-                    name="question3"
-                    id="3"
-                  >
-                    What is the name of your favorite fruit?
-                  </Option>
+                  {questions2.map((question) => (
+                    <Option
+                      key={question.id}
+                      id={question.id}
+                      value={question.title}
+                      name="question1"
+                    >
+                      {question.title}
+                    </Option>
+                  ))}
                 </Select>
               </Form.Item>
             </Col>
@@ -324,27 +316,16 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
                     option.children.toLowerCase().includes(input.toLowerCase())
                   }
                 >
-                  <Option
-                    value="What is your favorite children’s Book?"
-                    name="question1"
-                    id="1"
-                  >
-                    What is your favorite children’s Book?
-                  </Option>
-                  <Option
-                    value="What was the first name of your first boos?"
-                    name="question2"
-                    id="2"
-                  >
-                    What was the first name of your first boos?
-                  </Option>
-                  <Option
-                    value="What is the name of your favorite fruit?"
-                    name="question3"
-                    id="3"
-                  >
-                    What is the name of your favorite fruit?
-                  </Option>
+                  {questions3.map((question) => (
+                    <Option
+                      key={question.id}
+                      id={question.id}
+                      value={question.title}
+                      name="question1"
+                    >
+                      {question.title}
+                    </Option>
+                  ))}
                 </Select>
               </Form.Item>
             </Col>

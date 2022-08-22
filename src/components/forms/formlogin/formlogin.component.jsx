@@ -91,7 +91,7 @@ const FormLogin = () => {
           className="login-form"
           initialValues={{ remember: true }}
           onFinishFailed={onFinishFailed}
-          autoComplete="off"
+          autoComplete="on"
           onSubmit={handleSubmit}
         >
           <InputForm
@@ -99,7 +99,7 @@ const FormLogin = () => {
             offset={7}
             inputs={"username"}
             handleChange={handleChange}
-            type={"Email"}
+            type={"email"}
             placeholder={"Email"}
             empty={emptyEmail}
           />

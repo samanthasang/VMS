@@ -166,7 +166,7 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
           initialValues={{ remember: true }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
-          autoComplete="off"
+          autoComplete="on"
           onSubmit={handleSubmit}
         >
           <InputForm
@@ -202,7 +202,7 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
             inputs={"password"}
             handleChange={handleChange}
             type={"password"}
-            placeholder={"Password (alphabet and number)"}
+            placeholder={"Password"}
             empty={emptyPassword}
             tittle={passwordTittle}
           />

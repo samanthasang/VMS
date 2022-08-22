@@ -98,7 +98,7 @@ const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
           initialValues={{ remember: true }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
-          autoComplete="off"
+          autoComplete="on"
           onSubmit={handleSubmit}
         >
           <ResetPasswordTXT
