@@ -57,7 +57,7 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
 
   const getUsers = async () => {
     const users = await axios.get(
-      process.env.REACT_APP_HHTP + "/api/auth/questions"
+      process.env.REACT_APP_HTTP + "/api/auth/questions"
     );
     // setQuestions(users.data.data);
     setQuestions1(users.data.data.FirstType);
@@ -148,7 +148,7 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
 
     axios({
       method: "post",
-      url: process.env.REACT_APP_HHTP + "/api/auth/register/questions",
+      url: process.env.REACT_APP_HTTP + "/api/auth/register/questions",
       data: {
         email: email,
         question1ID: parseInt(inputs.question1),

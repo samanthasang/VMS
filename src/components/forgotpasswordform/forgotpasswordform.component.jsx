@@ -120,7 +120,7 @@ const FormForgotPassword = ({
     }
     axios({
       method: "post",
-      url: process.env.REACT_APP_HHTP + "/api/auth/get-recovery-token",
+      url: process.env.REACT_APP_HTTP + "/api/auth/get-recovery-token",
       data: {
         email: email,
         question1Answer: inputs.question1Answer,

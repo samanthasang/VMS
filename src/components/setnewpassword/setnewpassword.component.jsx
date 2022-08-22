@@ -94,7 +94,7 @@ const SetNewPassword = ({ token, current, prev, form }) => {
     console.log(inputs.repeatPassword);
     axios({
       method: "post",
-      url: process.env.REACT_APP_HHTP + "/api/auth/recover-password",
+      url: process.env.REACT_APP_HTTP + "/api/auth/recover-password",
       data: {
         token: `${token}`,
         password: `${inputs.password}`,

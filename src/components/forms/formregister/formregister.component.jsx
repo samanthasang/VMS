@@ -125,7 +125,7 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
     console.log("repeatPassword:", inputs.repeatPassword);
     axios({
       method: "post",
-      url: process.env.REACT_APP_HHTP + "/api/auth/register/personal",
+      url: process.env.REACT_APP_HTTP + "/api/auth/register/personal",
       data: {
         firstName: inputs.firstName,
         lastName: inputs.lastName,
