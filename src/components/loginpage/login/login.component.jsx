@@ -2,9 +2,9 @@ import React from "react";
 import { Col, Row } from "antd";
 
 import LogoVISTAVMS from "../../logovistavms/logovistavms.component";
-import FormLogin from '../../forms/formlogin/formlogin.component'
+import FormLogin from "../../forms/formlogin/formlogin.component";
 
-import {  LoginFormBg } from "../../../assets/Icons/JSXs/index";
+import { LoginFormBg } from "../../../assets/Icons/JSXs/index";
 import LoginBG from "../../../assets/login-bg.svg";
 
 import "./login.styles.scss";
@@ -25,9 +25,10 @@ const Login = () => {
       }}
     >
       <Col
-        span={14}
         style={{
-          height: "66vh",
+          height: "520px",
+          width: "930px",
+          borderRadius: "8px",
           background: `url(${LoginFormBg})`,
           backdropFilter: "blur(100px)",
           borderRadius: "8px",

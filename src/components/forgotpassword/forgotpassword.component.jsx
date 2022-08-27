@@ -95,17 +95,19 @@ const ForgotPassword = () => {
       }}
     >
       <Col
-        span={14}
         style={{
-          height: "66vh",
+          height: "520px",
+          width: "930px",
+          borderRadius: "8px",
           background: `url(${LoginFormBG})`,
           backdropFilter: "blur(100px)",
         }}
       >
-        <StepForgotPassword current={current} 
+        <StepForgotPassword
+          current={current}
           // ChangeCurrent={onChange}
           // next={next}
-        // prev={prev}
+          // prev={prev}
         />
         <Row className="main_container_form">
           <Col span={24}>

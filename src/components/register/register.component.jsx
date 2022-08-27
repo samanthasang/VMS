@@ -58,9 +58,10 @@ const Register = () => {
       }}
     >
       <Col
-        span={14}
         style={{
-          height: "66vh",
+          height: "520px",
+          width: "930px",
+          borderRadius: "8px",
           background: `url(${LoginFormBG})`,
           backdropFilter: "blur(100px)",
           borderRadius: "8px",

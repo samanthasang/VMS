@@ -34,7 +34,7 @@ function App({}) {
   return (
     <>
       {window.location.pathname !== "/" &&
-      window.location.pathname !== "/forgotpassword" &&
+      window.location.pathname !== "/forgotten-password" &&
       window.location.pathname !== "/register" ? (
         <LayoutTop />
       ) : (

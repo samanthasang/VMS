@@ -28,7 +28,7 @@ const FormLogin = () => {
     const a = /\S+@\S+\.\S+/.test(email);
     console.log(a);
     return /\S+@\S+\.\S+/.test(email);
-  }
+  } 
 
   const handleChange = (event) => {
     const name = event.target.name;
