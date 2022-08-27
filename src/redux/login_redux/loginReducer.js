@@ -23,7 +23,6 @@ const loginReducer = (state = INITIAL_STATE, action) => {
     case loginActionTypes.REMEMBER_USER:
       return {
         ...state,
-        user: {},
         remember: true,
       };
     default:

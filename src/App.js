@@ -24,7 +24,7 @@ import "./App.css";
 function App({}) {
   let navigate = useNavigate();
 
-  const isLogedIn = useSelector((state) => state.register.isLogedIn);
+  const isLogedIn = useSelector((state) => state.login.isLogedIn);
 
   useEffect(() => {
     console.log("3: " + isLogedIn);

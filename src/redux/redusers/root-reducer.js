@@ -13,8 +13,6 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  register: registerReducer,
-  forgotPassword: forgotPasswordReducer,
   login: loginReducer,
 });
 
