@@ -4,12 +4,12 @@ import { Col, Row } from "antd";
 import LogoVISTAVMS from "../../logovistavms/logovistavms.component";
 import FormLogin from '../../forms/formlogin/formlogin.component'
 
-import LogoLogin from "../../../assets/Logo-Login.svg";
-import LoginBG from "../../../assets/login-bg.jpg";
-import LoginFormBG from "../../../assets/login-form-bg.svg";
+import {  LoginFormBg } from "../../../assets/Icons/JSXs/index";
+import LoginBG from "../../../assets/login-bg.svg";
+
 import "./login.styles.scss";
 
-const Login = ({ LoginAuth }) => {
+const Login = () => {
   return (
     <Row
       className="login_bg"
@@ -28,13 +28,13 @@ const Login = ({ LoginAuth }) => {
         span={14}
         style={{
           height: "66vh",
-          background: `url(${LoginFormBG})`,
+          background: `url(${LoginFormBg})`,
           backdropFilter: "blur(100px)",
           borderRadius: "8px",
         }}
       >
-        <LogoVISTAVMS src={LogoLogin} />
-        <FormLogin LoginAuth={LoginAuth} />
+        <LogoVISTAVMS />
+        <FormLogin />
       </Col>
     </Row>
   );

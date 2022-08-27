@@ -12,7 +12,7 @@ import FormForgotPassword from "../forgotpasswordform/forgotpasswordform.compone
 import ResetPasswordNavigation from "../resetpasswordnavigation/resetpasswordnavigation.component";
 import OpenNotification from "../notification/notification.component";
 
-import LoginBG from "../../assets/login-bg.jpg";
+import LoginBG from "../../assets/login-bg.svg";
 import LoginFormBG from "../../assets/login-form-bg.svg";
 
 import "./forgotpassword.styles.scss";

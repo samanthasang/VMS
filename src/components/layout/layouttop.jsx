@@ -1,23 +1,17 @@
 import { Col, Row, Menu, Dropdown, Space, Image } from "antd";
-import { Link, Outlet, useLocation } from "react-router-dom";
-import LoginPage from "../../pages/loginpage/loginpage.component";
-import { DownOutlined } from "@ant-design/icons";
-
 import { NitificationIcon } from "../../assets/Notification";
 import { UserAvatarIcon } from "../../assets/UserAvatar";
 import { DeropDownIcon } from "../../assets/DropDown";
 import LogoIcon from "../../assets/Logo.svg";
 import { logoutUser } from "../../redux/action/registerAction";
 
-import LogoLogin from "../../assets/Logo-Login.svg";
 import "./layout.styles.scss";
 import { useDispatch, useSelector } from "react-redux";
 
 const LayoutTop = ({ hideHeaderPaths = [] }) => {
-  const { pathname } = useLocation();
   const dispatch = useDispatch();
 
-  const isLogedIn = useSelector((state) => state.register.isLogedIn);
+  const isLogedIn = useSelector((state) => state.login.isLogedIn);
   const handleOnClick = ({ key }) => {
     console.log(key);
     switch (key) {

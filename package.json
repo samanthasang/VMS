@@ -29,7 +29,8 @@
     "build": "react-scripts build",
     "production": "react-scripts build:production",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "svgr": "svgr --icon --out-dir src/assets/Icons/JSXs src/assets/Icons/Svgs"
   },
   "eslintConfig": {
     "extends": [
@@ -48,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@svgr/cli": "^6.3.1"
   }
 }

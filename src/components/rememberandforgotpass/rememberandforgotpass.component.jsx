@@ -7,15 +7,19 @@ import LinkTo from "../linkto/linkto.componrnt";
 
 import "./rememberandforgotpass.styles.scss";
 
-const RememberAndForgotPass = ({ span, offset }) => {
+const RememberAndForgotPass = ({ span, offset, handleChangecheckbox }) => {
   return (
     <Row>
-      <Col span={span} offset={offset}className='remember_forgotpasswod'>
+      <Col span={span} offset={offset} className="remember_forgotpasswod">
         <Form.Item>
           <Row>
-            <CheckBox span={12} offset={0} />
+            <CheckBox
+              span={12}
+              offset={0}
+              handleChangecheckbox={handleChangecheckbox}
+            />
             <LinkTo
-              torouting={"/forgotpassword"}
+              torouting={"/forgotten-password"}
               text={"Forgot password?"}
               span={12}
               offset={0}

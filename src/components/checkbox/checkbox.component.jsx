@@ -2,10 +2,9 @@ import React from "react";
 
 import { Col, Form, Checkbox } from "antd";
 
-
 import "./checkbox.styles.scss";
 
-const CheckBox = ({ span, offset }) => {
+const CheckBox = ({ span, offset, handleChangecheckbox }) => {
   return (
     <Col className="txt_remember" span={span} offset={offset}>
       <Form.Item
@@ -14,7 +13,9 @@ const CheckBox = ({ span, offset }) => {
         valuePropName="checked"
         noStyle
       >
-        <Checkbox>Remember me</Checkbox>
+        <Checkbox onChange={handleChangecheckbox} checked="false">
+          Remember me
+        </Checkbox>
       </Form.Item>
     </Col>
   );

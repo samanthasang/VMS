@@ -5,10 +5,10 @@ import Login from "../../components/loginpage/login/login.component";
 
 import "./loginpage.styles.scss";
 
-const LoginPage = ({ LoginAuth }) => (
+const LoginPage = () => (
   <Row>
     <Col span={24}>
-      <Login LoginAuth={LoginAuth} />
+      <Login />
     </Col>
   </Row>
 );

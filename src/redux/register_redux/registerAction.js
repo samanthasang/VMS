@@ -1,15 +1,9 @@
-import React from "react";
-import {
-  RESET_PASSWORD_USER,
-  LOGIN_USER,
-  REGISTER_USER,
-  GET_USER,
-  LOGOUT_USER,
-} from "./types";
+import RegisterActionTypes from "./registerTypes";
 import axios from "axios";
 import OpenNotification from "../../components/notification/notification.component";
 
-export const LoginUsere = (inputs) => {
+export const GetListQuestions = (inputs) => {
+  console.log("r " + inputs.checked);
   return async (dispatch) => {
     await axios({
       method: "post",
@@ -17,13 +11,14 @@ export const LoginUsere = (inputs) => {
       data: {
         email: inputs.username,
         password: inputs.password,
+        remember: inputs.checked,
       },
     }).then(
       (response) => {
         //   console.log(response.data.ok)
         response.data.ok &&
           dispatch({
-            type: LOGIN_USER,
+            type: loginActionTypes.LOGIN_USER,
             payload: response.data.data,
           });
         response.data.ok === "401" && console.log(response.data.ok);
@@ -39,16 +34,8 @@ export const LoginUsere = (inputs) => {
   };
 };
 
-export const registerUser = () => {
+export const SetPersonalInfo = () => {
   return {
-    type: REGISTER_USER,
+    type: loginActionTypes.LOGOUT_USER,
   };
 };
-export const logoutUser = () => {
-  return {
-    type: LOGOUT_USER,
-  };
-};
-export const getUser = () => ({
-  type: GET_USER,
-});

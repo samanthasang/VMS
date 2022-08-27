@@ -7,25 +7,8 @@ import {
 } from "../action/types";
 
 const INITIAL_STATE = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  password: "",
-  repeatPassword: "",
-  question1: "",
-  question2: "",
-  question3: "",
-  question1Answer: "",
-  question2Answer: "",
-  question3Answer: "",
-  accessToken: "",
-  refreshToken: "",
-  expRefreshToken: "",
-  expAccessToken: "",
-  createdAt: 0,
-  updatedAt: 0,
+  user: "",
   isLogedIn: false,
-  isAdmin: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -34,13 +17,13 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isLogedIn: true,
-        email: action.payload,
+        user: action.payload,
       };
     case LOGOUT_USER:
       return {
         ...state,
         isLogedIn: false,
-      }
+      };
     case GET_USER:
       return state;
     default:

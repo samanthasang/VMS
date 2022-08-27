@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Row, Col, Form } from "antd";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { useNavigate } from "react-router-dom";
-import { LoginUser } from "../../../redux/action/registerAction";
+import { LoginUser } from "../../../redux/login_redux/loginAction";
 
 import InputForm from "../../inputform/inputform.component";
 import InputPasswordForm from "../../inputpasswordform/inputpasswordform.component";
@@ -14,12 +13,12 @@ import OpenNotification from "../../notification/notification.component";
 import "./formlogin.styles.scss";
 
 const FormLogin = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const isLogedIn = useSelector((state) => state.register.isLogedIn);
+  const isLogedIn = useSelector((state) => state.login.isLogedIn);
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
+    checked: true
   });
   const [emptyEmail, setEmtyEmail] = useState(false);
   const [emptyUserName, setEmtyUserName] = useState(false);
@@ -36,13 +35,19 @@ const FormLogin = () => {
     const value = event.target.value;
     setInputs((inputs) => ({ ...inputs, [name]: value }));
     // console.log("Failed:", value);
-
+    
     if (inputs.username !== "") {
       setEmtyEmail(false);
     }
     if (inputs.password !== "") {
       setEmtyUserName(false);
     }
+  };
+  const handleChangecheckbox = (e) => {
+    console.log(`checked = ${e.target.checked}`);
+    
+    const value = e.target.checked;
+    setInputs((inputs) => ({ ...inputs, checked: value }));
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -65,11 +70,12 @@ const FormLogin = () => {
       OpenNotification("topRight", "Email Isn`t Valid", "", "error");
       return;
     }
-    console.log(inputs.username + " " + inputs.password);
+    console.log(inputs.username + " " + inputs.password + "" + inputs.checked);
     console.log("1: " + isLogedIn);
     dispatch(LoginUser(inputs));
     console.log("2:" + isLogedIn);
   };
+
   return (
     <Row>
       <Col
@@ -113,7 +119,11 @@ const FormLogin = () => {
             placeholder={"Password"}
             empty={emptyUserName}
           />
-          <RememberAndForgotPass span={10} offset={7} />
+          <RememberAndForgotPass
+            span={10}
+            offset={7}
+            handleChangecheckbox={handleChangecheckbox}
+          />
           <SubminBTN handleSubmit={handleSubmit} span={10} offset={7} />
           <GoToRegister span={10} offset={7} />
         </Form>
@@ -122,9 +132,4 @@ const FormLogin = () => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  isLogedIn: state.isLogedIn,
-});
-
-// export default connect(mapStateToProps, { LoginUser })(FormLogin);
 export default FormLogin;
