@@ -1,26 +1,17 @@
-import { Avatar, Button, Card, Checkbox, Col, Form, Input, Row } from "antd";
+import { Col, Form, Row } from "antd";
 import React, { useEffect, useState } from "react";
-
-import axios from "axios";
-
-import { useNavigate } from "react-router-dom";
 
 import Registration from "../registration/registration.component";
 import SetPassword from "../setpassword/setpassword.component";
-import RegistrationNavigation from "../registerationnavigation/registerationnavigation.component";
 import FormRegister from "../forms/formregister/formregister.component";
 import LoginBG from "../../assets/login-bg.svg";
 import LoginFormBG from "../../assets/login-form-bg.svg";
-import OpenNotification from "../notification/notification.component";
 
 import "./register.styles.scss";
-
-const { Meta } = Card;
 
 const Register = () => {
   const [form] = Form.useForm();
   const [, forceUpdate] = useState({});
-  const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     email: "",
   });
@@ -30,10 +21,6 @@ const Register = () => {
   }, []);
   const [current, setCurrent] = useState(0);
 
-  const onChange = (value) => {
-    console.log("onChange:", value);
-    setCurrent(value);
-  };
   const next = (email) => {
     console.log("onChange:", email);
     setInputs(({ email }), setCurrent(current + 1));
@@ -64,7 +51,6 @@ const Register = () => {
           borderRadius: "8px",
           background: `url(${LoginFormBG})`,
           backdropFilter: "blur(100px)",
-          borderRadius: "8px",
         }}
       >
         <Registration

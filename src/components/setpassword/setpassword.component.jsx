@@ -1,28 +1,14 @@
-import {
-  Avatar,
-  Button,
-  Card,
-  Checkbox,
-  Col,
-  Form,
-  Input,
-  Row,
-  Select,
-  Steps,
-} from "antd";
+import { Button, Col, Form, Row, Select } from "antd";
 import React, { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-import SubminBTN from "../submitbtn/submitbtn.component";
 import "./setpassword.styles.scss";
 import InputFormWithLabel from "../inputformwithlabel/inputformwithlabel.component";
-import { Link } from "react-router-dom";
 
 import OpenNotification from "../notification/notification.component";
 import axios from "axios";
 
 const { Option } = Select;
-const { Step } = Steps;
 const steps = [
   {
     title: "First",
@@ -66,19 +52,9 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
   };
 
   useEffect(() => {
-    getUsers()
+    getUsers();
   }, []);
 
-  const onChange = (event) => {
-    // console.log(`selected ${event.target.value}`);
-    const name = event.target.id;
-    const value = event.target.value;
-    setInputs((inputs) => ({ ...inputs, [name]: value }));
-  };
-
-  const onSearch = (value) => {
-    console.log("search:", value);
-  };
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -175,8 +151,6 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
         console.log(error);
       }
     );
-    // if (inputs.username === "admin" || inputs.password === "admin")
-    //   navigate("/mainmenupage");
   };
 
   return (
@@ -206,7 +180,6 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
                   optionFilterProp="children"
                   name="question1"
                   id="question1"
-                  // value=''
                   onChange={(value, id) => (
                     console.log(id.id),
                     setEmtyQuestion1Answer(false),
@@ -215,7 +188,6 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
                       ["question1"]: id.id,
                     }))
                   )}
-                  // onChange={onChange}
                   filterOption={(input, option) =>
                     option.children.toLowerCase().includes(input.toLowerCase())
                   }
@@ -342,7 +314,6 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
               />
             </Col>
           </Row>
-          {/* <SubminBTN handleSubmit={handleSubmit} span={10} offset={7} /> */}
 
           <Row>
             <Col className="navigation_registeration" span={24}>

@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { Row, Col, Form, Steps, Button, Tooltip } from "antd";
+import { Row, Col, Form, Button } from "antd";
 
 import InputForm from "../../inputform/inputform.component";
 import InputPasswordForm from "../../inputpasswordform/inputpasswordform.component";
 import StrengthBar from "../../stregthbar/stregthbar.component";
-import SubminBTN from "../../submitbtn/submitbtn.component";
 import OpenNotification from "../../notification/notification.component";
 
 import "./formregister.styles.scss";
 import axios from "axios";
-const { Step } = Steps;
 const steps = [
   {
     title: "First",
@@ -64,9 +62,6 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
     }
   };
   const onFinish = (inputs) => {
-    if (inputs.username === "admin" || inputs.password === "admin")
-      // navigate("/mainmenupage");
-      LoginAuth();
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -149,10 +144,6 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
         console.log(error);
       }
     );
-
-    // if (inputs.username === "admin" || inputs.password === "admin")
-    //   // navigate("/mainmenupage");
-    //   LoginAuth();
   };
   return (
     <Row className="main_register_container">

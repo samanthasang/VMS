@@ -14,6 +14,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   login: loginReducer,
+  forgotPassword: forgotPasswordReducer,
+  register: registerReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

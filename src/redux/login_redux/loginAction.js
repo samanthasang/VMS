@@ -21,8 +21,9 @@ export const LoginUser = (inputs) => {
             type: loginActionTypes.LOGIN_USER,
             payload: response.data.data,
           });
-        response.data.ok === "401" && console.log(response.data.ok);
-        console.log(response.data.data);
+        OpenNotification("topRight", "", response.data.msg, "");
+        console.log(response.data);
+        console.log(response.data.msg);
       },
       (error) => {
         error.response.status === 401 &&

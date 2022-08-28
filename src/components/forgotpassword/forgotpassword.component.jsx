@@ -1,43 +1,19 @@
-import { Avatar, Button, Card, Checkbox, Col, Form, Input, Row, Steps } from "antd";
+import {  Col, Row } from "antd";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
-import { useNavigate } from "react-router-dom";
 
 import SetNewPassword from "../setnewpassword/setnewpassword.component";
-import RegistrationNavigation from "../registerationnavigation/registerationnavigation.component";
 import FormForgot from "../forms/formforgot/formforgot.component";
 import StepForgotPassword from "../registrationforgotpassword/registrationforgotpassword.component";
 import FormForgotPassword from "../forgotpasswordform/forgotpasswordform.component";
-import ResetPasswordNavigation from "../resetpasswordnavigation/resetpasswordnavigation.component";
-import OpenNotification from "../notification/notification.component";
 
 import LoginBG from "../../assets/login-bg.svg";
 import LoginFormBG from "../../assets/login-form-bg.svg";
 
 import "./forgotpassword.styles.scss";
 
-const { Meta } = Card;
-const { Step } = Steps;
-const steps = [
-  {
-    title: "First",
-    content: "First-content",
-  },
-  {
-    title: "First",
-    content: "First-content",
-  },
-  {
-    title: "Second",
-    content: "Second-content",
-  },
-];
-
 const ForgotPassword = () => {
-  const [form] = Form.useForm();
   const [, forceUpdate] = useState({});
-  const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     email: "",
     question1: "",
@@ -56,10 +32,6 @@ const ForgotPassword = () => {
   }, []);
   const [current, setCurrent] = useState(0);
 
-  const onChange = (value) => {
-    console.log("onChange:", value);
-    setCurrent(value);
-  };
   const next = (email, data) => {
     console.log(data[0].title);
     setInputs({

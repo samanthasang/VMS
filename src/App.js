@@ -2,9 +2,8 @@ import React, { useEffect } from "react";
 
 import { useSelector } from "react-redux";
 
-import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
-import Layout from "./components/layout/Layout";
 import LayoutTop from "./components/layout/layouttop";
 
 import LoginPage from "./pages/loginpage/loginpage.component";
@@ -17,19 +16,17 @@ import LiveViewPage from "./pages/liveviewpage/liveviewpage.component";
 import UserPage from "./pages/userpage/userpage.component";
 import PlayBackPage from "./pages/playback/playback.component";
 
-import registerReduser from "./redux/redusers/registerReduser";
-
 import "./App.css";
 
-function App({}) {
-  let navigate = useNavigate();
-
+function App() {
+  
   const isLogedIn = useSelector((state) => state.login.isLogedIn);
-
+  
+  let navigate = useNavigate();
   useEffect(() => {
     console.log("3: " + isLogedIn);
     isLogedIn && navigate("/liveViewpage");
-  }, [isLogedIn]);
+  }, [isLogedIn, navigate]);
 
   return (
     <>
@@ -40,25 +37,6 @@ function App({}) {
       ) : (
         ""
       )}
-      {/* <div
-        className="inline-flex"
-        style={{
-          display: "inline-flex",
-          position: "absolute",
-          width: "100%",
-          left: "0",
-          right: "0",
-          top: "5vh",
-          height: "94vh",
-        }}
-      > */}
-      {/* {window.location.pathname !== "/" &&
-      window.location.pathname !== "/forgotpassword" &&
-      window.location.pathname !== "/register" ? (
-        <Layout />
-      ) : (
-        ""
-      )} */}
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
@@ -78,9 +56,4 @@ function App({}) {
   );
 }
 
-const mapStateToProps = () => ({
-  isLogedIn: registerReduser.isLogedIn,
-});
-
-// export default connect(mapStateToProps, null)(App);
 export default App;

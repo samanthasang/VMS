@@ -12,7 +12,7 @@ const INITIAL_STATE = {
 
 const forgotPasswordReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case ForgotPasswordActionTypes.REGISTER_USER:
+    case ForgotPasswordActionTypes.GET_RECOVERY_TOKEN:
       return {
         ...state,
         firstName: "",

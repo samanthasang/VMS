@@ -22,7 +22,6 @@ const FormLogin = () => {
   });
   const [emptyEmail, setEmtyEmail] = useState(false);
   const [emptyUserName, setEmtyUserName] = useState(false);
-  const [passwordTittle, setPasswordTittle] = useState(false);
 
   function isValidEmail(email) {
     const a = /\S+@\S+\.\S+/.test(email);
@@ -34,7 +33,6 @@ const FormLogin = () => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((inputs) => ({ ...inputs, [name]: value }));
-    // console.log("Failed:", value);
     
     if (inputs.username !== "") {
       setEmtyEmail(false);

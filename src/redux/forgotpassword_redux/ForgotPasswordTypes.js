@@ -1,6 +1,6 @@
 const ForgotPasswordActionTypes = {
-  GET_QUESTION: "REGISTER_USER",
-  GET_RECOVERY_TOKEN: "LOGIN_USER",
+  GET_QUESTIONS: "GET_QUESTIONS",
+  GET_RECOVERY_TOKEN: "GET_RECOVERY_TOKEN",
 };
 
 export default ForgotPasswordActionTypes;

@@ -31,7 +31,6 @@ const Login = () => {
           borderRadius: "8px",
           background: `url(${LoginFormBg})`,
           backdropFilter: "blur(100px)",
-          borderRadius: "8px",
         }}
       >
         <LogoVISTAVMS />
