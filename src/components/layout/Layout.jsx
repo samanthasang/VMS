@@ -15,52 +15,55 @@ const Layout = ({ hideHeaderPaths = [] }) => {
   const { pathname } = useLocation();
 
   return (
-    <Row className="side_nav">
-      <Col style={{ height: "100%" }}>
-        <Menu
-          defaultSelectedKeys={["Liveview"]}
-          mode="inline"
-          theme="dark"
-          inlineCollapsed={true}
-          style={{ height: "100%" }}
-        >
-          <Menu.Item key="Liveview" icon={<LiveviewIcon />}>
-            <Link to={"/liveViewpage"}>Liveview</Link>
-          </Menu.Item>
-          <Menu.Item key="Playback" icon={<PalybackIcon />}>
-            <Link to={"/playBackpage"}>Playback</Link>
-          </Menu.Item>
-          <Menu.Item key="users" icon={<UsersIcon />}>
-            <Link to={"/userpage"}>users</Link>
-          </Menu.Item>
-          <Menu.Item key="devices" icon={<DevicesIcon />}>
-            <Link to={"/devicespage"}>devices</Link>
-          </Menu.Item>
-          <Menu.Item
-            key="About"
-            icon={<AboutIcon />}
-            style={{
-              bottom: "50px",
-              position: "absolute",
-              width: "60px",
-            }}
+    <>
+      <Row className="side_nav_2">
+        <Col style={{ height: "100%" }}>
+          <Menu
+            defaultSelectedKeys={["Liveview"]}
+            mode="inline"
+            theme="dark"
+            inlineCollapsed={true}
+            style={{ height: "100%" }}
           >
-            <Link to={"/playBackpage"}>About</Link>
-          </Menu.Item>
-          <Menu.Item
-            key="Setting"
-            icon={<SettingIcon />}
-            style={{
-              bottom: "0",
-              position: "absolute",
-              width: "60px",
-            }}
-          >
-            <Link to={"/playBackpage"}>Setting</Link>
-          </Menu.Item>
-        </Menu>
-      </Col>
-    </Row>
+            <Menu.Item key="Liveview" icon={<LiveviewIcon />}>
+              <Link to={"/liveViewpage"}>Liveview</Link>
+            </Menu.Item>
+            <Menu.Item key="Playback" icon={<PalybackIcon />}>
+              <Link to={"/playBackpage"}>Playback</Link>
+            </Menu.Item>
+            <Menu.Item key="users" icon={<UsersIcon />}>
+              <Link to={"/userpage"}>users</Link>
+            </Menu.Item>
+            <Menu.Item key="devices" icon={<DevicesIcon />}>
+              <Link to={"/devicespage"}>devices</Link>
+            </Menu.Item>
+            <Menu.Item
+              key="About"
+              icon={<AboutIcon />}
+              style={{
+                bottom: "50px",
+                position: "absolute",
+                width: "60px",
+              }}
+            >
+              <Link to={"/playBackpage"}>About</Link>
+            </Menu.Item>
+            <Menu.Item
+              key="Setting"
+              icon={<SettingIcon />}
+              style={{
+                bottom: "0",
+                position: "absolute",
+                width: "60px",
+              }}
+            >
+              <Link to={"/playBackpage"}>Setting</Link>
+            </Menu.Item>
+          </Menu>
+        </Col>
+      </Row>
+      <Outlet />
+    </>
   );
 };
 

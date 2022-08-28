@@ -7,6 +7,7 @@ import { logoutUser } from "../../redux/action/registerAction";
 
 import "./layout.styles.scss";
 import { useDispatch, useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
 
 const LayoutTop = ({ hideHeaderPaths = [] }) => {
   const dispatch = useDispatch();
@@ -60,7 +61,7 @@ const LayoutTop = ({ hideHeaderPaths = [] }) => {
           width: "100%",
           position: "absolute",
           top: "0",
-          height: "50px",
+          height: "6vh",
         }}
       >
         <img
@@ -69,14 +70,14 @@ const LayoutTop = ({ hideHeaderPaths = [] }) => {
           style={{
             position: "absolute",
             width: "120px",
-            height: "50px",
+            height: "6vh",
           }}
         />
         <Menu
           defaultSelectedKeys={["Liveview"]}
           mode="horizontal"
           theme="dark"
-          style={{ height: "50px" }}
+          style={{ height: "6vh" }}
         >
           <Dropdown overlay={menu} trigger={["click"]} placement="bottomRight">
             <a
@@ -114,6 +115,7 @@ const LayoutTop = ({ hideHeaderPaths = [] }) => {
             </a>
           </Dropdown>
         </Menu>
+        <Outlet />
       </Col>
     </Row>
   );

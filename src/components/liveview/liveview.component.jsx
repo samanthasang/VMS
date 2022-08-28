@@ -5,7 +5,7 @@ const LiveView = () => {
   // const [colCountKey, setColCountKey] = useState([16, 8, 8, 8, 8, 8]);
   return (
     <>
-      <Row>
+      <Row >
         <Col span={24}>
           <Row>
             <Col span={24}>

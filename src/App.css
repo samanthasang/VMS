@@ -8,3 +8,13 @@ body {
 }
 
 
+.main_view {
+    display: inline-flex;
+    width: 96%;
+    height: 94vh;
+    margin: 0;
+    padding: 0;
+    top: 6vh;
+    position: absolute;
+    left: 64px;
+}

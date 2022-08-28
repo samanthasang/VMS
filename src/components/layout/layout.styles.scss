@@ -1,10 +1,21 @@
 .side_nav {
   display: inline-block !important;
-  height: 5vh;
+  height: 6vh;
   color: rgba(255, 255, 255, 0.65);
   background: #21242c;
-  width: 60px;
+  width: 64px;
   padding: 0 0;
+}
+.side_nav_2 {
+  display: inline-block !important;
+  height: 94vh;
+  color: rgba(255, 255, 255, 0.65);
+  background: #21242c;
+  width: 64px;
+  padding: 0 0;
+}
+.side_nav_2 ul li span {
+  width: 64px;
 }
 .side_nav .ant-menu.ant-menu-dark,
 .ant-menu-dark .ant-menu-sub,
@@ -13,7 +24,7 @@
   color: #efefef;
 }
 .ant-menu.ant-menu-inline-collapsed {
-  width: 60px !important;
+  width: 64px !important;
   padding: 0;
 }
 .ant-menu.ant-menu-inline-collapsed > .ant-menu-item,
@@ -41,7 +52,7 @@
     }
     .ant-space-item:nth-child(2) {
       height: 55px;
-      color: #EFEFEF;
+      color: #efefef;
     }
     .ant-space-item:last-child {
       height: 60px;
