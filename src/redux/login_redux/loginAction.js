@@ -1,6 +1,6 @@
 import loginActionTypes from "./loginTypes";
 import axios from "axios";
-import OpenNotification from "../../components/notification/notification.component";
+import OpenNotification from "../../components/form-items/notification/notification.component";
 
 export const LoginUser = (inputs) => {
   console.log("r " + inputs.checked);

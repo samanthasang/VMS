@@ -1,21 +1,21 @@
 .side_nav {
   display: inline-block !important;
-  height: 6vh;
+  height: 60px;
   color: rgba(255, 255, 255, 0.65);
   background: #21242c;
-  width: 64px;
+  width: 60px;
   padding: 0 0;
 }
 .side_nav_2 {
   display: inline-block !important;
-  height: 94vh;
+  height: calc(100vh - 3rem);
   color: rgba(255, 255, 255, 0.65);
   background: #21242c;
-  width: 64px;
+  width: 60px;
   padding: 0 0;
 }
 .side_nav_2 ul li span {
-  width: 64px;
+  width: 60px;
 }
 .side_nav .ant-menu.ant-menu-dark,
 .ant-menu-dark .ant-menu-sub,
@@ -24,7 +24,7 @@
   color: #efefef;
 }
 .ant-menu.ant-menu-inline-collapsed {
-  width: 64px !important;
+  width: 60px !important;
   padding: 0;
 }
 .ant-menu.ant-menu-inline-collapsed > .ant-menu-item,

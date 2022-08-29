@@ -57,11 +57,10 @@ const LayoutTop = ({ hideHeaderPaths = [] }) => {
     <Row className="side_nav">
       <Col
         style={{
-          height: "80px",
           width: "100%",
           position: "absolute",
           top: "0",
-          height: "6vh",
+          height: "3rem",
         }}
       >
         <img
@@ -70,14 +69,14 @@ const LayoutTop = ({ hideHeaderPaths = [] }) => {
           style={{
             position: "absolute",
             width: "120px",
-            height: "6vh",
+            height: "3rem",
           }}
         />
         <Menu
           defaultSelectedKeys={["Liveview"]}
           mode="horizontal"
           theme="dark"
-          style={{ height: "6vh" }}
+          style={{ height: "3rem" }}
         >
           <Dropdown overlay={menu} trigger={["click"]} placement="bottomRight">
             <a

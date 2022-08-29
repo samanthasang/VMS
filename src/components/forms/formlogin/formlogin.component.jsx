@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { LoginUser } from "../../../redux/login_redux/loginAction";
 
-import InputForm from "../../inputform/inputform.component";
-import InputPasswordForm from "../../inputpasswordform/inputpasswordform.component";
-import SubminBTN from "../../submitbtn/submitbtn.component";
-import RememberAndForgotPass from "../../rememberandforgotpass/rememberandforgotpass.component";
-import GoToRegister from "../../gotoregister/gotoregister.omponent";
-import OpenNotification from "../../notification/notification.component";
+import InputForm from "../../form-items/inputform/inputform.component";
+import InputPasswordForm from "../../form-items/inputpasswordform/inputpasswordform.component";
+import SubminBTN from "../../form-items/submitbtn/submitbtn.component";
+import RememberAndForgotPass from "../../login-items/rememberandforgotpass/rememberandforgotpass.component";
+import GoToRegister from "../../login-items/gotoregister/gotoregister.omponent";
+import OpenNotification from "../../form-items/notification/notification.component";
 import "./formlogin.styles.scss";
 
 const FormLogin = () => {
@@ -18,7 +18,7 @@ const FormLogin = () => {
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
-    checked: true
+    checked: true,
   });
   const [emptyEmail, setEmtyEmail] = useState(false);
   const [emptyUserName, setEmtyUserName] = useState(false);
@@ -27,13 +27,13 @@ const FormLogin = () => {
     const a = /\S+@\S+\.\S+/.test(email);
     console.log(a);
     return /\S+@\S+\.\S+/.test(email);
-  } 
+  }
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((inputs) => ({ ...inputs, [name]: value }));
-    
+
     if (inputs.username !== "") {
       setEmtyEmail(false);
     }
@@ -43,7 +43,7 @@ const FormLogin = () => {
   };
   const handleChangecheckbox = (e) => {
     console.log(`checked = ${e.target.checked}`);
-    
+
     const value = e.target.checked;
     setInputs((inputs) => ({ ...inputs, checked: value }));
   };

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Row, Col, Form, Steps, Button } from "antd";
 
-import InputForm from "../../inputform/inputform.component";
-import ResetPasswordTXT from "../../resetpasswordtxt/resetpasswordtxt.component";
-import OpenNotification from "../../notification/notification.component";
+import InputForm from "../../form-items/inputform/inputform.component";
+import ResetPasswordTXT from "../../forgot-password-items/resetpasswordtxt/resetpasswordtxt.component";
+import OpenNotification from "../../form-items/notification/notification.component";
 import "./formforgot.styles.scss";
 import axios from "axios";
 const { Step } = Steps;
@@ -59,9 +59,7 @@ const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
     if (inputs.email === "") {
       setEmtyEmail(true);
     }
-    if (
-      inputs.email === ""
-    ) {
+    if (inputs.email === "") {
       return;
     }
     if (isValidEmail(inputs.email) === false) {

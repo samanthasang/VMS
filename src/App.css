@@ -10,11 +10,11 @@ body {
 
 .main_view {
     display: inline-flex;
-    width: 96%;
-    height: 94vh;
+    width: calc(100% - 60px);
+    height: calc(100vh - 3rem);
     margin: 0;
     padding: 0;
-    top: 6vh;
+    top: 3rem;
     position: absolute;
-    left: 64px;
+    left: 60px;
 }

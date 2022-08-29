@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd';
 import React from 'react'
 
-import Register from '../../components/register/register.component';
+import Register from "../../components/register-items/register/register.component";
 
 
 import './registerpage.styles.scss'

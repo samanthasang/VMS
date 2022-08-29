@@ -1,8 +1,8 @@
 import { Col, Row } from "antd";
 import React from "react";
 
-import SideBar from "../../components/sidebar/sidebar.component";
-import LiveView from "../../components/liveview/liveview.component";
+import SideBar from "../../components/live-view-items/sidebar/sidebar.component";
+import LiveView from "../../components/live-view-items/liveview/liveview.component";
 
 const LiveViewPage = () => {
   return (

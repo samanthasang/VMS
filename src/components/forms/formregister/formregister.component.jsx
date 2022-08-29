@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Row, Col, Form, Button } from "antd";
 
-import InputForm from "../../inputform/inputform.component";
-import InputPasswordForm from "../../inputpasswordform/inputpasswordform.component";
-import StrengthBar from "../../stregthbar/stregthbar.component";
-import OpenNotification from "../../notification/notification.component";
+import InputForm from "../../form-items/inputform/inputform.component";
+import InputPasswordForm from "../../form-items/inputpasswordform/inputpasswordform.component";
+import StrengthBar from "../../form-items/stregthbar/stregthbar.component";
+import OpenNotification from "../../form-items/notification/notification.component";
 
 import "./formregister.styles.scss";
 import axios from "axios";
