@@ -1,14 +1,16 @@
 import * as React from "react";
 
-const SvgStep11 = (props) => (
+const SvgStep11 = ({ title, titleId, ...props }) => (
   <svg
     width="1em"
     height="1em"
     viewBox="0 0 430 56"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    aria-labelledby={titleId}
     {...props}
   >
+    {title ? <title id={titleId}>{title}</title> : null}
     <g filter="url(#Step1-1_svg__a)">
       <path
         d="M0 0h402c15.464 0 28 12.536 28 28s-12.536 28-28 28H0V0Z"

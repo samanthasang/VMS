@@ -7,7 +7,6 @@ import StepForgotPassword from "../../register-items/registrationforgotpassword/
 import FormForgotPassword from "../../forms/forgotpasswordform/forgotpasswordform.component";
 
 import LoginBG from "../../../assets/login-bg.webp";
-import LoginFormBG from "../../../assets/login-form-bg.svg";
 
 import "./forgotpassword.styles.scss";
 
@@ -70,8 +69,8 @@ const ForgotPassword = () => {
           height: "520px",
           width: "930px",
           borderRadius: "8px",
-          background: `url(${LoginFormBG})`,
-          backdropFilter: "blur(100px)",
+          background: "rgba(0, 0, 0, 0.1)",
+          backdropFilter: "blur(70px)",
         }}
       >
         <StepForgotPassword
@@ -95,6 +94,7 @@ const ForgotPassword = () => {
                 shouldUpdate
                 current={current}
                 next_2={next_2}
+                next={next}
                 prev={prev}
                 email={inputs.email}
                 question1={inputs.question1}

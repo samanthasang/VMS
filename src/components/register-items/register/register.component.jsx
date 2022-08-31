@@ -5,7 +5,6 @@ import Registration from "../registration/registration.component";
 import SetPassword from "../setpassword/setpassword.component";
 import FormRegister from "../../forms/formregister/formregister.component";
 import LoginBG from "../../../assets/login-bg.webp";
-import LoginFormBG from "../../../assets/login-form-bg.svg";
 
 import "./register.styles.scss";
 
@@ -49,8 +48,8 @@ const Register = () => {
           height: "520px",
           width: "930px",
           borderRadius: "8px",
-          background: `url(${LoginFormBG})`,
-          backdropFilter: "blur(100px)",
+          background: "rgba(0, 0, 0, 0.1)",
+          backdropFilter: "blur(70px)",
         }}
       >
         <Registration
@@ -59,7 +58,7 @@ const Register = () => {
           // next={next}
           // prev={prev}
         />
-        <Row className="main_container_form">
+        <Row className="main_register_container_register">
           <Col span={24}>
             {current === 0 && (
               <FormRegister

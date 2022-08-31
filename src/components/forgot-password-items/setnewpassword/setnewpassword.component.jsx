@@ -1,16 +1,16 @@
-import { Col, Form, Row, Select, Steps, Button } from "antd";
+import { Col, Form, Row, Button } from "antd";
 import React, { useState } from "react";
 
 import axios from "axios";
 import OpenNotification from "../../form-items/notification/notification.component";
 
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./setnewpassword.styles.scss";
 import InputPasswordForm from "../../form-items/inputpasswordform/inputpasswordform.component";
 import StrengthBar from "../../form-items/stregthbar/stregthbar.component";
 import ResetPasswordTXT from "../resetpasswordtxt/resetpasswordtxt.component";
+import Navigation from "../../generals-items/navigation/navigation.component";
 
-const { Step } = Steps;
 const steps = [
   {
     title: "First",
@@ -26,7 +26,7 @@ const steps = [
   },
 ];
 
-const SetNewPassword = ({ token, current, prev, form }) => {
+const SetNewPassword = ({ token, current, next, prev, form }) => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     password: "",
@@ -37,13 +37,6 @@ const SetNewPassword = ({ token, current, prev, form }) => {
   const [emptyPassword, setEmtyPassword] = useState(false);
   const [emptyRepeatPassword, setEmtyRepeatPassword] = useState(false);
 
-  const onChange = (value) => {
-    console.log(`selected ${value}`);
-  };
-
-  const onSearch = (value) => {
-    console.log("search:", value);
-  };
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -69,7 +62,7 @@ const SetNewPassword = ({ token, current, prev, form }) => {
     console.log("Failed:", errorInfo);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmitForm = (event) => {
     event.preventDefault();
     if (inputs.password === "") {
       setEmtyPassword(true);
@@ -132,7 +125,7 @@ const SetNewPassword = ({ token, current, prev, form }) => {
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="on"
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmitForm}
         >
           <ResetPasswordTXT
             span={10}
@@ -166,37 +159,14 @@ const SetNewPassword = ({ token, current, prev, form }) => {
             empty={emptyRepeatPassword}
             tittle={passwordTittle}
           />
-          <Row>
-            <Col className="navigation_registeration" span={24}>
-              <div className="steps-action">
-                {current > 0 && (
-                  <Button
-                    className="btn_pre"
-                    style={{
-                      margin: "0 8px",
-                    }}
-                    onClick={prev}
-                  >
-                    Back
-                  </Button>
-                )}
-                {current < steps.length - 1 && (
-                  <Button className="btn_next" type="primary">
-                    Next
-                  </Button>
-                )}
-                {current === steps.length - 1 && (
-                  <Button
-                    className="btn_next"
-                    type="primary"
-                    onClick={handleSubmit}
-                  >
-                    Done
-                  </Button>
-                )}
-              </div>
-            </Col>
-          </Row>
+          <Navigation
+            steps={steps}
+            current={current}
+            form={form}
+            handleSubmitForm={handleSubmitForm}
+            next={next}
+            prev={prev}
+          />
         </Form>
       </Col>
     </Row>

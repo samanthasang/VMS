@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Row, Col, Form, Steps, Button } from "antd";
+import { Row, Col, Form, Button } from "antd";
 
 import InputForm from "../../form-items/inputform/inputform.component";
 import ResetPasswordTXT from "../../forgot-password-items/resetpasswordtxt/resetpasswordtxt.component";
 import OpenNotification from "../../form-items/notification/notification.component";
 import "./formforgot.styles.scss";
 import axios from "axios";
-const { Step } = Steps;
+import Navigation from "../../generals-items/navigation/navigation.component";
 const steps = [
   {
     title: "First",
@@ -56,13 +56,15 @@ const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (inputs.email === "") {
+    console.log("inputs.email.trim:", inputs.email.trim());
+    if (inputs.email.trim() === "") {
+      console.log("inputs.email.trim:", inputs.email.trim);
       setEmtyEmail(true);
     }
-    if (inputs.email === "") {
+    if (inputs.email.trim() === "") {
       return;
     }
-    if (isValidEmail(inputs.email) === false) {
+    if (isValidEmail(inputs.email.trim()) === false) {
       setEmtyEmail(true);
       OpenNotification("topRight", "Email Dosn`t Valid", "", "error");
       return;
@@ -114,53 +116,15 @@ const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
             placeholder={"Email"}
             empty={emptyEmail}
           />
-          <Row>
-            <Col className="navigation_registeration" span={24}>
-              <div className="steps-action">
-                {current > 0 && (
-                  <Button
-                    className="btn_pre"
-                    style={{
-                      margin: "0 8px",
-                    }}
-                    onClick={prev}
-                    disabled={
-                      !form.isFieldsTouched(true) ||
-                      !!form
-                        .getFieldsError()
-                        .filter(({ errors }) => errors.length).length
-                    }
-                  >
-                    Back
-                  </Button>
-                )}
-                {current < steps.length - 1 && (
-                  <Button
-                    className="btn_next"
-                    type="primary"
-                    onClick={handleSubmit}
-                  >
-                    Next
-                  </Button>
-                )}
-                {current === steps.length - 1 && (
-                  <Button
-                    className="btn_next"
-                    type="primary"
-                    onClick={() => OpenNotification("topRight")}
-                    disabled={
-                      !form.isFieldsTouched(true) ||
-                      !!form
-                        .getFieldsError()
-                        .filter(({ errors }) => errors.length).length
-                    }
-                  >
-                    Done
-                  </Button>
-                )}
-              </div>
-            </Col>
-          </Row>
+
+          <Navigation
+            steps={steps}
+            current={current}
+            form={form}
+            handleSubmit={handleSubmit}
+            next={next}
+            prev={prev}
+          />
         </Form>
       </Col>
     </Row>

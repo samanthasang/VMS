@@ -3,7 +3,8 @@ import { Row, Col, Tooltip } from "antd";
 
 import { Form, Input } from "antd";
 
-import { InfoCircleOutlined, UserOutlined } from "@ant-design/icons";
+import { InfoCircleOutlined } from "@ant-design/icons";
+import { User } from "../../../assets/Icons/JSXs";
 
 import "./inputform.styles.scss";
 
@@ -15,7 +16,7 @@ const InputForm = ({
   type,
   placeholder,
   empty,
-  value
+  value,
 }) => {
   return (
     <Row>
@@ -30,7 +31,7 @@ const InputForm = ({
             <Input
               autoComplete="on"
               name={inputs}
-              prefix={<UserOutlined className="site-form-item-icon" />}
+              prefix={<User className="site-form-item-icon" />}
               placeholder={placeholder}
               suffix={
                 <Tooltip title="Required">
@@ -45,7 +46,7 @@ const InputForm = ({
           ) : (
             <Input
               name={inputs}
-              prefix={<UserOutlined className="site-form-item-icon" />}
+              prefix={<User className="site-form-item-icon" />}
               placeholder={placeholder}
             />
           )}

@@ -7,6 +7,17 @@
 .navigation_registeration .steps-action {
   right: 22px;
 }
+.navigation_registeration .steps-action button {
+  border-radius: 8px;
+  padding: 0px 25px;
+}
+.navigation_registeration .steps-action a {
+  background: #e1eefa;
+  border: 2px solid #2175c2;
+  color: #3d495d;
+  border-radius: 8px;
+  padding: 4px 29px;
+}
 .main_container_form {
   height: calc(100% - 50px);
   position: absolute;
@@ -16,4 +27,12 @@
   &div {
     height: 100%;
   }
+}
+
+.main_register_container_register {
+  height: calc(100% - 50px);
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 10vh 0 20px 0;
 }

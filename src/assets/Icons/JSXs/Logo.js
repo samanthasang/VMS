@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const SvgLogo = (props) => (
+const SvgLogo = ({ title, titleId, ...props }) => (
   <svg
     width="1em"
     height="1em"
@@ -8,8 +8,10 @@ const SvgLogo = (props) => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
+    aria-labelledby={titleId}
     {...props}
   >
+    {title ? <title id={titleId}>{title}</title> : null}
     <g filter="url(#Logo_svg__a)">
       <path fill="url(#Logo_svg__b)" d="M4 0h50.64v45H4z" />
       <path

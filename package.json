@@ -25,12 +25,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": " set PORT=3013 && react-scripts start",
     "build": "react-scripts build",
     "production": "react-scripts build:production",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "svgr": "svgr --icon --out-dir src/assets/Icons/JSXs src/assets/Icons/Svgs"
+
+    "svgr": "svgr --icon --title-prop --replace-attr-values --ignore-existing --out-dir src/assets/Icons/JSXs src/assets/Icons/Svgs"
+
   },
   "eslintConfig": {
     "extends": [

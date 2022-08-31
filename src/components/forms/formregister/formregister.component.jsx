@@ -8,6 +8,8 @@ import OpenNotification from "../../form-items/notification/notification.compone
 
 import "./formregister.styles.scss";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import Navigation from "../../generals-items/navigation/navigation.component";
 const steps = [
   {
     title: "First",
@@ -61,8 +63,7 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
       setEmtyRepeatPassword(false);
     }
   };
-  const onFinish = (inputs) => {
-  };
+  const onFinish = (inputs) => {};
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -214,54 +215,14 @@ const FormRegister = ({ LoginAuth, current, next, prev, form }) => {
             tittle={passwordTittle}
           />
           {/* <SubminBTN handleSubmit={handleSubmit} span={10} offset={7} /> */}
-
-          <Row>
-            <Col className="navigation_registeration" span={24}>
-              <div className="steps-action">
-                {current > 0 && (
-                  <Button
-                    className="btn_pre"
-                    style={{
-                      margin: "0 8px",
-                    }}
-                    onClick={prev}
-                    disabled={
-                      !form.isFieldsTouched(true) ||
-                      !!form
-                        .getFieldsError()
-                        .filter(({ errors }) => errors.length).length
-                    }
-                  >
-                    Back
-                  </Button>
-                )}
-                {current < steps.length - 1 && (
-                  <Button
-                    className="btn_next"
-                    type="primary"
-                    onClick={handleSubmit}
-                  >
-                    Next
-                  </Button>
-                )}
-                {current === steps.length - 1 && (
-                  <Button
-                    className="btn_next"
-                    type="primary"
-                    onClick={() => OpenNotification("topRight")}
-                    disabled={
-                      !form.isFieldsTouched(true) ||
-                      !!form
-                        .getFieldsError()
-                        .filter(({ errors }) => errors.length).length
-                    }
-                  >
-                    Done
-                  </Button>
-                )}
-              </div>
-            </Col>
-          </Row>
+          <Navigation
+            steps={steps}
+            current={current}
+            form={form}
+            handleSubmit={handleSubmit}
+            next={next}
+            prev={prev }
+          />
         </Form>
       </Col>
     </Row>

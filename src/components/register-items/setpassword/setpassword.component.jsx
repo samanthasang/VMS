@@ -7,6 +7,7 @@ import InputFormWithLabel from "../../form-items/inputformwithlabel/inputformwit
 
 import OpenNotification from "../../form-items/notification/notification.component";
 import axios from "axios";
+import Navigation from "../../generals-items/navigation/navigation.component";
 
 const { Option } = Select;
 const steps = [
@@ -78,7 +79,7 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
     console.log("Failed:", errorInfo);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmitForm = (event) => {
     event.preventDefault();
     if (inputs.question1 === "") {
       setEmtyQuestion1Answer(true);
@@ -166,7 +167,7 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmitForm}
         >
           <Row>
             <Col span={18} offset={3}>
@@ -185,7 +186,7 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
                     setEmtyQuestion1Answer(false),
                     setInputs((inputs) => ({
                       ...inputs,
-                      ["question1"]: id.id,
+                      question1: id.id,
                     }))
                   )}
                   filterOption={(input, option) =>
@@ -229,11 +230,11 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
                   placeholder="Select a Question"
                   optionFilterProp="children"
                   onChange={(value, id) => (
-                    console.log(id.id),
+                    console.log(id),
                     setEmtyQuestion2Answer(false),
                     setInputs((inputs) => ({
                       ...inputs,
-                      ["question2"]: id.id,
+                      question2: id.id,
                     }))
                   )}
                   filterOption={(input, option) =>
@@ -277,12 +278,8 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
                   placeholder="Select a Question"
                   optionFilterProp="children"
                   onChange={(value, id) => (
-                    console.log(id.id),
                     setEmtyQuestion3Answer(false),
-                    setInputs((inputs) => ({
-                      ...inputs,
-                      ["question3"]: id.id,
-                    }))
+                    setInputs((inputs) => ({ ...inputs, question3: id.id }))
                   )}
                   filterOption={(input, option) =>
                     option.children.toLowerCase().includes(input.toLowerCase())
@@ -315,49 +312,14 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
             </Col>
           </Row>
 
-          <Row>
-            <Col className="navigation_registeration" span={24}>
-              <div className="steps-action">
-                {current > 0 && (
-                  <Button
-                    className="btn_pre"
-                    style={{
-                      margin: "0 8px",
-                    }}
-                    onClick={prev}
-                    disabled={
-                      !form.isFieldsTouched(true) ||
-                      !!form
-                        .getFieldsError()
-                        .filter(({ errors }) => errors.length).length
-                    }
-                  >
-                    Back
-                  </Button>
-                )}
-                {current < steps.length - 1 && (
-                  <Button className="btn_next" type="primary" onClick={next}>
-                    Next
-                  </Button>
-                )}
-                {current === steps.length - 1 && (
-                  <Button
-                    className="btn_next"
-                    type="primary"
-                    onClick={handleSubmit}
-                    disabled={
-                      !form.isFieldsTouched(true) ||
-                      !!form
-                        .getFieldsError()
-                        .filter(({ errors }) => errors.length).length
-                    }
-                  >
-                    Done
-                  </Button>
-                )}
-              </div>
-            </Col>
-          </Row>
+          <Navigation
+            steps={steps}
+            current={current}
+            form={form}
+            handleSubmitForm={handleSubmitForm}
+            next={next}
+            prev={prev}
+          />
         </Form>
       </Col>
     </Row>

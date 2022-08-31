@@ -18,6 +18,7 @@ import PlayBackPage from "./pages/playback/playback.component";
 import Layout from "./components/layout/Layout";
 
 import "./App.css";
+import Page505 from "./pages/505.page/505page.component";
 
 function App() {
   const isLogedIn = useSelector((state) => state.login.isLogedIn);
@@ -25,7 +26,7 @@ function App() {
   let navigate = useNavigate();
   useEffect(() => {
     console.log("3: " + isLogedIn);
-    isLogedIn && window.location.pathname === "/" &&  navigate("/liveViewpage");
+    isLogedIn && window.location.pathname === "/" && navigate("/page505");
   }, [isLogedIn, navigate]);
 
   return (
@@ -36,16 +37,17 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/forgotten-password" element={<ForgotPasswordPage />} />
         <Route element={<Privateroute isLogedIn={isLogedIn} />}>
+          <Route path="/page505" element={<Page505 />} />
           <Route element={<LayoutTop />}>
-          <Route element={<Layout />}>
-            <Route path="/dashboard" element={<MainMenuPage />} />
-            <Route path="/mainmenupage" element={<MainMenuPage />} />
-            <Route path="/devicespage" element={<DevicesPage />} />
-            <Route path="/liveViewpage" element={<LiveViewPage />} />
-            <Route path="/userpage" element={<UserPage />} />
-            <Route path="/playBackpage" element={<PlayBackPage />} />
-            <Route path="*" element={() => <h1>Page not found</h1>} />
-          </Route>
+            <Route element={<Layout />}>
+              <Route path="/dashboard" element={<MainMenuPage />} />
+              <Route path="/mainmenupage" element={<MainMenuPage />} />
+              <Route path="/devicespage" element={<DevicesPage />} />
+              <Route path="/liveViewpage" element={<LiveViewPage />} />
+              <Route path="/userpage" element={<UserPage />} />
+              <Route path="/playBackpage" element={<PlayBackPage />} />
+              <Route path="*" element={() => <h1>Page not found</h1>} />
+            </Route>
           </Route>
         </Route>
       </Routes>

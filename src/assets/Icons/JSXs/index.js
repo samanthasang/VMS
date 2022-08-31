@@ -1,3 +1,6 @@
+export { default as CustomSplit } from "./CustomSplit";
+export { default as FullScreen } from "./FullScreen";
+export { default as Lock } from "./Lock";
 export { default as LogoLogin } from "./LogoLogin";
 export { default as Logo } from "./Logo";
 export { default as Notification } from "./Notification";
@@ -5,6 +8,10 @@ export { default as Step11 } from "./Step11";
 export { default as Step22 } from "./Step22";
 export { default as Step221 } from "./Step221";
 export { default as Step222 } from "./Step222";
+export { default as User } from "./User";
+export { default as W16 } from "./W16";
+export { default as W4 } from "./W4";
+export { default as W9 } from "./W9";
 export { default as LoginBg } from "./LoginBg";
 export { default as LoginFormBg } from "./LoginFormBg";
 export { default as SuccessIcon } from "./SuccessIcon";

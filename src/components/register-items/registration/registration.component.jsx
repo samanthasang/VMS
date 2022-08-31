@@ -1,21 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Row, Col, Steps } from "antd";
 
-import "./registration.styles.scss";
-import Register from "../register/register.component";
 
 import Step11 from "../../../assets/Step1-1.svg";
 import Step110 from "../../../assets/Step22-1.svg";
-const { Step } = Steps;const steps = [
-  {
-    title: "First",
-    content: "First-content",
-  },
-  {
-    title: "Second",
-    content: "Second-content",
-  }
-];
+import "./registration.styles.scss";
+const { Step } = Steps;
 
 const Registration = ({current, ChangeCurrent, next, prev}) => {
   return (

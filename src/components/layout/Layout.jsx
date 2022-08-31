@@ -1,6 +1,5 @@
 import { Col, Row, Menu } from "antd";
-import { Link, Outlet, useLocation } from "react-router-dom";
-import LoginPage from "../../pages/loginpage/loginpage.component";
+import { Link, Outlet } from "react-router-dom";
 
 import { LiveviewIcon } from "../../assets/liveview";
 import { PalybackIcon } from "../../assets/playback.jsx";
@@ -12,7 +11,6 @@ import { SettingIcon } from "../../assets/setting.jsx";
 import "./layout.styles.scss";
 
 const Layout = ({ hideHeaderPaths = [] }) => {
-  const { pathname } = useLocation();
 
   return (
     <>
@@ -57,6 +55,7 @@ const Layout = ({ hideHeaderPaths = [] }) => {
                 width: "60px",
               }}
             >
+              {/* <a href="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4"/> */}
               <Link to={"/playBackpage"}>Setting</Link>
             </Menu.Item>
           </Menu>

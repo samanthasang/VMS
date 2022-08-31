@@ -1,11 +1,21 @@
-import React from 'react'
+import React from "react";
 import { Row, Col, Form, Input, Tooltip } from "antd";
 
-import { InfoCircleOutlined, LockOutlined } from "@ant-design/icons";
+import { InfoCircleOutlined } from "@ant-design/icons";
+import { Lock } from "../../../assets/Icons/JSXs";
 
-import './inputpasswordform.styles.scss'
+import "./inputpasswordform.styles.scss";
 
-const InputPasswordForm = ({ span, offset,inputs, handleChange, type, placeholder, empty, tittle}) => {
+const InputPasswordForm = ({
+  span,
+  offset,
+  inputs,
+  handleChange,
+  type,
+  placeholder,
+  empty,
+  tittle,
+}) => {
   return (
     <Row>
       <Col span={span} offset={offset}>
@@ -17,10 +27,12 @@ const InputPasswordForm = ({ span, offset,inputs, handleChange, type, placeholde
           {empty ? (
             <Input
               name={inputs}
-              prefix={<LockOutlined className="site-form-item-icon" />}
+              prefix={<Lock className="site-form-item-icon" />}
               placeholder={placeholder}
               suffix={
-                <Tooltip title={`${tittle ? 'Password Dosn`t Match' : "Required"}`}>
+                <Tooltip
+                  title={`${tittle ? "Password Dosn`t Match" : "Required"}`}
+                >
                   <InfoCircleOutlined
                     style={{
                       color: "rgba(255,0,0,.8)",
@@ -30,25 +42,25 @@ const InputPasswordForm = ({ span, offset,inputs, handleChange, type, placeholde
               }
             />
           ) : (
-          <Tooltip
-            // trigger={["focus"]}
-            title={
-              "Use 8 or more characters with a mix of letters, numbers & symbols"
-            }
-            placement="topLeft"
-            overlayClassName="numeric-input"
-          >
-            <Input.Password
-              name={inputs}
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              placeholder={placeholder}
-            />
-          </Tooltip>
+            <Tooltip
+              // trigger={["focus"]}
+              title={
+                "Use 8 or more characters with a mix of letters, numbers & symbols"
+              }
+              placement="topLeft"
+              overlayClassName="numeric-input"
+            >
+              <Input.Password
+                name={inputs}
+                prefix={<Lock className="site-form-item-icon" />}
+                placeholder={placeholder}
+              />
+            </Tooltip>
           )}
         </Form.Item>
       </Col>
     </Row>
   );
-}
+};
 
-export default InputPasswordForm
+export default InputPasswordForm;

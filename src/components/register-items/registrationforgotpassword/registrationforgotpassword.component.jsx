@@ -1,26 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Row, Col, Steps } from "antd";
 
 import "./registrationforgotpassword.styles.scss";
-import Register from "../register/register.component";
 
 import Step11 from "../../../assets/Step2-2.svg";
 import Step110 from "../../../assets/Step22-2.svg";
 const { Step } = Steps;
-const steps = [
-  {
-    title: "Email",
-    content: "First-content",
-  },
-  {
-    title: "Validation",
-    content: "First-content",
-  },
-  {
-    title: "Password Reset",
-    content: "Second-content",
-  },
-];
 
 const StepForgotPassword = ({ current, ChangeCurrent, next, prev }) => {
   return (

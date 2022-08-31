@@ -4,7 +4,6 @@ import { Col, Row } from "antd";
 import LogoVISTAVMS from "../logovistavms/logovistavms.component";
 import FormLogin from "../../forms/formlogin/formlogin.component";
 
-import { LoginFormBg } from "../../../assets/Icons/JSXs/index";
 import LoginBG from "../../../assets/login-bg.webp";
 
 import "./login.styles.scss";

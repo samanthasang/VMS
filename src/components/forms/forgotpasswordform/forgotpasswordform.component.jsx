@@ -1,27 +1,14 @@
 import React, { useState } from "react";
-import {
-  Avatar,
-  Button,
-  Card,
-  Checkbox,
-  Col,
-  Form,
-  Input,
-  Row,
-  Select,
-  Steps
-} from "antd";
+import { Button, Col, Form, Row, Select } from "antd";
 import { useNavigate } from "react-router-dom";
-import InputForm from "../../form-items/inputform/inputform.component";
-import InputPasswordForm from "../../form-items/inputpasswordform/inputpasswordform.component";
 import InputFormWithLabel from "../../form-items/inputformwithlabel/inputformwithlabel.component";
 import ResetPasswordTXT from "../../forgot-password-items/resetpasswordtxt/resetpasswordtxt.component";
 import axios from "axios";
 import OpenNotification from "../../form-items/notification/notification.component";
 
 import "./forgotpasswordform.styles.scss";
+import Navigation from "../../generals-items/navigation/navigation.component";
 const { Option } = Select;
-const { Step } = Steps;
 const steps = [
   {
     title: "First",
@@ -68,9 +55,7 @@ const FormForgotPassword = ({
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setInputs(
-      (inputs) => ({ ...inputs, [name]: value }),
-    );
+    setInputs((inputs) => ({ ...inputs, [name]: value }));
     if (inputs.question1Answer !== "") {
       setEmtyQuestion1Answer(false);
     }
@@ -269,47 +254,15 @@ const FormForgotPassword = ({
               />
             </Col>
           </Row>
-          <Row>
-            <Col className="navigation_registeration" span={24}>
-              <div className="steps-action">
-                {current > 0 && (
-                  <Button
-                    className="btn_pre"
-                    style={{
-                      margin: "0 8px",
-                    }}
-                    onClick={prev}
-                  >
-                    Back
-                  </Button>
-                )}
-                {current < steps.length - 1 && (
-                  <Button
-                    className="btn_next"
-                    type="primary"
-                    onClick={handleSubmit}
-                  >
-                    Next
-                  </Button>
-                )}
-                {current === steps.length - 1 && (
-                  <Button
-                    className="btn_next"
-                    type="primary"
-                    onClick={() => OpenNotification("topRight")}
-                    disabled={
-                      !form.isFieldsTouched(true) ||
-                      !!form
-                        .getFieldsError()
-                        .filter(({ errors }) => errors.length).length
-                    }
-                  >
-                    Done
-                  </Button>
-                )}
-              </div>
-            </Col>
-          </Row>
+
+          <Navigation
+            steps={steps}
+            current={current}
+            form={form}
+            handleSubmit={handleSubmit}
+            next={next_2}
+            prev={prev}
+          />
         </Form>
       </Col>
     </Row>

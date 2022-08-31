@@ -1,0 +1,33 @@
+.live_view_container {
+  .ant-btn:hover,
+  .ant-btn:focus {
+    color: #d6d6d6 !important;
+    background: transparent !important;
+  }
+  .ant-btn {
+    color: #d6d6d6 !important;
+    border-radius: 1px;
+    background: transparent !important;
+  }
+  .footer_icon_live_view {
+    direction: rtl;
+    padding: 7px 10px 0 0;
+  }
+  .footer_drop_live_view {
+    background: #21242c;
+    border-radius: 4px;
+    color: #f0f2f5 !important;
+    padding: 4px 16px;
+    margin: 10px 20px 0 20px;
+    display: inline-block;
+  }
+  .footer_drop_live_view:hover,
+  .footer_drop_live_view:focus {
+    background: #21242c;
+    border-radius: 4px;
+    color: #f0f2f5 !important;
+    padding: 4px 16px;
+    margin: 10px 20px 0 20px;
+    display: inline-block;
+  }
+}

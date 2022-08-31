@@ -1,14 +1,16 @@
 import * as React from "react";
 
-const SvgLoginFormBg = (props) => (
+const SvgLoginFormBg = ({ title, titleId, ...props }) => (
   <svg
     width="1em"
     height="1em"
     viewBox="0 0 860 571"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    aria-labelledby={titleId}
     {...props}
   >
+    {title ? <title id={titleId}>{title}</title> : null}
     <g filter="url(#login-form-bg_svg__a)">
       <rect width={860} height={571} rx={8} fill="#000" fillOpacity={0.3} />
     </g>

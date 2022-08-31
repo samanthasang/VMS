@@ -1,30 +1,32 @@
-import { Col, Row, Menu, Dropdown, Space, Image } from "antd";
+import { Col, Row, Menu, Dropdown, Space } from "antd";
 import { NitificationIcon } from "../../assets/Notification";
 import { UserAvatarIcon } from "../../assets/UserAvatar";
 import { DeropDownIcon } from "../../assets/DropDown";
 import LogoIcon from "../../assets/Logo.svg";
-import { logoutUser } from "../../redux/action/registerAction";
+import { UserLogOut } from "../../redux/login_redux/loginAction";
 
 import "./layout.styles.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
-const LayoutTop = ({ hideHeaderPaths = [] }) => {
+const LayoutTop = () => {
   const dispatch = useDispatch();
 
   const isLogedIn = useSelector((state) => state.login.isLogedIn);
+  const user = useSelector((state) => state.login.user.user.firstName);
   const handleOnClick = ({ key }) => {
     console.log(key);
     switch (key) {
       case "0":
         console.log("0");
+        console.log(user);
         break;
       case "1":
         console.log("1");
         break;
       case "3":
         console.log("log: " + isLogedIn);
-        dispatch(logoutUser());
+        dispatch(UserLogOut());
         break;
 
       default:
@@ -79,7 +81,7 @@ const LayoutTop = ({ hideHeaderPaths = [] }) => {
           style={{ height: "3rem" }}
         >
           <Dropdown overlay={menu} trigger={["click"]} placement="bottomRight">
-            <a
+            <button
               onClick={(e) => e.preventDefault()}
               style={{
                 right: "115px",
@@ -92,26 +94,25 @@ const LayoutTop = ({ hideHeaderPaths = [] }) => {
               <Space>
                 <NitificationIcon />
               </Space>
-            </a>
+            </button>
           </Dropdown>
           <Dropdown overlay={menu} trigger={["click"]}>
-            <a
+            <button
               onClick={(e) => e.preventDefault()}
               className="drop_down_menu"
               style={{
                 right: "0",
                 position: "absolute",
-                right: "0",
                 width: "115px",
                 padding: "5px",
               }}
             >
               <Space>
                 <UserAvatarIcon />
-                Saman
+                {user}
                 <DeropDownIcon />
               </Space>
-            </a>
+            </button>
           </Dropdown>
         </Menu>
         <Outlet />

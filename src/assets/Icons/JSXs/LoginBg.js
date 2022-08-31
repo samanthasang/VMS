@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const SvgLoginBg = (props) => (
+const SvgLoginBg = ({ title, titleId, ...props }) => (
   <svg
     width="1em"
     height="1em"
@@ -8,8 +8,10 @@ const SvgLoginBg = (props) => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
+    aria-labelledby={titleId}
     {...props}
   >
+    {title ? <title id={titleId}>{title}</title> : null}
     <path fill="url(#login-bg_svg__a)" d="M0 0h1600v900H0z" />
     <defs>
       <pattern
