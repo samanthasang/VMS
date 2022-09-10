@@ -1,0 +1,42 @@
+{
+  "fakeHttpDataset": [
+    {
+      "id": 5,
+      "content": "Movement Detected",
+      "editable": true,
+      "start": "2022-07-26T15:16:04",
+      "style": "opacity: 70% ;border: none ;color: #000000; background-color: rgb(15 243 255);height: 20px;text-size: 10px;display: flex;align-items: center;justify-content: center;"
+    },
+    {
+      "id": "background_all",
+      "editable": true,
+      "start": "2022-07-26T15:15:15",
+      "end": "2022-07-26T15:15:30",
+      "type": "background",
+      "style": "background-color: rgba(15, 243, 255, 0.7 );",
+      "className": "positive"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

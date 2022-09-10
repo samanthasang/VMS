@@ -1,0 +1,46 @@
+.controller {
+  height: 3rem;
+  width: 100%;
+  background-color: #14161a;
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 1fr, 3fr, 1fr;
+}
+
+.controller_cut-download {
+  grid-column: 1;
+  grid-row: 1;
+  background-color: #14161a;
+  display: flex;
+  align-items: center;
+}
+
+.controller_player-actions {
+  grid-column: 2;
+  grid-row: 1;
+  background-color: #14161a;
+  display: flex;
+  align-items: center;
+}
+
+.controller_windows-select {
+  grid-column: 3;
+  grid-row: 1;
+  background-color: #14161a;
+  display: flex;
+  align-items: center;
+}
+
+.cut-modal .ant-modal-header,
+.cut-modal .ant-modal-footer {
+  background-color: #2E333D;
+
+  
+}
+
+.cut-modal .ant-modal-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+color:  #F0F2F5 ;
+}

@@ -6,6 +6,12 @@ import registerReducer from "./register_redux/registerReducer";
 import forgotPasswordReducer from "./forgotpassword_redux/forgotPasswordReducer";
 import loginReducer from "./login_redux/loginReducer";
 
+import { PlayerBehaviorState } from "./PlayerBehavior/PlayerBehaviorReducer";
+import { SelectedVideoPlayerAndPlayerUrlsState } from "./SelectedVideoPlayerAndPlayerUrls/SelectedVideoPlayerAndPlayerUrlsReducer";
+
+
+
+
 const persistConfig = {
   key: "root",
   storage,
@@ -16,6 +22,8 @@ const rootReducer = combineReducers({
   login: loginReducer,
   forgotPassword: forgotPasswordReducer,
   register: registerReducer,
+  PlayerBehaviorState: PlayerBehaviorState,
+  SelectedVideoPlayerAndPlayerUrlsState: SelectedVideoPlayerAndPlayerUrlsState,
 });
 
 export default persistReducer(persistConfig, rootReducer);

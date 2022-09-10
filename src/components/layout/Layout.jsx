@@ -1,17 +1,16 @@
 import { Col, Row, Menu } from "antd";
 import { Link, Outlet } from "react-router-dom";
 
-import { LiveviewIcon } from "../../assets/liveview";
-import { PalybackIcon } from "../../assets/playback.jsx";
-import { UsersIcon } from "../../assets/users.jsx";
-import { DevicesIcon } from "../../assets/devices.jsx";
-import { AboutIcon } from "../../assets/about.jsx";
-import { SettingIcon } from "../../assets/setting.jsx";
+import { LiveviewIcon } from "../../assets/Icons/JSXs";
+import { PalybackIcon } from "../../assets/Icons/JSXs";
+import { UsersIcon } from "../../assets/Icons/JSXs";
+import { DevicesIcon } from "../../assets/Icons/JSXs";
+import { AboutIcon } from "../../assets/Icons/JSXs";
+import { SettingIcon } from "../../assets/Icons/JSXs";
 
 import "./layout.styles.scss";
 
 const Layout = ({ hideHeaderPaths = [] }) => {
-
   return (
     <>
       <Row className="side_nav_2">
@@ -41,7 +40,7 @@ const Layout = ({ hideHeaderPaths = [] }) => {
               style={{
                 bottom: "50px",
                 position: "absolute",
-                width: "60px",
+                width: "3rem",
               }}
             >
               <Link to={"/playBackpage"}>About</Link>
@@ -52,11 +51,22 @@ const Layout = ({ hideHeaderPaths = [] }) => {
               style={{
                 bottom: "0",
                 position: "absolute",
-                width: "60px",
+                width: "3rem",
               }}
             >
               {/* <a href="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4"/> */}
-              <Link to={"/playBackpage"}>Setting</Link>
+              <a
+                draggable
+                onClick={(event) => event.preventDefault()}
+                // style={{
+                //   pointerEvents: "none",
+                // }}
+                href={
+                  "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4"
+                }
+              >
+                Setting
+              </a>
             </Menu.Item>
           </Menu>
         </Col>

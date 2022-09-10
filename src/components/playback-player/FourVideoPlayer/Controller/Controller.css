@@ -1,0 +1,7 @@
+.controler {
+  height: 10vh;
+  width: 100%;
+  background-color: rgb(61, 91, 93);
+  display: flex;
+  justify-content: space-around;
+}

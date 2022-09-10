@@ -1,0 +1,27 @@
+.Video-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border: 1px solid rgb(114, 114, 114);
+}
+
+.Video-container:hover,
+.Video-container:focus,
+.Video-container:active {
+  border: 1px solid rgb(235, 235, 235);
+}
+
+.selected-player-div {
+  border: 1px solid rgb(235, 235, 235);
+}
+
+/* .CardContainerMaker > div {
+  border: 1px solid rgb(114, 114, 114);
+  position: relative;
+} */
+
+.react-player-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

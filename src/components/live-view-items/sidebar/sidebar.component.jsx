@@ -167,13 +167,24 @@ const SideBar = () => {
         const afterStr = strTitle.slice(index + searchValue.length);
         const title =
           index > -1 ? (
-            <span>
+            <a>
               {beforeStr}
-              <span className="site-tree-search-value">{searchValue}</span>
+              <a className="site-tree-search-value">{searchValue}</a>
               {afterStr}
-            </span>
+            </a>
           ) : (
-            <span>{strTitle}</span>
+            <a
+              draggable
+              onClick={(event) => event.preventDefault()}
+              // style={{
+              //   pointerEvents: "none",
+              // }}
+              href={
+                "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4"
+              }
+            >
+              {strTitle}
+            </a>
           );
 
         if (item.children) {
@@ -194,8 +205,8 @@ const SideBar = () => {
     return loop(defaultData);
   }, [searchValue]);
   return (
-    <Row>
-      <Col span={24}>
+    <Row style={{ height: "100%" }}>
+      <Col span={24} style={{ height: "100%" }}>
         <Collapse
           defaultActiveKey={["1"]}
           onChange={onChange}

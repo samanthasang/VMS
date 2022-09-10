@@ -1,0 +1,22 @@
+.modal_video_window {
+  width: 100% !important;
+  height: 100vh !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  .ant-modal-content,
+  .ant-modal-content video {
+    width: 100% !important;
+    height: 100vh !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+  }
+  .ant-modal-content video {
+    object-fit: fill;
+  }
+}

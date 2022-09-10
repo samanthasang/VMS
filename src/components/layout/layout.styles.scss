@@ -1,6 +1,6 @@
 .side_nav {
   display: inline-block !important;
-  height: 60px;
+  height: 3rem;
   color: rgba(255, 255, 255, 0.65);
   background: #21242c;
   width: 60px;
@@ -11,11 +11,16 @@
   height: calc(100vh - 3rem);
   color: rgba(255, 255, 255, 0.65);
   background: #21242c;
-  width: 60px;
+  width: 3rem;
   padding: 0 0;
+  svg {
+    width: 3rem;
+    height: 1.75rem;
+    margin-top: 7px !important;
+  }
 }
 .side_nav_2 ul li span {
-  width: 60px;
+  width: 3rem;
 }
 .side_nav button {
   background: transparent;
@@ -28,7 +33,7 @@
   color: #efefef;
 }
 .ant-menu.ant-menu-inline-collapsed {
-  width: 60px !important;
+  width: 3rem !important;
   padding: 0;
 }
 .ant-menu.ant-menu-inline-collapsed > .ant-menu-item,
@@ -46,7 +51,10 @@
   > .ant-menu-submenu-title {
   padding: 0 !important;
 }
-
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background: linear-gradient(180deg, #1d6ab0 0%, #103a64 100%);
+  border-radius: 8px;
+}
 .drop_down_menu {
   height: 45px;
   div {

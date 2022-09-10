@@ -17,6 +17,7 @@ import UserPage from "./pages/userpage/userpage.component";
 import PlayBackPage from "./pages/playback/playback.component";
 import Layout from "./components/layout/Layout";
 
+
 import "./App.css";
 import Page505 from "./pages/505.page/505page.component";
 
@@ -26,7 +27,7 @@ function App() {
   let navigate = useNavigate();
   useEffect(() => {
     console.log("3: " + isLogedIn);
-    isLogedIn && window.location.pathname === "/" && navigate("/page505");
+    isLogedIn && window.location.pathname === "/" && navigate("/liveViewpage");
   }, [isLogedIn, navigate]);
 
   return (

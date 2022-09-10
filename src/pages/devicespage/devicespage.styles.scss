@@ -1,0 +1,62 @@
+.full_screen {
+  height: 100vh;
+  width: 100%;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.orginal_screen {
+  display: inline-flex;
+  width: calc(100% - 60px);
+  height: calc(100vh - 3rem);
+  margin: 0;
+  padding: 0;
+  top: 3rem;
+  position: absolute;
+  left: 60px;
+}
+
+.window_screen {
+  height: 100%;
+}
+
+.header_btn {
+  padding: 0 30px !important;
+  /* Secondary/40 */
+  height: 36px !important;
+
+  background: #2b87db !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  /* identical to box height */
+
+  text-align: center !important;
+  letter-spacing: 0.005em !important;
+  /* Secondary/40 */
+
+  border: 1px solid #2b87db !important;
+  border-radius: 8px !important;
+  color: #f0f2f5 !important;
+  // &:hover {
+  //   background: #195892 !important;
+  // }
+}
+
+.devices-table .ant-table-tbody {
+  background-color: rgb(52, 52, 61);
+  color: #f0f2f5 !important;
+}
+
+.devices-table .ant-table-tbody tr:hover {
+  background-color: rgb(30, 30, 196);
+  color: #f0f2f5 !important;
+}
+
+.devices-table .ant-table-thead th {
+  background-color: rgb(113, 29, 159);
+  color: #f0f2f5 !important;
+}

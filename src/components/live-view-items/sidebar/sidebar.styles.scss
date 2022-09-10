@@ -5,8 +5,9 @@
   background: #2e333d !important;
   box-shadow: inset 0px -4px 9px rgba(0, 0, 0, 0.25) !important;
   color: #e1e5eb !important;
-  height: calc(100vh - 3rem);
-  border-radius: 0;
+  height: 100%;
+  border-radius: 0 !important;
+  border: none !important;
   .ant-input-search-button {
     height: 29px !important;
   }
@@ -22,7 +23,8 @@
     color: #e1e5eb !important;
   }
   .ant-collapse,
-  .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header,
+  .ant-collapse > .ant-collapse-item {
     border: none !important;
     background: #2e333d !important;
     box-shadow: inset 0px -4px 9px rgba(0, 0, 0, 0.25) !important;
@@ -44,6 +46,14 @@
     color: #e1e5eb !important;
   }
   .ant-collapse-content-box {
-    height: calc(100% - 3rem);
+    height: 100%;
   }
+}
+
+.ant-collapse > .ant-collapse-item > .ant-collapse-header,
+.ant-collapse > .ant-collapse-item {
+  border: none !important;
+  background: #2e333d !important;
+  box-shadow: inset 0px -4px 9px rgba(0, 0, 0, 0.25) !important;
+  color: #e1e5eb !important;
 }

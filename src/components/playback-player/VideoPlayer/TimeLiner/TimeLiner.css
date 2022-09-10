@@ -1,0 +1,10 @@
+.timeliner {
+  width: 100%;
+  height: 4rem;
+  background-color: rgb(54, 69, 71);
+}
+
+.vis-time-axis .vis-text {
+    color: lightgrey;
+    font-size: 10px;
+}
