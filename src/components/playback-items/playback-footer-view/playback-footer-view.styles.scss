@@ -1,0 +1,90 @@
+.footer_icon_playback_panel {
+  // .ant-dropdown-open {
+
+  // }
+
+  .ant-select-item-option-selected,
+  .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    background: #9199ac !important;
+    color: #f0f2f5 !important;
+  }
+  .footer_select_live_view {
+    width: 32px !important;
+    height: 32px;
+    margin: 10px 10px 0px 0 !important;
+    background: #21242c !important;
+    border-radius: 4px !important;
+    border: none !important;
+    color: #f0f2f5 !important;
+    padding: 0 !important;
+    display: inline-block !important;
+    outline: none !important;
+    // .ant-select:not(.ant-select-customize-input) .ant-select-selector,
+    .ant-select-selector {
+      background: #21242c !important;
+      border-radius: 4px !important;
+      border: none !important;
+      outline: none !important;
+      &:active,
+      &:visited,
+      &:focus-visible,
+      &:focus-within,
+      &:focus {
+        border: none !important;
+        outline: none !important;
+        [ant-click-animating-without-extra-node="true"]::after {
+          display: none;
+        }
+      }
+      .ant-select-focused,
+      .ant-select-selection-item {
+        border: none !important;
+        outline: none !important;
+        [ant-click-animating-without-extra-node="true"]::after {
+          display: none;
+        }
+        &:active,
+        &:visited,
+        &:focus-visible,
+        &:focus-within,
+        &:focus {
+          border: none !important;
+          outline: none !important;
+          [ant-click-animating-without-extra-node="true"]::after {
+            display: none;
+          }
+        }
+      }
+
+      [ant-click-animating-without-extra-node="true"]::after {
+        display: none;
+      }
+    }
+    .ant-space-align-center {
+      color: #e1e5eb !important;
+    }
+    [ant-click-animating-without-extra-node="true"]::after {
+      display: none;
+    }
+  }
+  .footer_select_live_view {
+    .ant-select-dropdown,
+    .ant-select {
+      background: #21242c !important;
+      border-radius: 5px !important;
+      width: 120px !important;
+    }
+  }
+  .footer_icon_live_panel {
+    svg {
+      height: 1.125rem !important;
+      width: 1.125rem !important;
+      &:hover {
+        path {
+          // fill: linear-gradient(180deg, #1d6ab0 0%, #103a64 100%) !important;
+          fill: #1d6ab0 !important;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,175 @@
+.panel_tabs {
+  .site-tree-search-value {
+    color: #f50;
+  }
+  .ant-tabs-top > .ant-tabs-nav .ant-tabs-ink-bar,
+  .ant-tabs-top > .ant-tabs-nav:before,
+  .ant-tabs-top > div > .ant-tabs-nav .ant-tabs-ink-bar,
+  .ant-tabs-top > div > .ant-tabs-nav:before {
+    width: 0;
+  }
+  .ant-tabs > .ant-tabs-nav,
+  .ant-tabs > div > .ant-tabs-nav {
+    overflow-y: hidden;
+    max-height: calc(100vh - 3rem);
+    background: #2e333d !important;
+    box-shadow: inset 0px -4px 9px rgba(0, 0, 0, 0.25) !important;
+    color: #e1e5eb !important;
+    height: 100%;
+    border-radius: 0 !important;
+    border: none !important;
+    overflow: hidden;
+    .ant-input-search-button {
+      height: 29px !important;
+    }
+    .ant-tree .ant-tree-treenode {
+      color: #e1e5eb !important;
+    }
+    .ant-input-group .ant-input:first-child,
+    .ant-input-group span {
+      background: #21242c;
+      box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 5px;
+      border: none;
+      color: #e1e5eb !important;
+    }
+    .ant-collapse,
+    .ant-collapse > .ant-collapse-item > .ant-collapse-header,
+    .ant-collapse > .ant-collapse-item {
+      border: none !important;
+      background: #2e333d !important;
+      box-shadow: inset 0px -4px 9px rgba(0, 0, 0, 0.25) !important;
+      color: #e1e5eb !important;
+    }
+    .ant-collapse-content,
+    .ant-collapse-conten span,
+    .ant-tree {
+      border: none !important;
+      background: transparent !important;
+    }
+    .ant-collapse > .ant-collapse-item {
+      border: none !important;
+      background: #2e333d !important;
+      box-shadow: inset 0px -4px 9px rgba(0, 0, 0, 0.25) !important;
+      color: #e1e5eb !important;
+    }
+    .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+      color: #e1e5eb !important;
+    }
+    .ant-collapse-content-box {
+      height: 100%;
+    }
+  }
+
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header,
+  .ant-collapse > .ant-collapse-item {
+    border: none !important;
+    background: #2e333d !important;
+    box-shadow: inset 0px -4px 9px rgba(0, 0, 0, 0.25) !important;
+    color: #e1e5eb !important;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    padding: 12px 16px;
+    line-height: 1.5715;
+    cursor: pointer;
+    transition: all 0.3s, visibility 0s;
+  }
+  .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list,
+  .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
+    // width: 100%;
+    width: 0;
+    margin: 0 8px;
+  }
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn,
+  .ant-tabs-tab-btn {
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+    color: #5f687d;
+    svg {
+      margin: -1px 5px -2px 0;
+      path {
+        fill: #5f687d;
+      }
+    }
+  }
+  .ant-tabs-tab,
+  .ant-tabs-tab-active {
+    width: 50%;
+  }
+  .ant-tabs-tab {
+    background: #21242c;
+  }
+  .ant-tabs-tab.ant-tabs-tab-active {
+    background: #2e333d;
+  }
+  .ant-tabs-tab-btn:active,
+  .ant-tabs-tab-btn:focus,
+  .ant-tabs-tab-remove:active,
+  .ant-tabs-tab-remove:focus {
+    color: #5f687d;
+  }
+  .ant-tabs-tab:hover {
+    color: #5f687d;
+  }
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #f0f2f5 !important;
+    background: #2e333d;
+    cursor: auto;
+    svg {
+      margin: -1px 5px -2px 0;
+
+      path {
+        fill: #f0f2f5;
+      }
+    }
+  }
+  .ant-tabs-tab + .ant-tabs-tab {
+    margin: 0 0 0 0 !important;
+  }
+  .ant-tabs-ink-bar,
+  .ant-tabs-ink-bar-animated {
+    display: none !important;
+  }
+  .ant-tree {
+    background: transparent !important;
+  }
+  .ant-tree-checkbox-inner {
+    border: none;
+    border-collapse: separate;
+    background: #5f687d !important;
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.7) !important;
+    transition: all 0.3s;
+    border-radius: 2px;
+  }
+  .ant-tree-checkbox-disabled .ant-tree-checkbox-inner {
+    background: #9199ac !important;
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.7) !important;
+    border-color: none !important;
+  }
+  .ant-tree-checkbox-indeterminate .ant-tree-checkbox-inner {
+    background: #5f687d;
+    border-color: none;
+  }
+  .ant-tabs-content {
+    position: inherit !important;
+    width: 100%;
+    height: 100%;
+  }
+  .ant-tabs-content-holder {
+    height: calc(100vh - 7rem);
+  }
+  .ant-tabs-tabpane {
+    height: 100%;
+    padding: 8px;
+  }
+  .ant-tabs-nav-operations {
+    width: 0;
+  }
+  .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap,
+  .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-wrap {
+    box-shadow: inset 0px -4px 9px rgba(0, 0, 0, 0.25) !important;
+  }
+}

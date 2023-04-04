@@ -6,17 +6,30 @@ import { InfoCircleOutlined } from "@ant-design/icons";
 
 import "./inputformwithlabel.styles.scss";
 
-const InputFormWithLabel = ({ inputs, handleChange, type, placeholder, label, empty, tittle }) => {
+const InputFormWithLabel = ({
+  inputs,
+  handleChange,
+  value,
+  type,
+  placeholder,
+  label,
+  empty,
+  tittle,
+  required,
+}) => {
   return (
     <Form.Item
-      className={` ${empty ? "border_red_label" : "input_form_label"}`}
+      className={`${empty ? "border_red_label" : "input_form_label"}`}
       onChange={handleChange}
       type={type}
       label={label}
+      required
     >
       {empty ? (
         <Input
           name={inputs}
+          value={value}
+          type={type}
           placeholder={placeholder}
           suffix={
             <Tooltip title={`${tittle ? tittle : "Required"}`}>
@@ -29,7 +42,12 @@ const InputFormWithLabel = ({ inputs, handleChange, type, placeholder, label, em
           }
         />
       ) : (
-        <Input name={inputs} placeholder={placeholder} />
+        <Input
+          value={value}
+          type={type}
+          name={inputs}
+          placeholder={placeholder}
+        />
       )}
     </Form.Item>
   );

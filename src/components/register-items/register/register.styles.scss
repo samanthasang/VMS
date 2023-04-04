@@ -7,17 +7,6 @@
 .navigation_registeration .steps-action {
   right: 22px;
 }
-.navigation_registeration .steps-action button {
-  border-radius: 8px;
-  padding: 0px 25px;
-}
-.navigation_registeration .steps-action a {
-  background: #e1eefa;
-  border: 2px solid #2175c2;
-  color: #3d495d;
-  border-radius: 8px;
-  padding: 4px 29px;
-}
 .main_container_form {
   height: calc(100% - 50px);
   position: absolute;
@@ -35,4 +24,67 @@
   width: 100%;
   bottom: 0;
   padding: 10vh 0 20px 0;
+}
+.register_container {
+  .ant-select.ant-select-in-form-item {
+    width: 100% !important;
+    background: #c8ccd5 !important;
+    border-radius: 8px !important;
+  }
+  .ant-select-arrow,
+  .ant-input-password-icon.anticon {
+    color: #434f63 !important;
+  }
+  .ant-input,
+  .ant-select.ant-select-in-form-item {
+    color: #434f63 !important;
+  }
+  .btn_next {
+    margin-left: 0 !important;
+  }
+  .ant-select-selector {
+    background: transparent !important;
+    width: 100% !important;
+    color: #14181f !important;
+    span {
+      height: 32px;
+      margin-top: 2px;
+    }
+  }
+  .ant-dropdown-menu-item
+    .ant-dropdown-menu-submenu-expand-icon
+    .ant-dropdown-menu-submenu-arrow-icon,
+  .ant-dropdown-menu-submenu-title
+    .ant-dropdown-menu-submenu-expand-icon
+    .ant-dropdown-menu-submenu-arrow-icon,
+  .ant-input-password-icon.anticon,
+  .ant-input-suffix,
+  .ant-select-arrow,
+  .ant-modal-close-x,
+  .ant-picker-suffix {
+    color: #3d495d !important;
+  }
+  .ant-select-dropdown,
+  .ant-select {
+    background: #c8ccd5 !important;
+    border-radius: 0px 0px 5px 5px;
+    /* Primary/10 */
+
+    background: #c8ccd5;
+    /* Secondary */
+
+    border: 1px solid #2175c2;
+    /* Defult */
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  }
+  .drop_down {
+    background: #c8ccd5 !important;
+    color: #070709 !important;
+    border-radius: 0 !important;
+  }
+}
+#question1_list .drop_down:last-child {
+  border-radius: 0 !important;
+  border-radius: 0px 0px 5px 5px;
 }

@@ -2,10 +2,15 @@
   height: 36px !important;
   margin-bottom: 12px !important;
 }
-.input_form .ant-form-item-control-input-content > span:first-child {
+.border_none .ant-form-item-control-input-content > span:first-child {
   height: 36px !important;
-  border: 1px solid #2175c2 !important;
+  border: none !important;
   border-radius: 8px !important;
+}
+.input_form .ant-form-item-control-input-content > span:first-child {
+  height: 36px ;
+  border: 1px solid #2175c2 ;
+  border-radius: 8px ;
 }
 .border_red .ant-form-item-control-input-content > span:first-child {
   height: 36px !important;

@@ -1,0 +1,290 @@
+$border_color_table: #5f687d;
+$border_head_color_table: #9199ac;
+
+.ant-tabs {
+  color: #f0f2f5 !important;
+}
+.modal_exporting_window {
+  width: 750px !important;
+  background: #2e333d;
+  box-shadow: 0px 0px 16px rgba(100, 100, 100, 0.6);
+  border-radius: 15px;
+  .ant-table,
+  .ant-progress,
+  .ant-progress-text {
+    font-size: 12px;
+    color: #f0f2f5 !important;
+    border-radius: 10px !important;
+  }
+  .ant-body {
+    text-align: center;
+  }
+  .ant-table-header {
+    background: #5f687d;
+    border-top: 1px solid #21242c;
+    border-left: 1px solid #21242c;
+    border-right: 1px solid #21242c;
+    border-radius: 7px 7px 0 0;
+    .ant-table-cell-scrollbar {
+      background: #2e333d;
+    }
+  }
+  .ant-table-body {
+    background: #282d36;
+    border-bottom: 1px solid #21242c;
+    border-left: 1px solid #21242c;
+    border-right: 1px solid #21242c;
+  }
+  .ant-space,
+  .ant-space-item {
+    width: 100%;
+  }
+  .ant-modal-header {
+    text-align: center;
+    background: #2e333d;
+    border-radius: 12px 12px 0px 0px;
+    // box-shadow: 0px 0px 16px rgba(100, 100, 100, 0.6);
+    filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.25));
+    border: none;
+    .ant-modal-title {
+      color: #d1d7e1 !important;
+      font-size: 18px;
+    }
+  }
+  .table-row-light,
+  .table-row-dark {
+    text-align: center;
+  }
+  .ant-btn:hover {
+    background: transparent !important;
+  }
+  .ant-modal-content {
+    border-radius: 15px;
+    button:first-child {
+      color: #efefef;
+      background: transparent;
+      border: none;
+      float: left;
+      margin: 0 0 10px 0;
+      padding: 4px 15px 4px 0 !important;
+      cursor: pointer;
+      svg {
+        margin: -2px 5px;
+      }
+    }
+  }
+  .btn_next {
+    margin-left: 20px;
+    margin-top: 8px;
+    width: 87%;
+  }
+  .btn_pre {
+    margin-left: 20px;
+    width: 87%;
+  }
+  .ant-tabs-bottom > .ant-tabs-nav:before,
+  .ant-tabs-bottom > div > .ant-tabs-nav:before,
+  .ant-tabs-top > .ant-tabs-nav:before,
+  .ant-tabs-top > div > .ant-tabs-nav:before {
+    border-bottom: 0px solid #f0f0f0;
+  }
+  .ant-modal-body {
+    text-align: center;
+    color: #f0f2f5;
+    font-size: 23px;
+    background: #2e333d;
+    padding: 5px 32px 32px 32px;
+    border-radius: 12px;
+  }
+  .logo-vista {
+    margin: 20px 0;
+    background: none !important;
+    border: none !important;
+  }
+  .tab_about_logo {
+    padding: 0;
+    .ant-card-body {
+      padding: 20px 0 !important;
+    }
+  }
+  .tab_about {
+    text-align: initial !important;
+    p:first-child {
+      margin: 0 !important;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 21px;
+      text-align: justify;
+      letter-spacing: 0.001em;
+
+      color: #f0f2f5 !important;
+    }
+    p {
+      margin: 0 !important;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 21px;
+      color: #e1e5eb;
+    }
+    .ant-divider {
+      /* Primary/50 */
+
+      border: 1px solid #2e333d;
+      box-shadow: 0px 3px 4px rgba(163, 163, 163, 0.75);
+    }
+    .ant-card-body {
+      padding: 0 !important;
+    }
+  }
+  .tab_info {
+    overflow-y: scroll;
+    height: 200px;
+    color: #f0f2f5;
+    text-align: left;
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: #5f687d;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  }
+
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: #5f687d;
+  }
+  .ant-table.ant-table-bordered
+    > .ant-table-container
+    > .ant-table-body
+    > table
+    > tbody
+    > tr
+    > td {
+    border-right: none !important;
+  }
+  .ant-table-tbody > tr > td {
+    border-left: 0.2em solid $border_color_table !important;
+    border-bottom: none !important;
+  }
+  .ant-table-tbody > tr > td:first-child {
+    border-left: none !important;
+  }
+  // .ant-table.ant-table-bordered > .ant-table-container {
+  //   border-left: 0.2em solid $border_color_table !important;
+  // }
+  .ant-table.ant-table-bordered
+    > .ant-table-container
+    > .ant-table-content
+    > table,
+  .ant-table.ant-table-bordered
+    > .ant-table-container
+    > .ant-table-header
+    > table {
+    border: none !important;
+  }
+  thead {
+    border: 0.2em solid $border_head_color_table !important;
+  }
+  .ant-table.ant-table-bordered
+    > .ant-table-container
+    > .ant-table-header
+    > table
+    > thead
+    > tr
+    > th,
+  .ant-table-thead > tr > th {
+    border-left: 0.2em solid $border_head_color_table !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    border-right: none !important;
+    font-weight: 600;
+    font-size: 12px;
+    text-align: center;
+    color: #f0f2f5;
+    background: #5f687d;
+  }
+  .ant-table.ant-table-bordered
+    > .ant-table-container
+    > .ant-table-header
+    > table
+    > thead
+    > tr
+    > th:first-child,
+  .ant-table-thead > tr > th:first-child {
+    border-left: none !important;
+    border-top-left-radius: 5px !important;
+  }
+  .ant-table.ant-table-bordered
+    > .ant-table-container
+    > .ant-table-header
+    > table
+    > thead
+    > tr:first-child
+    > th:last-child,
+  .ant-table-thead > tr:first-child > th:last-child {
+    border-top-right-radius: 5px !important;
+  }
+  .ant-table.ant-table-bordered
+    > .ant-table-container
+    > .ant-table-header
+    > table
+    > thead
+    > tr {
+    border-left: 0.2em solid $border_color_table !important;
+    border-right: none !important;
+  }
+  .ant-table.ant-table-bordered > .ant-table-container {
+    border: none !important;
+  }
+
+  .ant-checkbox-inner {
+    border: none;
+    border-collapse: separate;
+    transition: all 0.3s;
+    background: #5f687d;
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.7);
+    border-radius: 2px;
+  }
+  .ant-checkbox-indeterminate .ant-checkbox-inner {
+    background: #5f687d;
+    border-color: none;
+  }
+  .ant-checkbox-inner {
+    border: none !important;
+    border-collapse: separate !important;
+    transition: all 0.3s !important;
+    background: #5f687d !important;
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.7) !important;
+    border-radius: 2px !important;
+  }
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #1890ff !important;
+    border-color: none;
+  }
+  .tab_exporting {
+    height: 36px;
+  }
+  .ant-tabs-content-holder {
+    padding: 0;
+  }
+  .ant-tabs-content-holder {
+    margin-top: 8px;
+  }
+  .ant-table-cell-scrollbar {
+    display: none;
+    background: #5f687d;
+  }
+}

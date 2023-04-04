@@ -1,0 +1,121 @@
+.ant-tabs {
+  color: #f0f2f5 !important;
+}
+.modal_about_window {
+  width: 520px !important;
+  background: #2e333d;
+  box-shadow: 0px 0px 16px rgba(100, 100, 100, 0.6);
+  border-radius: 15px;
+  .ant-modal-header {
+    text-align: center;
+    background: #2e333d;
+    border-radius: 12px 12px 0px 0px;
+    // box-shadow: 0px 0px 16px rgba(100, 100, 100, 0.6);
+    filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.25));
+    border: none;
+    .ant-modal-title {
+      color: #d1d7e1 !important;
+      font-size: 18px;
+    }
+  }
+  .ant-modal-content {
+    border-radius: 15px;
+    button:first-child {
+      color: #efefef;
+    }
+  }
+  .btn_next {
+    margin-left: 20px;
+    margin-top: 8px;
+    width: 87%;
+  }
+  .btn_pre {
+    margin-left: 20px;
+    width: 87%;
+    display: block;
+  }
+  .ant-tabs-bottom > .ant-tabs-nav:before,
+  .ant-tabs-bottom > div > .ant-tabs-nav:before,
+  .ant-tabs-top > .ant-tabs-nav:before,
+  .ant-tabs-top > div > .ant-tabs-nav:before {
+    border-bottom: 0px solid #f0f0f0;
+  }
+  .ant-modal-body {
+    text-align: center;
+    color: #f0f2f5;
+    font-size: 23px;
+    background: #2e333d;
+    padding: 5px 32px 32px 32px;
+    border-radius: 12px;
+  }
+  .logo-vista {
+    margin: 20px 0;
+    background: none !important;
+    border: none !important;
+  }
+  .tab_about_logo {
+    padding: 0;
+    .ant-card-body {
+      padding: 20px 0 !important;
+    }
+  }
+  .tab_about {
+    text-align: initial !important;
+    p:first-child {
+      margin: 0 !important;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: left;
+      letter-spacing: 0.001em;
+
+      color: #f0f2f5 !important;
+    }
+    p {
+      margin: 0 !important;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: #e1e5eb;
+    }
+    .ant-divider {
+      /* Primary/50 */
+
+      border: 1px solid #2e333d;
+      box-shadow: 0px 3px 4px rgba(163, 163, 163, 0.75);
+    }
+    .ant-card-body {
+      padding: 0 !important;
+    }
+  }
+  .tab_info {
+    overflow-y: scroll;
+    height: 200px;
+    color: #f0f2f5;
+    text-align: left;
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: #5f687d;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  }
+
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background: #5f687d;
+  }
+}

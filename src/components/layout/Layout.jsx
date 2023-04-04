@@ -1,74 +1,115 @@
-import { Col, Row, Menu } from "antd";
+import { Col, Row, Menu, Button } from "antd";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link, Outlet } from "react-router-dom";
 
-import { LiveviewIcon } from "../../assets/Icons/JSXs";
-import { PalybackIcon } from "../../assets/Icons/JSXs";
-import { UsersIcon } from "../../assets/Icons/JSXs";
-import { DevicesIcon } from "../../assets/Icons/JSXs";
-import { AboutIcon } from "../../assets/Icons/JSXs";
-import { SettingIcon } from "../../assets/Icons/JSXs";
+import {
+  PalybackIcon,
+  LiveviewIcon,
+  DevicesIcon,
+  AboutIcon,
+  LogOut,
+} from "../../assets/Icons/JSXs";
+// import { UsersIcon } from "../../assets/Icons/JSXs";
+import { LoadMenu } from "../../redux/layout_redux/layoutAction";
+import ModalAbout from "../generals-items/modal-about/modal-about.component";
+import ModalLogout from "../generals-items/modal-logout/modal-logout.component";
 
 import "./layout.styles.scss";
 
-const Layout = ({ hideHeaderPaths = [] }) => {
+const Layout = () => {
+  const dispatch = useDispatch();
+  const menuItem = useSelector((state) => state.LayoutReducer.menuItem);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalAboutOpen, setIsModalAboutOpen] = useState(false);
+
+  useEffect(() => {
+    menuItem !== window.location.pathname &&
+      dispatch(LoadMenu(window.location.pathname));
+  }, [menuItem, window.location.pathname]);
+  const showModalAbout = () => {
+    setIsModalAboutOpen(true);
+  };
+
+  const handleModalAboutOk = () => {
+    setIsModalAboutOpen(false);
+  };
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const onClick = (e) => {
+    dispatch(LoadMenu(e.key));
+  };
+
   return (
     <>
       <Row className="side_nav_2">
         <Col style={{ height: "100%" }}>
           <Menu
-            defaultSelectedKeys={["Liveview"]}
+            onClick={onClick}
+            selectedKeys={menuItem}
+            trigger={["click"]}
             mode="inline"
             theme="dark"
             inlineCollapsed={true}
             style={{ height: "100%" }}
           >
-            <Menu.Item key="Liveview" icon={<LiveviewIcon />}>
-              <Link to={"/liveViewpage"}>Liveview</Link>
+            <Menu.Item key="/liveview" icon={<LiveviewIcon />}>
+              <Link to={"/liveview"}>Live View</Link>
             </Menu.Item>
-            <Menu.Item key="Playback" icon={<PalybackIcon />}>
-              <Link to={"/playBackpage"}>Playback</Link>
+            <Menu.Item key="/playback" icon={<PalybackIcon />}>
+              <Link to={"/playback"}>Playback</Link>
             </Menu.Item>
-            <Menu.Item key="users" icon={<UsersIcon />}>
-              <Link to={"/userpage"}>users</Link>
-            </Menu.Item>
-            <Menu.Item key="devices" icon={<DevicesIcon />}>
-              <Link to={"/devicespage"}>devices</Link>
-            </Menu.Item>
-            <Menu.Item
-              key="About"
-              icon={<AboutIcon />}
-              style={{
-                bottom: "50px",
-                position: "absolute",
-                width: "3rem",
-              }}
-            >
-              <Link to={"/playBackpage"}>About</Link>
-            </Menu.Item>
-            <Menu.Item
-              key="Setting"
-              icon={<SettingIcon />}
-              style={{
-                bottom: "0",
-                position: "absolute",
-                width: "3rem",
-              }}
-            >
-              {/* <a href="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4"/> */}
-              <a
-                draggable
-                onClick={(event) => event.preventDefault()}
-                // style={{
-                //   pointerEvents: "none",
-                // }}
-                href={
-                  "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4"
-                }
-              >
-                Setting
-              </a>
+            {/* <Menu.Item key="/user" icon={<UsersIcon />}>
+              <Link to={"/user"}>User</Link>
+            </Menu.Item> */}
+            <Menu.Item key="/devices" icon={<DevicesIcon />}>
+              <Link to={"/devices"}>Devices</Link>
             </Menu.Item>
           </Menu>
+          <Button
+            onClick={showModalAbout}
+            key="About"
+            icon={<AboutIcon />}
+            style={{
+              bottom: "0",
+              position: "absolute",
+              width: "48px",
+              height: "40px",
+              marginBottom: "56px",
+            }}
+          />
+          <Button
+            onClick={showModal}
+            key="Log Out"
+            icon={<LogOut />}
+            style={{
+              bottom: "0",
+              position: "absolute",
+              width: "48px",
+              height: "40px",
+              marginBottom: "8px",
+            }}
+          />
+          <ModalLogout
+            showModal={showModal}
+            handleOk={handleOk}
+            handleCancel={handleOk}
+            isModalOpen={isModalOpen}
+          />
+          <ModalAbout
+            showModalAbout={showModalAbout}
+            handleModalAboutOk={handleModalAboutOk}
+            handleModalAboutCancel={handleModalAboutOk}
+            isModalAboutOpen={isModalAboutOpen}
+          />
         </Col>
       </Row>
       <Outlet />

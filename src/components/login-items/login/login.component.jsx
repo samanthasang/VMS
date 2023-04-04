@@ -10,29 +10,20 @@ import "./login.styles.scss";
 
 const Login = () => {
   return (
+    // background image for login page
     <Row
       className="login_bg"
       justify="space-around"
       align="middle"
       style={{
-        height: "100vh",
         background: `url(${LoginBG})`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        backdropFilter: "blur(100px)",
       }}
     >
-      <Col
-        style={{
-          height: "520px",
-          width: "930px",
-          borderRadius: "8px",
-          background: "rgba(0, 0, 0, 0.1)",
-          backdropFilter: "blur(70px)",
-        }}
-      >
+      {/* center div for login form & logo */}
+      <Col className="login_bg_container">
+        {/* logo in login page */}
         <LogoVISTAVMS />
+        {/* login form component */}
         <FormLogin />
       </Col>
     </Row>

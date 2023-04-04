@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Row, Col, Form, Button } from "antd";
+import { Row, Col, Form } from "antd";
 
 import InputForm from "../../form-items/inputform/inputform.component";
 import ResetPasswordTXT from "../../forgot-password-items/resetpasswordtxt/resetpasswordtxt.component";
@@ -7,6 +7,9 @@ import OpenNotification from "../../form-items/notification/notification.compone
 import "./formforgot.styles.scss";
 import axios from "axios";
 import Navigation from "../../generals-items/navigation/navigation.component";
+import { useDispatch } from "react-redux";
+import { UserLogOut } from "../../../redux/login_redux/loginAction";
+// steps for registering proccess
 const steps = [
   {
     title: "First",
@@ -23,39 +26,34 @@ const steps = [
 ];
 
 const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
+  const dispatch = useDispatch();
+  // getiing email for get user question
   const [inputs, setInputs] = useState({
     email: "",
   });
 
+  // check for email input is empty
   const [emptyEmail, setEmtyEmail] = useState(false);
 
+  // validation for email
   function isValidEmail(email) {
     const a = /\S+@\S+\.\S+/.test(email);
     console.log(a);
     return /\S+@\S+\.\S+/.test(email);
   }
 
+  // getting info from inputs & for inputs to not to be empty
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((inputs) => ({ ...inputs, [name]: value }));
-    if (inputs.email !== "") {
-      setEmtyEmail(false);
-    }
+    inputs.email !== "" && setEmtyEmail(false);
   };
-  const onFinish = (inputs) => {
-    if (inputs.username === "admin" || inputs.password === "admin")
-      // navigate("/mainmenupage");
-      LoginAuth();
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-
+  // submit the email to API
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // check the email to not to be empty
     console.log("inputs.email.trim:", inputs.email.trim());
     if (inputs.email.trim() === "") {
       console.log("inputs.email.trim:", inputs.email.trim);
@@ -64,11 +62,13 @@ const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
     if (inputs.email.trim() === "") {
       return;
     }
+    // validation for email
     if (isValidEmail(inputs.email.trim()) === false) {
       setEmtyEmail(true);
       OpenNotification("topRight", "Email Dosn`t Valid", "", "error");
       return;
     }
+    // Send info to register API
     axios({
       method: "post",
       url: process.env.REACT_APP_HTTP + "/api/auth/get-questions",
@@ -80,9 +80,10 @@ const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
         console.log(response.data.data);
         response.data.ok && next(inputs.email, response.data.data);
       },
-      (error) => {
-        OpenNotification("topRight", "", error.response.data.msg, "error");
-        console.log(error);
+      (e) => {
+        OpenNotification("topRight", "", e.response.data.msg, "error");
+        e.response.status === 401 && dispatch(UserLogOut());
+        console.log(e);
       }
     );
   };
@@ -96,17 +97,16 @@ const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
           name="normal_login"
           className="login-form"
           initialValues={{ remember: true }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
           autoComplete="on"
           onSubmit={handleSubmit}
         >
           <ResetPasswordTXT
             span={10}
             offset={7}
-            title={"Reset Password"}
-            description={"Please Enter Your Email Address"}
+            title={"Reset password"}
+            description={"Please enter your email address"}
           />
+          {/* getting the email */}
           <InputForm
             span={10}
             offset={7}
@@ -117,6 +117,7 @@ const FormForgot = ({ LoginAuth, current, next, prev, form }) => {
             empty={emptyEmail}
           />
 
+          {/* navigate to next & pervius step in reset password proccess */}
           <Navigation
             steps={steps}
             current={current}

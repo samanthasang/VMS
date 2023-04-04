@@ -5,11 +5,23 @@ import PrimaryBtn from "../primerybtn/primerybtn.component";
 
 import "./submitbtn.styles.scss";
 
-const SubminBTN = ({ handleSubmit, span, offset }) => {
+const SubminBTN = ({
+  handleSubmit,
+  span,
+  offset,
+  text,
+  disabled,
+  loadings,
+}) => {
   return (
     <Row>
       <Col span={span} offset={offset}>
-        <PrimaryBtn handleSubmit={handleSubmit} />
+        <PrimaryBtn
+          text={text}
+          handleSubmit={handleSubmit}
+          loading={loadings}
+          disabled={disabled}
+        />
       </Col>
     </Row>
   );

@@ -1,4 +1,4 @@
-import { Button, Col, Form, Row, Select } from "antd";
+import { Col, Form, Row, Select } from "antd";
 import React, { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,7 @@ import axios from "axios";
 import Navigation from "../../generals-items/navigation/navigation.component";
 
 const { Option } = Select;
+// steps for registering proccess
 const steps = [
   {
     title: "First",
@@ -21,8 +22,9 @@ const steps = [
   },
 ];
 
-const SetPassword = ({ current, next, prev, form, endForm, email }) => {
+const SetQuestion = ({ current, next, prev, form, endForm, email }) => {
   const navigate = useNavigate();
+  // getiing questions & answers for register user
   const [inputs, setInputs] = useState({
     question1: "",
     question2: "",
@@ -32,30 +34,37 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
     question3Answer: "",
   });
 
+  // check for question1 input is empty
   const [emptyQuestion1, setEmtyQuestion1] = useState("");
+  // check for question2 input is empty
   const [emptyQuestion2, setEmtyQuestion2] = useState("");
+  // check for question3 input is empty
   const [emptyQuestion3, setEmtyQuestion3] = useState("");
+  // check for question1Answer input is empty
   const [emptyQuestion1Answer, setEmtyQuestion1Answer] = useState(false);
+  // check for question2Answer input is empty
   const [emptyQuestion2Answer, setEmtyQuestion2Answer] = useState(false);
+  // check for question3Answer input is empty
   const [emptyQuestion3Answer, setEmtyQuestion3Answer] = useState(false);
   const [questions1, setQuestions1] = useState([]);
   const [questions2, setQuestions2] = useState([]);
   const [questions3, setQuestions3] = useState([]);
 
-  const getUsers = async () => {
+  const getQuestions = async () => {
+    // get questions from API
     const users = await axios.get(
       process.env.REACT_APP_HTTP + "/api/auth/questions"
     );
-    // setQuestions(users.data.data);
     setQuestions1(users.data.data.FirstType);
     setQuestions2(users.data.data.SecondType);
     setQuestions3(users.data.data.ThirdType);
   };
 
   useEffect(() => {
-    getUsers();
+    getQuestions();
   }, []);
 
+  // getting info from inputs & for inputs to not to be empty
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -70,15 +79,8 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
       setEmtyQuestion3Answer(false);
     }
   };
-  const onFinish = (inputs) => {
-    if (inputs.username === "admin" || inputs.password === "admin")
-      navigate("/mainmenupage");
-  };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-
+  // submit the questions & answers to API
   const handleSubmitForm = (event) => {
     event.preventDefault();
     if (inputs.question1 === "") {
@@ -123,14 +125,15 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
     console.log("question2Answer:", inputs.question2Answer);
     console.log("question3Answer:", inputs.question3Answer);
 
+    // Send info to questions API
     axios({
       method: "post",
       url: process.env.REACT_APP_HTTP + "/api/auth/register/questions",
       data: {
         email: email,
-        question1ID: parseInt(inputs.question1),
-        question2ID: parseInt(inputs.question2),
-        question3ID: parseInt(inputs.question3),
+        question1ID: inputs.question1,
+        question2ID: inputs.question2,
+        question3ID: inputs.question3,
         question1Answer: inputs.question1Answer,
         question2Answer: inputs.question2Answer,
         question3Answer: inputs.question3Answer,
@@ -145,11 +148,11 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
             "Notification",
             ""
           );
-        navigate("/");
+        navigate("/login");
       },
-      (error) => {
-        OpenNotification("topRight", "", error.response.data.msg, "error");
-        console.log(error);
+      (e) => {
+        OpenNotification("topRight", "", e.response.data.msg, "error");
+        console.log(e);
       }
     );
   };
@@ -164,11 +167,10 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
           name="normal_login"
           className="set_password_form"
           initialValues={{ remember: true }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
           autoComplete="off"
           onSubmit={handleSubmitForm}
         >
+          {/* select a question in case of forgotting the pasword */}
           <Row>
             <Col span={18} offset={3}>
               <Form.Item
@@ -177,24 +179,34 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
                 className="select_form"
               >
                 <Select
+                  dropdownStyle={{
+                    background: "#C8CCD5!important",
+                    color: "#070709!important",
+                  }}
+                  overlayClassName="select_register"
                   placeholder="Select a Question"
                   optionFilterProp="children"
                   name="question1"
                   id="question1"
-                  onChange={(value, id) => (
-                    console.log(id.id),
-                    setEmtyQuestion1Answer(false),
+                  className="drop_down"
+                  style={{
+                    background: "#C8CCD5!important",
+                    color: "#070709!important",
+                  }}
+                  onChange={(value, id) => {
+                    setEmtyQuestion1Answer(false);
                     setInputs((inputs) => ({
                       ...inputs,
                       question1: id.id,
-                    }))
-                  )}
+                    }));
+                  }}
                   filterOption={(input, option) =>
                     option.children.toLowerCase().includes(input.toLowerCase())
                   }
                 >
                   {questions1.map((question) => (
                     <Option
+                      className="drop_down"
                       key={question.id}
                       id={question.id}
                       value={question.title}
@@ -207,6 +219,7 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
               </Form.Item>
             </Col>
           </Row>
+          {/* getting answer for the slected question */}
           <Row>
             <Col span={18} offset={3}>
               <InputFormWithLabel
@@ -219,6 +232,7 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
               />
             </Col>
           </Row>
+          {/* select a question in case of forgotting the pasword */}
           <Row>
             <Col span={18} offset={3}>
               <Form.Item
@@ -229,14 +243,13 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
                 <Select
                   placeholder="Select a Question"
                   optionFilterProp="children"
-                  onChange={(value, id) => (
-                    console.log(id),
-                    setEmtyQuestion2Answer(false),
+                  onChange={(value, id) => {
+                    setEmtyQuestion2Answer(false);
                     setInputs((inputs) => ({
                       ...inputs,
                       question2: id.id,
-                    }))
-                  )}
+                    }));
+                  }}
                   filterOption={(input, option) =>
                     option.children.toLowerCase().includes(input.toLowerCase())
                   }
@@ -254,7 +267,8 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
                 </Select>
               </Form.Item>
             </Col>
-          </Row>
+          </Row>{" "}
+          {/* getting answer for the slected question */}
           <Row>
             <Col span={18} offset={3}>
               <InputFormWithLabel
@@ -266,7 +280,8 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
                 tittle={emptyQuestion2}
               />
             </Col>
-          </Row>
+          </Row>{" "}
+          {/* select a question in case of forgotting the pasword */}
           <Row>
             <Col span={18} offset={3}>
               <Form.Item
@@ -277,10 +292,10 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
                 <Select
                   placeholder="Select a Question"
                   optionFilterProp="children"
-                  onChange={(value, id) => (
-                    setEmtyQuestion3Answer(false),
-                    setInputs((inputs) => ({ ...inputs, question3: id.id }))
-                  )}
+                  onChange={(value, id) => {
+                    setEmtyQuestion3Answer(false);
+                    setInputs((inputs) => ({ ...inputs, question3: id.id }));
+                  }}
                   filterOption={(input, option) =>
                     option.children.toLowerCase().includes(input.toLowerCase())
                   }
@@ -299,6 +314,7 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
               </Form.Item>
             </Col>
           </Row>
+          {/* getting answer for the slected question */}
           <Row>
             <Col span={18} offset={3}>
               <InputFormWithLabel
@@ -311,7 +327,7 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
               />
             </Col>
           </Row>
-
+          {/* navigate to next & pervius step in register proccess */}
           <Navigation
             steps={steps}
             current={current}
@@ -326,4 +342,4 @@ const SetPassword = ({ current, next, prev, form, endForm, email }) => {
   );
 };
 
-export default SetPassword;
+export default SetQuestion;

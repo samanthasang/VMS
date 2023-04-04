@@ -9,12 +9,14 @@ import './registerpage.styles.scss'
 
 
 const RegisterPage = () => (
-    <Row>
-        <Col span={24}>
-            <Register />
-        </Col>
-    </Row>
-)
+  <Row>
+    {/* full wide div */}
+    <Col span={24}>
+      {/* render the register container component */}
+      <Register />
+    </Col>
+  </Row>
+);
 
 
 

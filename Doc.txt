@@ -1,79 +1,1169 @@
-Documantion:
+VMS Technical Documantion
+v 1.0
 
 
+packges :
+{
+    "antd": "^4.24.2",
+    for UI & component for react
 
-pakcage & library :
+    "axios": "^0.27.2",
+    call the API
 
-    "antd": "^4.21.7",
-    برای طراحی المان ها و صفحات و فیچر های مورد نیاز برای رسپانسیو کردن صفحات و فانکشن های مورد نیاز
+    "check-password-strength": "^2.0.7",
+    checking the strength of passwords
+
+    "dayjs": "^1.11.7",
+    format the unix time for antd component
+
+    "moment": "^2.29.4",
+    format the unix time for antd component
+
     "node-sass": "^7.0.1",
-    برای بهره وری از  scss به جای  css برای تسریع و خواناتر شدن کد ها
-    "react-password-strength-bar": "^0.4.1",
-    برای بررسی قدرت رمز وارد شده توسط کاربر
+    add scss to project
+
+    "react-clock": "^3.1.0",
+    show time 
+
+    "react-dom": "^18.2.0",
+    navigate in routs
+
+    "react-lottie": "^1.2.3",
+    adding svg animation
+
+    "react-moment": "^1.1.2",
+    format the unix time for antd component
+
+    "react-player": "^2.10.1",
+    playing the video filter
+
     "react-redux": "^8.0.2",
-    برای بهینه کردن استیت های مورد نیاز فانکشن ها و مدیریت دیتا ها 
+    manage the state for components
+
     "react-router-dom": "^6.3.0",
-    برای دسترسی سریع به آدرس ها مختلف در وب الیگشین
+    navigate in routs
+
+    "react-visjs-timeline": "^1.6.0",
+    add timeline for play back
+
     "redux": "^4.2.0",
-    برای استفاده بهتر از فانگشن ها و مدیرت قسمت ها مختلف 
+    manage the state for components
+
+    "redux-devtools-extension": "^2.13.9",
+    manage the state for components
+
     "redux-logger": "^3.0.6",
-    برای بررسی تغییر دیتا ها در روند برنامه
+    log the change in redux
+
     "redux-persist": "^6.0.0",
-    برای نگه داری مقادیر مختلف متغیر ها 
+    save rdux state
+
+    "redux-thunk": "^2.4.1",
+    add middlware for redux finction
+
     "reselect": "^4.1.6",
-    برای بهنیه سازی تغییر استیت ها در زمان تغییر متغیر ها
+    check changes in states 
+
+    "screenfull": "^5.0.2",
+    full screen the elements
+
+    "vis": "^4.21.0-EOL",
+    timeline dependencies
+
+    "vis-timeline": "^7.7.0",
+    timeline dependencies
+
+    "vis-util": "^4.3.4",
+    timeline dependencies
+}
+    app.js
+    {
+        chack loging state for user 
+        navigate cross routs
+        protect private rout for not loged in user
+
+        access to 
+        <LoginPage />
+        manage the log in in and access to register page & forgottpassword page
+
+        <RegisterPage />
+        manage the register user 
+
+        <ForgotPasswordPage />
+        manage the reset password for user in case of forgotting the password
+
+        {/* private rout : if user is loged in has access to this routs */}
+        <Privateroute isLogedIn={isLogedIn} />
+        in case of not loged in navigate the user to login page
+        if user in loged in can navigate to live view & play back & devices pages
+
+        <LayoutTop />
+        show time from server and user Info
+        <Layout />
+        keep menu for navigating cross the live view & play back & devices pages & log out & information modal for application
+
+        <LiveViewPage />
+        mange the stream for added device in groups the user defined
+        change the number of stream thet user can play
+        manage the stream option & aspect ratio & screen shot for streams
 
 
-App page:
-routing: 
-برای ورود به صفحات مختلف
-private routing :
-در صورت احراظ هویت قابلیت دسترسی به آدرس های دیگر صفحات باز می شود
+        <DevicesPage />
+        manage devices & information for each device
+
+        <PlayBackPage />
+        manage recorded video for camera & download video
+
+        Page505
+        if a rout is not define user navigeted to this rout
+    }
 
 
 
-Login page :
-کامپوننت لوگو و فرم وروددارای المان های ایمیل و رمز عبور و فراموشی رمز عبور و ورود به قسمت ثبت نام
+.env file
+{
+    keep the urls for WebRTC Link
+    server link for API
+
+    REACT_APP_WEBRTC_DOMAIN="http://192.168.1.217:8083"
+    webRTC link for getting streams from cameras
+
+    REACT_APP_HTTP="http://192.168.1.217:8000"
+    server address for calling the API
+}
+
+
+pages :
+{
+    Page505 :
+    {
+        in case of try to access a not define rout
+
+        render show the 505 Icon & text
+
+        "Back to Home Page" BTN nvigate the user to live view page
+    }
+
+    DevicesPage component:
+        {
+            render the Devices component
+            props : null
+
+            Devices component :
+            manage the header for device page & table of devices
+            props : null
+            render HeaderDevicePage & TableDevicePage
+
+                HeaderDevicePage component :
+                {
+                    manage the AddNewDevice & DeleteDevice for devices
+                    props : null
+                    render AddNewDevice & DeleteDevice
+
+
+                    AddNewDevice component :
+                    open the ModalAddDevice modal to add new device
+                    props : null
+                    render Add button to open the ModalAddDevice & ModalAddDevice to add device
+
+                    add Button :
+                    change visibilty for ModalAddDevice
+                    render icon and title 
+
+                    ModalAddDevice component:
+                    call add device API & rerender the device table
+                    API requirement :
+                    {
+                        name: "",
+                        deviceType: "",
+                        deviceModel: "",
+                        ipDomain: "",
+                        mainStreamUrl: "",
+                        subStreamUrl: "",
+                        port: "",
+                        serialNumber: "",
+                        groupID: "",
+                        userName: "",
+                        password: "",
+                    }
+                    props :
+                        handleOkManual
+                        submit add API & close the modal
+                        
+                        handleOkAndContinueManual
+                        submit add API
+
+                        handleCancelManual
+                        close the modal
+
+                        isAddModalVisible
+                        visibilty of modal
+
+                        titleModal
+                        title for modal
+
+                    DeleteDevice component :
+                    open the ModalDeleteDevice modal to delete device
+                    if case of select no device open the ModalDeleteEmpty modal 
+                    props : null
+                    render Add button to open the ModalAddDevice & ModalAddDevice to add device
+
+                    delete Button :
+                    change visibilty for ModalAddDevice
+                    render icon and title 
+
+                    ModalDeleteDevice component:
+                    call delete device API for passed id & rerender the device table
+                    API requirement :
+                    {
+                        devices: array,
+                    }
+                    props :
+                        handleOk
+                        submit add API & close the modal
+                        
+                        handleCancel
+                        close the modal
+                        
+                        isModalOpen
+                        visibilty of modal
+                        
+                        selectedRowKeys
+                        array of selected row for delete from the table
+
+                    ModalDeleteEmpty component:
+                    if case of select no device tells the user to select a device first
+                    props :
+                        handleOk
+                        submit add API & close the modal
+                        
+                        isModalOpen
+                        visibilty of modal
+                        
+                    DeviceStatus:
+                    show the number of device in device table
+
+                TableDevicePage component :
+                show the all added device in a tableeach device has edit & delete option
+                props : null
+                render table for devices &  ModalAddDevice & ModalDeleteDevice for edit & delete device
+                {
+                    ModalAddDevice component:
+                    edit the device information for given device id
+                    API requirement :
+                    {
+                        idForEdit
+                    }
+                    props :
+                        handleOkManual
+                        submit add API & close the modal
+                        
+                        isAddModalVisible
+                        visibilty of modal
+
+                        handleCancelManual
+                        close the modal
+
+                        titleModal
+                        title for modal
+
+                        idForEdit
+                        id for load the data for device
+
+                        ClearidForEdit
+                        clear the id after edit the device
+
+                    ModalDeleteDevice component:
+                    delete the device information for given device id
+                    API requirement :
+                    {
+                        idForDelete
+                    }
+                    props :
+                        handleOk
+                        submit add API & close the modal
+                        
+                        isModalOpen
+                        visibilty of modal
+
+                        handleCancel
+                        close the modal
+
+                        textModal
+                        title for modal
+                        }
+            }
+        }
+
+
+    forggotpasswordPage component :
+    {
+        
+        render ForgotPassword 
+
+        ForgotPassword component :
+        {
+            render FormForgot & FormForgotPassword & SetNewPassword  for rest user password
+            props : null
+
+            FormForgot component :
+            {
+                render FormForgot for rest user password
+                props : null
+
+                get email for rest user password
+                call ForgotPassword API
+                API requirement :
+                {
+                    email: "",
+                }
+                
+            }
+            
+            FormForgotPassword component : {
+
+                get answers to security questions to reset password
+                render FormForgotPassword for reset password
+                props : null
+
+                call FormForgotPassword API
+                API requirement :
+                {
+                    question1Answer: "",
+                    question2Answer: "",
+                    question3Answer: "",
+                }
+            }
+            SetNewPassword component : {
+
+                get password & repeatPassword to reset password
+                render SetNewPassword for reset password
+                props : null
+
+                call SetNewPassword API
+                API requirement :
+                {
+                    password: "",
+                    repeatPassword: "",
+                }
+            }
+        }
+    }
+
+
+    liveviewpage component :
+    {
+        
+        render SideBar &  LiveView
+
+        SideBar component :
+        {
+            render Collapse for Panel1 to show organization group & Panel2 to show views
+            props : null
+
+            Panel1 component :
+            {
+                render Tree for manage group in organization
+                props : null
+
+                get treeDataa form API
+                call tree API
+                API requirement :
+                {
+                }
+
+                ModalDeleteGroup component : 
+                {
+                        get id of groupfor delete group
+                        props : 
+                        {
+                            isModalOpenGroup
+                            visibilty for ModalDeleteGroup
+                            handleCancelGroup
+                            hide ModalDeleteGroup
+
+                            handleOkGroup
+                            submit the delete API
+
+                            ModalName
+                            title of modal
+
+                            getKey
+                            id of group
+                        }
+
+                        call delete API for delete a group
+                        API requirement :
+                        {
+                            id
+                        }
+
+                }
+                ModalDeleteGroup component : 
+                {
+                    get id of groupfor delete group
+                    props : 
+                    {
+                        isModalOpenGroup
+                        visibilty for ModalDeleteGroup
+
+                        handleCancelGroup
+                        hide ModalDeleteGroup
+
+                        handleOkGroup
+                        submit the delete API
+
+                        ModalName
+                        title of modal
+
+                        getKey
+                        id of group
+                    }
+                    call rename API for rename a group
+                    API requirement :
+                    {
+                        name
+                        groupID
+                    }
+
+                }
+                ModalAddGroup component : 
+                {
+                    get id of groupfor delete group
+                    props : 
+                    {
+                        isModalOpen
+                        visibilty for ModalDeleteGroup
+
+                        handleCancelManual
+                        hide ModalDeleteGroup
+
+                        handleOkManual
+                        submit the delete API
+
+                        ModalName
+                        title of modal
+
+                        getKey
+                        id of group
+                    }
+                    call add new group API for add a new group
+                    if pass a id to modal the new group add is new child of that group
+                    API requirement :
+                    {
+                        name
+                        groupID
+                    }
+                }  
+            }   
+        }
+        LiveView component :
+        {
+            render LiveViewDisplay & LiveViewFooter to show views
+            props : null
+
+            LiveViewDisplay component :
+            {
+                render LivaeViewPlayerContainer as many as stream that user deside
+                props : null
+
+                LivaeViewPlayerContainer component : 
+                {
+                render LivaeViewPlayerContainer as many as stream that user deside
+                    props : 
+                    {
+                        span
+                        width of stream palyer
+
+                        chooseSrc
+                        choose for sub stream or main stream for playing
+
+                        aspectRatio
+                        choose for aspectRatio for playing
+
+                        id
+                        id of stream player
+
+                        src
+                        sub stream link for stream
+
+                        src2
+                        main stream link for stream
+
+                        headerShow
+                        show or hide the header o f stream player
+
+                        height
+                        height of stream palyer
+                    }
+
+                    LivaeViewPlayerContainer component :
+                    {
+                        render input for getting url stream if no stream is attatch
+                        props : null
+                        get id & main link & sub link from WebRTC link 
+
+                        render LivaeViewPlayer for playing a stream that drag to input
+                        props :
+                        {
+                            StreamLink 
+                            stream link for stream
+
+                            aspectRatio 
+                            aspectRatio for playing
+
+                            setLottieChang 
+                            enable or disable lottie animation
+
+                            setLottieOffChange 
+                            enable or disable lottie animation
+
+                            chooseSrc 
+                            main stream or sub stream link to use in stream player
+
+                            id 
+                            id of stream player
+
+                            setOneAspectratio 
+                            choose for sub stream or main stream for playing
+
+                            headerShow 
+                            show or hide the header of stream player
+                        }
+
+                            LivaeViewPlayer component :
+                            {
+                                render VideoCard for playing a stream that drag to input
+                                props :
+                                {
+                                    StreamLink 
+                                    stream link for strea
+
+                                    setLottieChang 
+                                    enable or disable lottie animation
+
+                                    setLottieOffChange 
+                                    enable or disable lottie animation
+
+
+                                    setOneAspectratio 
+                                    choose for sub stream or main stream for playing
+
+                                    headerShow 
+                                    show or hide the header of stream player
+
+
+                                    aspectRatio 
+                                    aspectRatio for playing
+
+                                    chooseSrc 
+                                    main stream or sub stream link to use in stream player
+
+
+                                    id 
+                                    id of stream player
+
+
+                                    vtype 
+                                    type if stream
+
+
+                                    className 
+                                    className for stream player
+
+
+                                }
+
+                                VideoCard component :
+                                {
+                                    render video palyer for play the stream
+                                    props :
+                                    {
+                                        id
+                                        id of stream player
+
+                                        ref
+                                        video reffrence
+
+                                        onDoubleClick
+                                        toggleFullScreen screen the stream player on DoubleClick
+
+                                        autoPlay
+                                        autoPlay the stream as soon as recive data from link
+
+                                        muted
+                                        stream is muted
+                                    }
+
+                                    render LiveViewVideoHeader for manage the stream
+                                    props :
+                                    {
+                                        id
+                                        id of stream player
+
+                                        screenShot
+                                        enable the screen shot BTN
+
+                                        captureSnapshot
+                                        screen shot from webRTC function
+
+                                        setLottieOffChange
+                                        disable failing animation
+                                    }
+                                        LiveViewVideoHeader component :
+                                        {
+                                            render close BTN for clear the stream information & link
+                                            render screen shot BTN for get a screen shot from webRTC link
+                                            
+                                        }
+
+                                    render canvas for get screen shot from stream
+                                    props : null
+
+                                    render img for download screen shot
+                                    props : null
+
+
+                                }
+
+                            }
+
+
+                        render lottie animation for loading stream for playing a stream that drag to input
+                        props : null
+
+
+                        render lottieOff animation for failing to load stream for playing a stream that drag to input
+                        props : null
+
+                    }
+                }
+            }   
 
 
 
-register :
-بخش اول دارای فرم ثبت نام
-داری فیلد های نام و نام خانوادگی و ایمیل و سنجش قدرت رمز عبور و تایید رمز عبور
+            LiveViewFooter component :
+            {
+                render LiveViewFooterView & LiveViewFooterPanel
+                props : 
+                {
+                    handleFullscreen
+                }
 
-بخش دوم درای فرم سوالات که در صورت فواموشی رمز عبور کاربر باید سوالات را پاسخ داده تا به بخش تغییر رمز عبور دسترسی پیدا کند
+                LiveViewFooterView component : 
+                {
+                    change the aspect ratio for streams
+                    render select to choose the aspect ratio
+                    props : null
+                }
+                LiveViewFooterView component : 
+                {
+                    change the number of window for streams
+                    render a menu for paly stream as many as stream that user deside
+                    render full screen BTN for full screen the LiveViewDisplay
+                    props : null
 
-بخش سوم فرم تغییر رمز عبوردارای فیلد رمز عبور جدید و تایید رمز عبور جدید و سنجش قدرت رمز عبور
-
-
-
-
-
-forgot password :
-بخش اول دارای فیلد ایمیلبعد از وارد کردن ایمیل در صورت صحت ایمیل کاربر به بخش سوالات مربوط به ایمیل مورد نظر می شود
-
-بخش سوالات برای ایمنی کاربر
-سوالات زمان ثبت نام با ایمیل  مربوطه به کاربر نشان داده می شود که در صورت صحت پاسخ ها به بخش تغییر رمز عبور هدایت می شود
-
-بخش تغییر رمز عبور 
-بخش سوم فرم تغییر رمز عبوردارای فیلد رمز عبور جدید و تایید رمز عبور جدید و سنجش قدرت رمز عبور
-
-
-
-کامپوننت ها
-
-
-دکمه ها
-دارای قابلیت تغییر نوشته و فانکشن برای کلیک بر روی دکمه
-
+                    user can choose for 4 , 9 , 16 , 24 , 36 , 48, 64 , 5 , 7 stream
+                }
+            }   
+        }
+        
+    }
 
 
-فیلد ورودی 
-دارای قابلیت تغییر نوشته و نوع نوشته و دریافت برای ورودی و ذخیره برای عملکرد های بعدی
+    loginpage component :
+    {
+        render login component
+        props: null
 
-دارای سه حالت بدون لیبل ، دارای لیبل و پسورد که دارای حالت نمایش باشد
+        login component :
+        {
+            render LogoVISTAVMS & FormLogin
+            props: null
+
+            LogoVISTAVMS component :
+            {
+                render logo for login page
+            }
+
+            FormLogin component :
+            {
+                render form login & GoToRegister & GoToForgotPass
+
+
+                form login component : {
+                    call the login API
+
+                    API requirement :
+                    {
+                        username: "",
+                        password: "",
+                        checked: true,
+                    }
+                }
+
+                GoToRegister component :
+                {
+                    navigate to register page
+                }
+                forgotpassword component :
+                {
+                    navigate to forgotpassword page
+                }
+
+            }
+
+        }
+    }
+
+
+    playbackpage component :
+    {
+        
+        render PanelTabs &  PlayBack
+
+        PanelTabs component :
+        {
+            render Tabs for PanelPalyBack to show cameras & LocalPalyBack to show recorded video
+            props : null
+
+            PanelPalyBack component :
+            {
+                render Search for sreaching in tree
+                props : null
+
+                render Tree for showing camera in organization
+                props : nul
+                call get organization date
+                API requirement :
+                {
+                }
+
+                
+
+                render DatePicker for get start time & end time for get video
+                props : null
+
+                get available-days form API
+                API requirement :
+                {
+                    date
+                }
+
+                call playback for camera id form API
+                API requirement :
+                {
+                    startTime
+                    endTime
+                }
+
+            }   
+        }
+
+        PlayBack component :
+        {
+            render Player 
+            props : null
+
+            Player component :
+            {
+                render LivaeViewPlayerContainer as many as stream that user deside
+                props : null
+
+                LivaeViewPlayerContainer component : 
+                {
+                render ReactPlayer for play video from API
+                props :
+                {
+                    ref 
+                    reffrence from video to access to attributes of video player
+
+                    width 
+                    width of video player
+
+                    height 
+                    height of video player
+
+                    url 
+                    url from API
+
+                    playing 
+                    video is playing or not
+
+                    controls 
+                    controls in footer of playback
+
+                    playbackRate 
+                    playbackRate of video player
+
+                    volume 
+                    volume of video player
+
+                    muted 
+                    video player is muted or not
+
+                    handleVolumeChange 
+                    change the valuume of video palyer
+
+                    rate 
+                    value rate of paly rate for video player
+
+                    handlePlaybackRate 
+                    enable backward for video player
+
+                    onToggleFullScreen 
+                    toggleFullScreen of video player
+
+                    volume 
+                    value for volume of the video player
+
+                    handleStop 
+                    stop the play and move the elapse time to start of duriation
+
+                    handlePause 
+                    pause the vide player
+
+                    handlePlay 
+                    play the video player
+
+                    handlecameraCheckedNumber 
+                    get the id of selected camera
+
+                    handleBackward 
+                    backward the video palyer one frame
+
+                    backwardOn 
+                    backward the video until get to the start of duriation
+
+                    handlePlayPause 
+                    play or pause the video base on video player
+
+                    onFastForward 
+                    fastforward the video palyer one frame
+
+                    elapsedTime 
+                    elapsetime of video player
+
+                    totalDuration 
+                    total duriation of video
+                }
+
+                render Controls for manage the video player
+                props :
+                {
+                    ref 
+                    reffrence from video to access to attributes of video player
+
+                    width 
+                    width of video player
+
+                    height 
+                    height of video player
+
+                    url 
+                    url from API
+
+                    playing 
+                    video is playing or not
+
+                    controls 
+                    controls in footer of playback
+
+                    playbackRate 
+                    playbackRate of video player
+
+                    volume 
+                    volume of video player
+
+                    muted 
+                    video player is muted or not
+
+                    handleVolumeChange 
+                    change the valuume of video palyer
+
+                    rate 
+                    value rate of paly rate for video player
+
+                    handlePlaybackRate 
+                    enable backward for video player
+
+                    onToggleFullScreen 
+                    toggleFullScreen of video player
+
+                    volume 
+                    value for volume of the video player
+
+                    handleStop 
+                    stop the play and move the elapse time to start of duriation
+
+                    handlePause 
+                    pause the vide player
+
+                    handlePlay 
+                    play the video player
+
+                    handlecameraCheckedNumber 
+                    get the id of selected camera
+
+                    handleBackward 
+                    backward the video palyer one frame
+
+                    backwardOn 
+                    backward the video until get to the start of duriation
+
+                    handlePlayPause 
+                    play or pause the video base on video player
+
+                    onFastForward 
+                    fastforward the video palyer one frame
+
+                    elapsedTime 
+                    elapsetime of video player
+
+                    totalDuration 
+                    total duriation of video
+                }
+
+                render PlayBackVideoHeader for manage the video
+
+                props :
+                {
+                    ref 
+                    reffrence from video to access to attributes of video player
+
+                    width 
+                    width of video player
+
+                    height 
+                    height of video player
+
+                    url 
+                    url from API
+
+                    playing 
+                    video is playing or not
+
+                    controls 
+                    controls in footer of playback
+
+                    playbackRate 
+                    playbackRate of video player
+
+                    volume 
+                    volume of video player
+
+                    muted 
+                    video player is muted or not
+                }
+
+                PlayBackVideoHeader component :
+                {
+                    render close BTN for clear the video information & link
+                    render screen shot BTN for get a screen shot from video player
+                    
+                }
+                Controls component :
+                {
+                    render PlayBackFooterView 
+                    props :
+                    {
+                        handlePause 
+                        loadVideo
+                    }
+                    render PlayBackFooterPanel 
+                    props :
+                    {
+                        onToggleFullScreen 
+                        toggleFullScreen of video player
+                    }
+
+                    render TimeLiner for manage the elapse time and cut time for video 
+                    props :
+                    {
+                    ref 
+                    reffrence from video to access to attributes of video player
+
+                    playing 
+                    video is playing or not
+
+                    handlePause 
+                    pause the vide player
+
+                    handlePlay 
+                    play the video player
+
+                    elapsedTime 
+                    elapsetime of video player
+
+                    totalDuration 
+                    total duriation of video
+                    }
+
+                    render volume icon for manage volume slider to change volume of video palyer 
+
+                    render FrameByFrameForward btn for fastforward the video palyer one frame
+                    
+                    render Stop btn for stop the play and move the elapse time to start of duriation
+
+                    render Pause btn for pause the vide player
+
+                    render paly btn for play the video player
+
+                    render Backward btn backward the video until get to the start of duriation
+
+                    render FrameByFrameBackward btn for backward the video palyer one frame
+
+                    render playRate icon for manage playRate slider to change playRate of video palyer 
 
 
 
-قرم ها
-فرم عا دارای بخش ورودی برای تعریف نوع فرم و انجام فانکشن مربوط به فرم مخصوص به خود است
+
+
+                    PlayBackFooterView component :
+                    {
+                        render cut range item BTN  for get the start time & end time for of video player
+                        render TimeClip to show cut range item on timeline
+                        render ExportFile to show ModalCutPlayBack
+                        render ModalCutPlayBack for acept the start time & end time for of video player
+
+                        ModalCutPlayBack component :
+                        {
+                            render Download BTN  for download video
+                            render close BTN for close the modal
+
+                            call get video for start time & end time
+                            API requirement :
+                            {
+                                startTime
+                                endTime
+                            }
+                    }
+
+                    PlayBackFooterPanel component :
+                    {
+                        render toggleFullScreen BTN  for for toggleFullScreen of video player
+                    }
+                    Timeline component :
+                    {
+                        render Timeline from react-visjs-timeline library
+                        props :
+                        {
+                            ref 
+                            reffrence from video to access to attributes of video player
+
+                            clickHandler 
+                            handle click on timeline
+
+                            options 
+                            options for timeline component
+                            option :
+                            {
+                                width: "100%",
+                                height: "5rem",
+                                start: moment(startTimeleft21).format("MM/DD/YYYY  HH:mm:ss"),
+                                end: moment(endTimeRight21).format("MM/DD/YYYY  HH:mm:ss"),
+                                min: moment(startTimeleft21).format("MM/DD/YYYY  HH:mm:ss"),
+                                max: moment(endTimeRight21).format("MM/DD/YYYY  HH:mm:ss"),
+                                stack: false,
+                                showMajorLabels: true,
+                                showCurrentTime: false,
+                                zoomable: false,
+                                type: "background",
+                                editable: {
+                                    add: true, // add new items by double tapping
+                                    updateTime: true, // drag items horizontally
+                                    updateGroup: true, // drag items from one group to another
+                                    remove: true, // delete an item by tapping the delete button top right
+                                    overrideItems: true, // allow these options to override item.editable
+                                },
+                                format: {
+                                    minorLabels: {
+                                    minute: "HH:mm",
+                                    hour: "HH",
+                                    },
+                                },
+                            }
+
+                            items 
+                            items for timeline component
+                            items :
+                            {
+                                {
+                                    id: 2,
+                                    start: startTimeleft2,
+                                    end: endTimeRight2,
+                                    type: "range",
+                                    editable: { updateTime: true },
+                                    height: "39px",
+                                },
+                                {
+                                    id: 1,
+                                    start: moment(acitiveDate.startDate)
+                                    .add(elTime, "s")
+                                    .format("YYYY/MM/DD  HH:mm:ss"),
+                                    type: "box",
+                                    editable: { updateTime: true },
+                                    focus: true,
+                                },
+                            }
+
+                            rangechangeHandler 
+                            handle the cut range item for getting start time and end time for download the video
+
+                        }
+                    }
+
+
+                }
+            }   
+        }
+    }
+
+
+    registerpage component :
+    {
+        render Register component
+        props : null
+
+
+        Register component :
+        {
+            render FormRegister & SetQuestion
+
+            FormRegister component :
+            {
+                render register form for register user
+                props : null
+
+                get information for register user
+                call register API
+                API requirement :
+                {
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    password: "",
+                    repeatPassword: "",
+                }
+                
+            }
+            SetQuestion component : {
+
+                in case to forgotpassword user most use this question to reset password
+                render question form for register user
+                props : null
+
+                call register API
+                API requirement :
+                {
+                    question1: "",
+                    question2: "",
+                    question3: "",
+                    question1Answer: "",
+                    question2Answer: "",
+                    question3Answer: "",
+                }
+            }
+        }
+    }
+}

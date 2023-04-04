@@ -1,26 +1,24 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { UserLogOut } from "../../redux/login_redux/loginAction";
-import { Button } from "antd";
+import { Col, Row } from "antd";
+import { Ezgif } from "../../assets/Icons/JSXs/index";
+import "./505pagestyles.scss";
+import { Link } from "react-router-dom";
 
 const Page505 = () => {
-  const dispatch = useDispatch();
-
-  const handleOnClick = () => {
-    dispatch(UserLogOut());
-  };
   return (
-    <Button
-      onClick={handleOnClick}
-      style={{
-        margin: "25% auto",
-        display: "block",
-        width: "200px",
-        height: "35px",
-      }}
+    <Row
+      className="full_screen"
+      style={{ backgroundColor: "#2E333D", alignContent: "center" }}
     >
-      Log Out
-    </Button>
+      <Col span={24} className="window_screen page_505">
+        <Ezgif />
+        <span className="title_505">Internal server Error </span>
+        <span className="des_505">sorry an error occured </span>
+        <Link to={"/liveview"} className="btn_next btn_505" type="primary">
+          Back to Home Page
+        </Link>
+      </Col>
+    </Row>
   );
 };
 

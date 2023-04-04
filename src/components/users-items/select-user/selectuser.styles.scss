@@ -1,0 +1,32 @@
+.select-user{
+
+    .ant-select{
+        height: 36px !important;
+    border: 1px solid #2175c2 ;
+    border-radius: 8px !important;
+    width: 234px !important;
+    padding: 1px 2px 1px 3px !important;
+    background: #21242c !important;
+    color:#fff !important;
+}
+.ant-select-disabled{
+    height: 36px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    width: 234px !important;
+    padding: 1px 2px 1px 3px !important;
+    background: #21242c !important;
+    color:#fff !important;
+}
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    background-color: #21242C !important; 
+    width: max-content !important;
+    border: none !important;
+    .ant-select-selection-item{
+        color: #fff;
+    }
+}
+.ant-select-single.ant-select-show-arrow .ant-select-selection-item{
+    width: 204px !important;
+}
+}

@@ -13,13 +13,15 @@ const RememberAndForgotPass = ({ span, offset, handleChangecheckbox }) => {
       <Col span={span} offset={offset} className="remember_forgotpasswod">
         <Form.Item>
           <Row>
+            {/* remmeber user checkbox */}
             <CheckBox
               span={12}
               offset={0}
               handleChangecheckbox={handleChangecheckbox}
             />
+            {/* navigate to forgottpassword page */}
             <LinkTo
-              torouting={"/forgotten-password"}
+              torouting={"/forgotpassword"}
               text={"Forgot password?"}
               span={12}
               offset={0}

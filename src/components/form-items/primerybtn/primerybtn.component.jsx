@@ -3,17 +3,22 @@ import React from "react";
 import { Button, Form } from "antd";
 
 import "./primerybtn.styles.scss";
+import { useSelector } from "react-redux";
 
-const PrimaryBtn = ({ handleSubmit }) => {
+const PrimaryBtn = ({ handleSubmit, text, disabled }) => {
+  const loading = useSelector((state) => state.playback.loading);
   return (
     <Form.Item>
       <Button
-        type="primary"
+        type="submit"
         htmlType="submit"
-        className="btn_primary"
+        className="btn_next"
+        disabled={disabled}
+        style={{ width: "100%", marginLeft: "0" }}
         onClick={handleSubmit}
+        loading={loading}
       >
-        Log in
+        {text}
       </Button>
     </Form.Item>
   );

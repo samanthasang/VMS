@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Form, Row, Select } from "antd";
-import { useNavigate } from "react-router-dom";
+import { Col, Form, Row, Select } from "antd";
 import InputFormWithLabel from "../../form-items/inputformwithlabel/inputformwithlabel.component";
 import ResetPasswordTXT from "../../forgot-password-items/resetpasswordtxt/resetpasswordtxt.component";
 import axios from "axios";
@@ -8,7 +7,7 @@ import OpenNotification from "../../form-items/notification/notification.compone
 
 import "./forgotpasswordform.styles.scss";
 import Navigation from "../../generals-items/navigation/navigation.component";
-const { Option } = Select;
+// steps for registering proccess
 const steps = [
   {
     title: "First",
@@ -25,7 +24,6 @@ const steps = [
 ];
 
 const FormForgotPassword = ({
-  LoginAuth,
   current,
   email,
   question1,
@@ -35,7 +33,7 @@ const FormForgotPassword = ({
   prev,
   form,
 }) => {
-  const navigate = useNavigate();
+  // getiing question1Answer & question2Answer & question3Answer for register user
   const [inputs, setInputs] = useState({
     question1Answer: "",
     question2Answer: "",
@@ -46,12 +44,20 @@ const FormForgotPassword = ({
     console.log(`selected ${value}`);
   };
 
+  // check for question1 input is empty
   const [emptyQuestion1, setEmtyQuestion1] = useState("");
+  // check for question2 input is empty
   const [emptyQuestion2, setEmtyQuestion2] = useState("");
+  // check for question3 input is empty
   const [emptyQuestion3, setEmtyQuestion3] = useState("");
+  // check for question1Answer input is empty
   const [emptyQuestion1Answer, setEmtyQuestion1Answer] = useState(false);
+  // check for question2Answer input is empty
   const [emptyQuestion2Answer, setEmtyQuestion2Answer] = useState(false);
+  // check for question3Answer input is empty
   const [emptyQuestion3Answer, setEmtyQuestion3Answer] = useState(false);
+
+  // getting info from inputs & for inputs to not to be empty
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -66,21 +72,15 @@ const FormForgotPassword = ({
       setEmtyQuestion3Answer(false);
     }
   };
-  const onFinish = (inputs) => {
-    if (inputs.username === "admin" || inputs.password === "admin")
-      navigate("/mainmenupage");
-  };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-
+  // submit the answers to API
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(email);
     console.log(inputs.question1Answer);
     console.log(inputs.question2Answer);
     console.log(inputs.question3Answer);
+    // check the answers to not to be empty
     if (inputs.question1Answer === "") {
       setEmtyQuestion1Answer(true);
       setEmtyQuestion1("Required");
@@ -93,6 +93,7 @@ const FormForgotPassword = ({
       setEmtyQuestion3Answer(true);
       setEmtyQuestion3("Required");
     }
+    // check the answers to not to be empty
     if (
       inputs.question1 === "" ||
       inputs.question2 === "" ||
@@ -103,6 +104,7 @@ const FormForgotPassword = ({
     ) {
       return;
     }
+    // Send info to forgottpassword API
     axios({
       method: "post",
       url: process.env.REACT_APP_HTTP + "/api/auth/get-recovery-token",
@@ -117,9 +119,10 @@ const FormForgotPassword = ({
         console.log(response.data.data.token);
         response.data.ok && next_2(response.data.data.token);
       },
-      (error) => {
-        OpenNotification("topRight", "", error.response.data.msg, "error");
-        console.log(error);
+      (e) => {
+        e.response.status === 404 &&
+          OpenNotification("topRight", "", e.response.data.msg, "error");
+        console.log(e);
       }
     );
   };
@@ -133,16 +136,16 @@ const FormForgotPassword = ({
           name="normal_login"
           className="set_password_form"
           initialValues={{ remember: true }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
           autoComplete="on"
           onSubmit={handleSubmit}
         >
+          {/* title  */}
           <ResetPasswordTXT
             span={10}
             offset={7}
-            description={"Answer the Questions for Reset Password"}
+            description={"Answer the questions for reset password"}
           />
+          {/* question 1 */}
           <Row>
             <Col span={18} offset={3} className="select_disabled">
               <Form.Item label="Question 1" className="select_form">
@@ -154,20 +157,11 @@ const FormForgotPassword = ({
                   filterOption={(input, option) =>
                     option.children.toLowerCase().includes(input.toLowerCase())
                   }
-                >
-                  <Option value="What is your favorite children’s Book?">
-                    What is your favorite children’s Book?
-                  </Option>
-                  <Option value="What was the first name of your first boos?">
-                    What was the first name of your first boos?
-                  </Option>
-                  <Option value="What is the name of your favorite fruit?">
-                    What is the name of your favorite fruit?
-                  </Option>
-                </Select>
+                ></Select>
               </Form.Item>
             </Col>
           </Row>
+          {/* getting the question1Answer */}
           <Row>
             <Col span={18} offset={3}>
               <InputFormWithLabel
@@ -180,6 +174,7 @@ const FormForgotPassword = ({
               />
             </Col>
           </Row>
+          {/* question 2 */}
           <Row>
             <Col span={18} offset={3} className="select_disabled">
               <Form.Item label="Question 2" className="select_form">
@@ -191,20 +186,11 @@ const FormForgotPassword = ({
                   filterOption={(input, option) =>
                     option.children.toLowerCase().includes(input.toLowerCase())
                   }
-                >
-                  <Option value="What is your favorite children’s Book?">
-                    What is your favorite children’s Book?
-                  </Option>
-                  <Option value="What was the first name of your first boos?">
-                    What was the first name of your first boos?
-                  </Option>
-                  <Option value="What is the name of your favorite fruit?">
-                    What is the name of your favorite fruit?
-                  </Option>
-                </Select>
+                ></Select>
               </Form.Item>
             </Col>
           </Row>
+          {/* getting the question2Answer */}
           <Row>
             <Col span={18} offset={3}>
               <InputFormWithLabel
@@ -217,6 +203,7 @@ const FormForgotPassword = ({
               />
             </Col>
           </Row>
+          {/* question 3 */}
           <Row>
             <Col span={18} offset={3} className="select_disabled">
               <Form.Item label="Question 3" className="select_form">
@@ -228,20 +215,11 @@ const FormForgotPassword = ({
                   filterOption={(input, option) =>
                     option.children.toLowerCase().includes(input.toLowerCase())
                   }
-                >
-                  <Option value="What is your favorite children’s Book?">
-                    What is your favorite children’s Book?
-                  </Option>
-                  <Option value="What was the first name of your first boos?">
-                    What was the first name of your first boos?
-                  </Option>
-                  <Option value="What is the name of your favorite fruit?">
-                    What is the name of your favorite fruit?
-                  </Option>
-                </Select>
+                ></Select>
               </Form.Item>
             </Col>
           </Row>
+          {/* getting the question3Answer */}
           <Row>
             <Col span={18} offset={3}>
               <InputFormWithLabel
@@ -255,6 +233,7 @@ const FormForgotPassword = ({
             </Col>
           </Row>
 
+          {/* navigate to next & pervius step in forgottpassword proccess */}
           <Navigation
             steps={steps}
             current={current}

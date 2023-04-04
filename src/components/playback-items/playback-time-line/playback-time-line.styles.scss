@@ -1,0 +1,38 @@
+.timeliner {
+  width: 100%;
+  height: 5rem;
+  background-color: #2e333d;
+}
+
+.vis-time-axis .vis-text {
+  color: lightgrey;
+  font-size: 10px;
+}
+/* .vis-item .vis-drag-center {
+    position: absolute;
+    width: 100%;
+    height: 30%!important;
+    top: 0;
+    left: 0;
+    cursor: move;
+} */
+.dN .vis-group > .vis-range {
+  display: none !important;
+}
+.vis-delete {
+  display: none !important;
+}.vis-item {
+  background-color: #EFD80D;
+  border-color:#EFD80D;
+}
+.vis-item.vis-selected {
+  background-color: #195892;
+  border-color: #195892;
+  z-index: 2;
+}
+.vis-item.vis-box {
+    border-radius: 50%!important;
+}
+.vis-time-axis .vis-text {
+    color: #C8CCD5!important;
+}

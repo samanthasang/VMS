@@ -1,5 +1,5 @@
 import { Col, Row } from "antd";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import SetNewPassword from "../../forgot-password-items/setnewpassword/setnewpassword.component";
 import FormForgot from "../../forms/formforgot/formforgot.component";
@@ -11,7 +11,7 @@ import LoginBG from "../../../assets/login-bg.webp";
 import "./forgotpassword.styles.scss";
 
 const ForgotPassword = () => {
-  const [, forceUpdate] = useState({});
+  // getting info for forgottpassword & change password
   const [inputs, setInputs] = useState({
     email: "",
     question1: "",
@@ -25,11 +25,10 @@ const ForgotPassword = () => {
     token: "",
   });
 
-  useEffect(() => {
-    forceUpdate({});
-  }, []);
+  // current step for forgottpassword
   const [current, setCurrent] = useState(0);
 
+  // go to next step for forgottpassword
   const next = (email, data) => {
     console.log(data[0].title);
     setInputs({
@@ -39,7 +38,7 @@ const ForgotPassword = () => {
       question3: data[2].title,
     });
     setCurrent(current + 1);
-  };
+  }; // go to next step for forgottpassword
   const next_2 = (token) => {
     console.log(token);
     setInputs({
@@ -47,38 +46,23 @@ const ForgotPassword = () => {
     });
     setCurrent(current + 1);
   };
+  // go to previus step for forgottpassword
   const prev = () => {
     setCurrent(current - 1);
   };
   return (
+    // background image for login page
     <Row
-      className="login_bg"
+      className="login_bg forgot_container"
       justify="space-around"
       align="middle"
       style={{
-        height: "100vh",
         background: `url(${LoginBG})`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        backdropFilter: "blur(100px",
       }}
     >
-      <Col
-        style={{
-          height: "520px",
-          width: "930px",
-          borderRadius: "8px",
-          background: "rgba(0, 0, 0, 0.1)",
-          backdropFilter: "blur(70px)",
-        }}
-      >
-        <StepForgotPassword
-          current={current}
-          // ChangeCurrent={onChange}
-          // next={next}
-          // prev={prev}
-        />
+      <Col className="login_bg_container">
+        {/* steps for changepassword proccess */}
+        <StepForgotPassword current={current} />
         <Row className="main_container_form">
           <Col span={24}>
             {current === 0 && (
@@ -90,6 +74,7 @@ const ForgotPassword = () => {
               />
             )}
             {current === 1 && (
+              // forggotpassword form
               <FormForgotPassword
                 shouldUpdate
                 current={current}
@@ -103,6 +88,7 @@ const ForgotPassword = () => {
               />
             )}
             {current === 2 && (
+              // set new password form
               <SetNewPassword
                 shouldUpdate
                 current={current}

@@ -1,0 +1,57 @@
+.input_form, .border_red {
+  height: 36px !important;
+  margin-bottom: 12px !important;
+}
+.input_form .ant-form-item-control-input-content > span:first-child {
+  height: 36px !important;
+  border: 1px solid #2175c2 ;
+  border-radius: 8px !important;
+}
+.border_red .ant-form-item-control-input-content > span:first-child {
+  height: 36px !important;
+  border: 2px solid #ff0000 !important;
+  border-radius: 8px !important;
+}
+.input_form input {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  /* identical to box height */
+  letter-spacing: 0.005em;
+
+  /* Typeface/60 */
+  &::placeholder {
+    color: #3d495d !important;
+  }
+}
+.ant-divider-horizontal {
+  display: flex;
+  clear: both;
+  width: 100%;
+  min-width: 100%;
+  margin: 10px 0 !important;
+}
+.ant-checkbox-group-item {
+  margin-right: 68px !important;
+}
+.ant-divider {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: "tnum";
+  border-top: none !important; 
+}
+ textarea {
+  max-height:75px ;
+  min-height:75px ;
+  border: 1px solid #2175c2 !important;
+  border-radius: 8px !important;
+
+}

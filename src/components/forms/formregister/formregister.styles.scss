@@ -13,3 +13,50 @@
 .main_register_container {
   height: 100%;
 }
+
+#color-indicators {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 0.2rem;
+  height: 39px;
+  margin: 8px auto 3px auto;
+}
+#color-indicators span {
+  height: 8px;
+  background: white;
+  border-radius: 20px !important;
+}
+#color-indicators span:last-child {
+  height: 20px!important;
+}
+#color-indicators span:last-child {
+  height: 8px;
+  background: transparent;
+  color: rgb(137, 135, 146);
+  font-size: 14px;
+}
+.valid0:first-child {
+  height: 8px;
+  background: red !important;
+}
+
+.valid1:nth-child(1),
+.valid1:nth-child(2) {
+  height: 8px;
+  background: yellow !important;
+}
+
+.valid2:nth-child(1),
+.valid2:nth-child(2),
+.valid2:nth-child(3) {
+  height: 8px;
+  background: orange !important;
+}
+
+.valid3:nth-child(1),
+.valid3:nth-child(2),
+.valid3:nth-child(3),
+.valid3:nth-child(4) {
+  height: 8px;
+  background: green !important;
+}

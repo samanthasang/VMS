@@ -1,0 +1,10 @@
+.video-player {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+}
+.video-player video {
+    object-fit: cover;
+  }
+

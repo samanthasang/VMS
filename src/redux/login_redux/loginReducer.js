@@ -20,10 +20,14 @@ const loginReducer = (state = INITIAL_STATE, action) => {
         user: {},
         isLogedIn: false,
       };
-    case loginActionTypes.REMEMBER_USER:
+    case loginActionTypes.RENEW_ACCESS_TOKEN:
       return {
         ...state,
-        remember: true,
+        user: {
+          ...state.user,
+          accessToken: action.payload.accessToken,
+          expAccessToken: action.payload.expAccessToken,
+        },
       };
     default:
       return state;

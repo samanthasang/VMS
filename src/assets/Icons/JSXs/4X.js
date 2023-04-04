@@ -4,7 +4,7 @@ const Svg4X = ({ title, titleId, ...props }) => (
   <svg
     width="1em"
     height="1em"
-    viewBox="0 0 18 18"
+    viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-labelledby={titleId}
@@ -12,7 +12,7 @@ const Svg4X = ({ title, titleId, ...props }) => (
   >
     {title ? <title id={titleId}>{title}</title> : null}
     <path
-      d="M2.4 10.39V9.7l3.51-4.86H7V9.6h1v.79H7V12h-.9v-1.61H2.4Zm3.74-4.6L3.45 9.6h2.69V5.79Zm5.92 2.73L14.2 12h-1.03L11.5 9.28 9.91 12H8.9l2.13-3.48-2.14-3.49h1.02l1.68 2.73 1.6-2.73h1.02l-2.15 3.49Z"
+      d="M4 15.3v-1.067L8.94 6h1.666v8h1.393v1.3h-1.393V18H9.342v-2.7H4Zm5.385-7.9L5.522 14h3.863V7.4ZM17.927 12.233 20.986 18H19.55l-2.427-4.55L14.839 18h-1.45l3.073-5.783-3.073-5.767h1.45l2.427 4.567L19.55 6.45H21l-3.073 5.783Z"
       fill="#EFEFEF"
     />
   </svg>

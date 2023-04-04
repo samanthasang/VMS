@@ -5,54 +5,64 @@ import { useSelector } from "react-redux";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 import LayoutTop from "./components/layout/layouttop";
-
 import LoginPage from "./pages/loginpage/loginpage.component";
 import RegisterPage from "./pages/registerpage/registerpage.component";
 import ForgotPasswordPage from "./pages/forgotpasswordpage/forgotpasswordpage.component";
 import Privateroute from "./privateroute";
-import MainMenuPage from "./pages/mainmenupage/mainmenupage.component";
 import DevicesPage from "./pages/devicespage/devicespage.component";
 import LiveViewPage from "./pages/liveviewpage/liveviewpage.component";
-import UserPage from "./pages/userpage/userpage.component";
-import PlayBackPage from "./pages/playback/playback.component";
+// import UserPage from "./pages/userpage/userpage.component";
+import PlayBackPage from "./pages/playbackpage/playbackpage.component";
 import Layout from "./components/layout/Layout";
-
-
-import "./App.css";
 import Page505 from "./pages/505.page/505page.component";
 
+import "./App.scss";
+
 function App() {
+  // ckeck for user loged in
   const isLogedIn = useSelector((state) => state.login.isLogedIn);
 
+  // the rout user visit
+  const menuItem = useSelector((state) => state.LayoutReducer.menuItem);
+
   let navigate = useNavigate();
+
+  // if user is loged in navigate the user to rout from state in LayoutReducer
   useEffect(() => {
-    console.log("3: " + isLogedIn);
-    isLogedIn && window.location.pathname === "/" && navigate("/liveViewpage");
-  }, [isLogedIn, navigate]);
+    console.log(isLogedIn);
+    isLogedIn &&
+      (window.location.pathname === "/login" ||
+        window.location.pathname === "/") &&
+      navigate(menuItem);
+    !isLogedIn &&
+      !(
+        window.location.pathname === "/login" ||
+        window.location.pathname === "/register" ||
+        window.location.pathname === "/forgotpassword"
+      ) &&
+      navigate("/login");
+  }, [isLogedIn, navigate, menuItem]);
 
   return (
     <>
-      {/* <Layout> */}
       <Routes>
-        <Route path="/" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/forgotten-password" element={<ForgotPasswordPage />} />
+        <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
+        {/* private rout : if user is loged in has access to this routs */}
         <Route element={<Privateroute isLogedIn={isLogedIn} />}>
-          <Route path="/page505" element={<Page505 />} />
           <Route element={<LayoutTop />}>
             <Route element={<Layout />}>
-              <Route path="/dashboard" element={<MainMenuPage />} />
-              <Route path="/mainmenupage" element={<MainMenuPage />} />
-              <Route path="/devicespage" element={<DevicesPage />} />
-              <Route path="/liveViewpage" element={<LiveViewPage />} />
-              <Route path="/userpage" element={<UserPage />} />
-              <Route path="/playBackpage" element={<PlayBackPage />} />
-              <Route path="*" element={() => <h1>Page not found</h1>} />
+              <Route path="/liveview" element={<LiveViewPage />} />
+              <Route path="/devices" element={<DevicesPage />} />
+              <Route path="/playback" element={<PlayBackPage />} />
+              {/* <Route path="/user" element={<UserPage />} /> */}
             </Route>
           </Route>
         </Route>
+        {/* for times the rout is not define */}
+        <Route path="*" element={<Page505 />} />
       </Routes>
-      {/* </Layout> */}
     </>
   );
 }

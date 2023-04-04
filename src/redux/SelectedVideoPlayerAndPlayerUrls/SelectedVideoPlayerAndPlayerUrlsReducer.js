@@ -9,10 +9,13 @@ const initialState = {
 
 console.log(SelectedVideoPlayerAndPlayerUrlsTypes.SELECTED_PLAYER_SET);
 
-export const SelectedVideoPlayerAndPlayerUrlsState = (state = initialState, action) => {
+export const SelectedVideoPlayerAndPlayerUrlsState = (
+  state = initialState,
+  action
+) => {
   switch (action.type) {
     case SelectedVideoPlayerAndPlayerUrlsTypes.SELECTED_PLAYER_SET:
-      return action.payload;
+      return { ...state, SelectedPlayer: action.payload };
     default:
       return state;
   }

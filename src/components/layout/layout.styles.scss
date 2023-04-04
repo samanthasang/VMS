@@ -6,6 +6,13 @@
   width: 60px;
   padding: 0 0;
 }
+.side_nav_23 {
+  .ant-space-align-center {
+    .ant-space-item:last-child {
+      height: 36px;
+    }
+  }
+}
 .side_nav_2 {
   display: inline-block !important;
   height: calc(100vh - 3rem);
@@ -13,14 +20,31 @@
   background: #21242c;
   width: 3rem;
   padding: 0 0;
+  margin-top: 3px;
+
   svg {
-    width: 3rem;
-    height: 1.75rem;
+    width: 26px;
+    height: 26px;
     margin-top: 7px !important;
   }
 }
 .side_nav_2 ul li span {
   width: 3rem;
+}
+.side_nav_2 ul li:hover,
+.side_nav_2 button:hover {
+  background: linear-gradient(180deg, #1d6ab0 0%, #103a64 100%) !important;
+  border-radius: 8px !important;
+}
+.side_nav_2 button {
+  border-radius: 8px !important;
+    height: 40px;
+    line-height: 40px;
+  padding: 0 !important;
+}
+.side_nav_2 button:last-child:hover {
+  background: linear-gradient(180deg, #ef4f4f 0%, #710202 100%) !important;
+  border-radius: 8px !important;
 }
 .side_nav button {
   background: transparent;
@@ -29,8 +53,10 @@
 .side_nav .ant-menu.ant-menu-dark,
 .ant-menu-dark .ant-menu-sub,
 .ant-menu.ant-menu-dark .ant-menu-sub {
-  background: #21242c;
+  background: #14161a;
   color: #efefef;
+
+  // background: linear-gradient(to right, red, orange);
 }
 .ant-menu.ant-menu-inline-collapsed {
   width: 3rem !important;
@@ -50,6 +76,10 @@
   > .ant-menu-submenu
   > .ant-menu-submenu-title {
   padding: 0 !important;
+  svg {
+    width: 26px;
+    margin: 7px 11px !important;
+  }
 }
 .ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
   background: linear-gradient(180deg, #1d6ab0 0%, #103a64 100%);
@@ -60,14 +90,37 @@
   div {
     height: 45px;
     .ant-space-item:first-child {
-      height: 45px;
+      height: 60px;
     }
     .ant-space-item:nth-child(2) {
       height: 55px;
       color: #efefef;
     }
     .ant-space-item:last-child {
-      height: 60px;
+      height: 45px;
     }
   }
+}
+.ant-dropdown-menu {
+  background: #21242c !important;
+  // box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.74) !important;
+  border-radius: 5px !important;
+  .ant-dropdown-menu-item,
+  .ant-dropdown-menu-submenu-title {
+    color: #f0f2f5 !important;
+  }
+  .ant-dropdown-menu-item:hover,
+  .ant-dropdown-menu-submenu-title:hover {
+    background: #9199ac !important;
+    border-radius: 5px;
+  }
+}
+.ant-badge-count,
+.ant-badge-dot,
+.ant-badge .ant-scroll-number-custom-component {
+  position: absolute;
+  top: 8px !important;
+  right: 18px !important;
+  transform: translate(50%, -50%);
+  transform-origin: 100% 0;
 }

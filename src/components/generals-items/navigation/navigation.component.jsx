@@ -1,6 +1,5 @@
-import { Col, Row, Menu, Button } from "antd";
+import { Col, Row, Button } from "antd";
 import { Link } from "react-router-dom";
-import OpenNotification from "../../form-items/notification/notification.component";
 
 import "./navigation.styles.scss";
 
@@ -17,20 +16,20 @@ const Navigation = ({
     <Row>
       <Col className="navigation_registeration" span={24}>
         <div className="steps-action">
-          {current < steps.length - 1 && (
+          {steps.length - current > steps.length - 1 && (
+            // navigate to login page
             <Link
-              to={"/"}
-              className="btn_next"
+              to={"/login"}
+              className="btn_pre"
               style={{
-                margin: "0 8px",
-                background: "#E1EEFA",
-                border: "2px solid #2175C2",
+                margin: "0 8px 0 0",
               }}
               type="primary"
             >
-              Bakc To Login
+              Back To Login
             </Link>
           )}
+          {/* handle the steps in the proccess */}
           {current > 0 && (
             <Button
               className="btn_pre"
@@ -47,13 +46,14 @@ const Navigation = ({
               Next
             </Button>
           )}
+          {/* finish the proccess */}
           {current === steps.length - 1 && (
             <Button
               className="btn_next"
               type="primary"
               onClick={handleSubmitForm}
             >
-              Done
+              Finish
             </Button>
           )}
         </div>

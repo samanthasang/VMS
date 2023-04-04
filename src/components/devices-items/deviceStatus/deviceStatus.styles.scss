@@ -1,0 +1,99 @@
+.add-device {
+  .ant-modal-header,
+  .ant-modal-footer {
+    background-color: #2e333d;
+    // border:  none;
+    border-color: #6c717a;
+  }
+  .ant-modal-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f0f2f5;
+  }
+  .ant-modal-close-x {
+    color: #f0f2f5;
+  }
+  .ant-tabs-bottom > .ant-tabs-nav:before,
+  .ant-tabs-bottom > div > .ant-tabs-nav:before,
+  .ant-tabs-top > .ant-tabs-nav:before,
+  .ant-tabs-top > div > .ant-tabs-nav:before {
+    border-color: #6c717a;
+
+    // border-bottom: none !important;
+  }
+}
+
+.ant-modal .add-device {
+  width: 460px !important;
+}
+.manual-add-inputs {
+  color: #f0f2f5 !important;
+  font-size: 14px !important;
+}
+
+.manual-add-inputs input {
+  background-color: #21242c;
+  width: 240px;
+  height: 36px;
+  border-color: #2175c2;
+  font-size: 14px;
+  border-radius: 5px;
+  color: #e1e5eb;
+}
+.input_form_label .ant-form-item-control-input-content .ant-input-password {
+  background-color: #21242c;
+  width: 240px;
+  height: 36px;
+  border-color: #2175c2;
+  font-size: 14px;
+  border-radius: 5px;
+  ::placeholder {
+    color: #e1e5eb;
+    opacity: 1;
+  }
+  input {
+    margin: -2px 0 0 0 !important;
+    height: 32px !important;
+  }
+}
+.ant-select-dropdown,
+.ant-select {
+  background: #21242c !important;
+  border-radius: 5px !important;
+  // width: 240px !important;
+}
+.ant-select-item-option {
+  color: #e1e5eb !important;
+  border-radius: 5px !important;
+}
+.ant-select-item-option-active {
+  background: #9199ac !important;
+  border-radius: 5px !important;
+}
+.ant-select.ant-select-in-form-item {
+  width: 240px !important;
+  color: #e1e5eb !important;
+}
+
+.manual-add-inputs {
+  width: 75%;
+  color: #e1e5eb;
+  .ant-form-item {
+    margin: 0 0 8px;
+  }
+}
+.add-device .ant-form-horizontal .ant-form-item-label {
+  flex: 1 1;
+}
+::placeholder {
+  color: #e1e5eb;
+  opacity: 1;
+}
+.add-device .ant-form-horizontal .ant-form-item-label label {
+  color: #e1e5eb;
+}
+
+.ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
+  color: #3d495d !important;
+}

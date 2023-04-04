@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Row, Col, Form } from "antd";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { LoginUser } from "../../../redux/login_redux/loginAction";
 
@@ -11,24 +11,31 @@ import RememberAndForgotPass from "../../login-items/rememberandforgotpass/remem
 import GoToRegister from "../../login-items/gotoregister/gotoregister.omponent";
 import OpenNotification from "../../form-items/notification/notification.component";
 import "./formlogin.styles.scss";
+import { LoadMenu } from "../../../redux/layout_redux/layoutAction";
+import axios from "axios";
 
 const FormLogin = () => {
   const dispatch = useDispatch();
-  const isLogedIn = useSelector((state) => state.login.isLogedIn);
+
+  // getting username & password & remmber the user from user for sending to the login API
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
     checked: true,
   });
+  // check for email input is empty
   const [emptyEmail, setEmtyEmail] = useState(false);
-  const [emptyUserName, setEmtyUserName] = useState(false);
+  // check for password input is empty
+  const [emptyPassword, setEmtyPassword] = useState(false);
 
+  // validation for email
   function isValidEmail(email) {
     const a = /\S+@\S+\.\S+/.test(email);
     console.log(a);
     return /\S+@\S+\.\S+/.test(email);
   }
 
+  // getting info from inputs & for inputs to not to be empty
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -38,9 +45,11 @@ const FormLogin = () => {
       setEmtyEmail(false);
     }
     if (inputs.password !== "") {
-      setEmtyUserName(false);
+      setEmtyPassword(false);
     }
   };
+
+  // check the remmember checkbox
   const handleChangecheckbox = (e) => {
     console.log(`checked = ${e.target.checked}`);
 
@@ -52,13 +61,14 @@ const FormLogin = () => {
     console.log("Failed:", errorInfo);
   };
 
+  // submit the username & password & remmber checkbox to API
   const handleSubmit = (event) => {
     event.preventDefault();
     if (inputs.username === "") {
       setEmtyEmail(true);
     }
     if (inputs.password === "") {
-      setEmtyUserName(true);
+      setEmtyPassword(true);
     }
     if (inputs.username === "" || inputs.password === "") {
       return;
@@ -68,12 +78,38 @@ const FormLogin = () => {
       OpenNotification("topRight", "Email Isn`t Valid", "", "error");
       return;
     }
-    console.log(inputs.username + " " + inputs.password + "" + inputs.checked);
-    console.log("1: " + isLogedIn);
-    dispatch(LoginUser(inputs));
-    console.log("2:" + isLogedIn);
+    console.log(inputs.username + " " + inputs.password + " " + inputs.checked);
+    dispatch(LoadMenu("/liveview"));
+    LogInUserDispatch();
   };
-
+  const LogInUserDispatch = () => {
+    // send info to login API
+    axios({
+      method: "post",
+      url: process.env.REACT_APP_HTTP + "/api/auth/login",
+      data: {
+        email: inputs.username,
+        password: inputs.password,
+        remember: inputs.checked,
+      },
+    }).then(
+      (response) => {
+        console.log(response.data);
+        response.data.ok && dispatch(LoginUser(response.data.data));
+        OpenNotification("topRight", "", response.data.msg, "");
+        console.log(response.data);
+        console.log(response.data.msg);
+      },
+      (error) => {
+        error.response.status === 401 &&
+          OpenNotification("topRight", "", error.response.data.msg, "error");
+        error.response.status === 403 &&
+          OpenNotification("topRight", "", error.response.data.msg, "error");
+        console.log(error);
+        console.log(error.response.status);
+      }
+    );
+  };
   return (
     <Row>
       <Col
@@ -98,6 +134,7 @@ const FormLogin = () => {
           autoComplete="on"
           onSubmit={handleSubmit}
         >
+          {/* getting the username */}
           <InputForm
             span={10}
             offset={7}
@@ -108,6 +145,7 @@ const FormLogin = () => {
             empty={emptyEmail}
           />
 
+          {/* getting password */}
           <InputPasswordForm
             span={10}
             offset={7}
@@ -115,14 +153,23 @@ const FormLogin = () => {
             handleChange={handleChange}
             type={Text}
             placeholder={"Password"}
-            empty={emptyUserName}
+            empty={emptyPassword}
           />
+
+          {/* remmeber checkbox & navigate to forgotpassword page */}
           <RememberAndForgotPass
             span={10}
             offset={7}
             handleChangecheckbox={handleChangecheckbox}
           />
-          <SubminBTN handleSubmit={handleSubmit} span={10} offset={7} />
+          {/* submit login form */}
+          <SubminBTN
+            text="Log in"
+            handleSubmit={handleSubmit}
+            span={10}
+            offset={7}
+          />
+          {/* navigate to register page */}
           <GoToRegister span={10} offset={7} />
         </Form>
       </Col>

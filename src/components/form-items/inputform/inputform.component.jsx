@@ -17,20 +17,26 @@ const InputForm = ({
   placeholder,
   empty,
   value,
+  disabled,
+  defaultValue,
+  valueInput
 }) => {
   return (
     <Row>
       <Col span={span} offset={offset}>
         <Form.Item
-          className={` ${empty ? "border_red" : "input_form"}`}
+          className={` ${empty ? "border_red" : "input_form"} + ${disabled&&" border_none"}`}
           onChange={handleChange}
           value={value}
           type={type}
         >
-          {empty ? (
+          {empty  ? (
             <Input
+            disabled={disabled}
               autoComplete="on"
+              defaultValue={defaultValue}
               name={inputs}
+              value={valueInput}
               prefix={<User className="site-form-item-icon" />}
               placeholder={placeholder}
               suffix={
@@ -45,6 +51,9 @@ const InputForm = ({
             />
           ) : (
             <Input
+            disabled={disabled}
+            value={valueInput}
+            defaultValue={defaultValue}
               name={inputs}
               prefix={<User className="site-form-item-icon" />}
               placeholder={placeholder}

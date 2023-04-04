@@ -9,6 +9,7 @@ const GoToRegister = ({ span, offset }) => {
   return (
     <Row>
       <Col span={span} offset={offset}>
+        {/* navigate to register page */}
         <Link className="go_to_register" to={"/register"}>
           Don't have an account yet? <b> register now!</b>
         </Link>

@@ -7,7 +7,9 @@ import "./forgotpasswordpage.styles.scss";
 
 const ForgotPasswordPage = () => (
   <Row>
+    {/* full wide div */}
     <Col span={24}>
+      {/* render the forgottpassword container component */}
       <ForgotPassword />
     </Col>
   </Row>

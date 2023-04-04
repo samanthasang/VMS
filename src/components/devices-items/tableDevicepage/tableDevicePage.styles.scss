@@ -1,0 +1,98 @@
+$border_color_table: #5f687d;
+$border_head_color_table: #9199ac;
+
+.ant-table.ant-table-bordered
+  > .ant-table-container
+  > .ant-table-body
+  > table
+  > tbody
+  > tr
+  > td {
+  border-right: none !important;
+}
+.ant-table-tbody > tr > td {
+  border-bottom: 0.1em solid $border_color_table !important;
+  border-left: 0.1em solid $border_color_table !important;
+}
+// .ant-table.ant-table-bordered > .ant-table-container {
+//   border-left: 0.2em solid $border_color_table !important;
+// }
+.ant-table.ant-table-bordered
+  > .ant-table-container
+  > .ant-table-content
+  > table,
+.ant-table.ant-table-bordered
+  > .ant-table-container
+  > .ant-table-header
+  > table {
+  border: none !important;
+}
+thead {
+  border: 0.1em solid $border_head_color_table !important;
+}
+.ant-table.ant-table-bordered
+  > .ant-table-container
+  > .ant-table-header
+  > table
+  > thead
+  > tr
+  > th,
+.ant-table-thead > tr > th {
+  border-left: 0.1em solid $border_head_color_table !important;
+  border-top: 0.1em solid $border_head_color_table !important;
+  border-bottom: 0.1em solid $border_head_color_table !important;
+  border-right: none !important;
+  font-weight: 600;
+  font-size: 14px;
+}
+.ant-table.ant-table-bordered
+  > .ant-table-container
+  > .ant-table-header
+  > table
+  > thead
+  > tr {
+  border-left: 0.1em solid $border_color_table !important;
+  border-right: none !important;
+}
+.ant-table.ant-table-bordered > .ant-table-container {
+  border: none !important;
+}
+
+.ant-checkbox-inner {
+  border: none;
+  border-collapse: separate;
+  transition: all 0.3s;
+  background: #5f687d;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.7);
+  border-radius: 2px;
+}
+.ant-checkbox-indeterminate .ant-checkbox-inner {
+  background: #5f687d;
+  border-color: none;
+}
+.ant-checkbox-inner {
+  border: none !important;
+  border-collapse: separate !important;
+  transition: all 0.3s !important;
+  background: #5f687d !important;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.7) !important;
+  border-radius: 2px !important;
+}
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #1890ff !important;
+  border-color: none;
+}
+.ant-table-container,
+.ant-table-container table > thead > tr:first-child th:first-child {
+  border-top-left-radius: 5px !important;
+}
+.ant-table-container,
+.ant-table-container table > thead > tr:first-child th:last-child {
+  border-top-right-radius: 5px !important;
+}
+.ant-table-body table > tbody > tr:last-child td:first-child {
+  border-bottom-left-radius: 5px !important;
+}
+.ant-table-body table > tbody > tr:last-child td:last-child {
+  border-bottom-right-radius: 5px !important;
+}

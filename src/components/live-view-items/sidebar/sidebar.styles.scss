@@ -1,59 +1,81 @@
 .site-tree-search-value {
   color: #f50;
 }
-.collapse_header {
-  background: #2e333d !important;
-  box-shadow: inset 0px -4px 9px rgba(0, 0, 0, 0.25) !important;
-  color: #e1e5eb !important;
-  height: 100%;
-  border-radius: 0 !important;
-  border: none !important;
-  .ant-input-search-button {
-    height: 29px !important;
+.collapse_panel1 {
+  [ant-click-animating-without-extra-node="true"]::after {
+    display: none;
   }
-  .ant-tree .ant-tree-treenode {
-    color: #e1e5eb !important;
-  }
-  .ant-input-group .ant-input,
-  .ant-input-group span {
-    background: #21242c;
+  .collapse_header {
+    overflow-y: hidden;
+    cursor: auto;
+    max-height: calc(100vh - 3rem);
+    background: #2e333d !important;
     box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    border: none;
     color: #e1e5eb !important;
-  }
-  .ant-collapse,
-  .ant-collapse > .ant-collapse-item > .ant-collapse-header,
-  .ant-collapse > .ant-collapse-item {
-    border: none !important;
-    background: #2e333d !important;
-    box-shadow: inset 0px -4px 9px rgba(0, 0, 0, 0.25) !important;
-    color: #e1e5eb !important;
-  }
-  .ant-collapse-content,
-  .ant-collapse-conten span,
-  .ant-tree {
-    border: none !important;
-    background: transparent !important;
-  }
-  .ant-collapse > .ant-collapse-item {
-    border: none !important;
-    background: #2e333d !important;
-    box-shadow: inset 0px -4px 9px rgba(0, 0, 0, 0.25) !important;
-    color: #e1e5eb !important;
-  }
-  .ant-collapse > .ant-collapse-item > .ant-collapse-header {
-    color: #e1e5eb !important;
-  }
-  .ant-collapse-content-box {
     height: 100%;
+    border-radius: 0 !important;
+    border: none !important;
+    .ant-input-search-button {
+      height: 29px !important;
+    }
+    .ant-tree .ant-tree-treenode {
+      color: #e1e5eb !important;
+    }
+    .ant-input-group .ant-input,
+    .ant-input-group span {
+      background: #21242c;
+      box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 5px;
+      border: none;
+      color: #e1e5eb !important;
+    }
+    .ant-input-group {
+      box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 8px;
+    }
+    .ant-input-group .ant-input {
+      box-shadow: none !important;
+      border-radius: 5px 0 0 5px;
+    }
+    .ant-input-group span:last-child {
+      box-shadow: none !important;
+      border-radius: 0 5px 5px 0;
+    }
+    .ant-collapse,
+    .ant-collapse > .ant-collapse-item > .ant-collapse-header,
+    .ant-collapse > .ant-collapse-item {
+      border: none !important;
+      background: #2e333d !important;
+      box-shadow: none !important;
+      color: #e1e5eb !important;
+    }
+    .ant-collapse-content,
+    .ant-collapse-conten span,
+    .ant-tree {
+      border: none !important;
+      background: transparent !important;
+    }
+    .ant-collapse > .ant-collapse-item {
+      border: none !important;
+      background: #2e333d !important;
+      box-shadow: none !important;
+      color: #e1e5eb !important;
+    }
+    .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+      color: #e1e5eb !important;
+    }
+    .ant-collapse-content-box {
+      height: 100%;
+    }
   }
-}
 
-.ant-collapse > .ant-collapse-item > .ant-collapse-header,
-.ant-collapse > .ant-collapse-item {
-  border: none !important;
-  background: #2e333d !important;
-  box-shadow: inset 0px -4px 9px rgba(0, 0, 0, 0.25) !important;
-  color: #e1e5eb !important;
+  .ant-collapse > .ant-collapse-item {
+    border: none !important;
+    background: #2e333d !important;
+    box-shadow: none !important;
+    color: #e1e5eb !important;
+  }
+  .ant-collapse-content > .ant-collapse-content-box {
+    padding: 8px;
+  }
 }

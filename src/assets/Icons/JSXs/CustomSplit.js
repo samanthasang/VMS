@@ -4,7 +4,7 @@ const SvgCustomSplit = ({ title, titleId, ...props }) => (
   <svg
     width="1em"
     height="1em"
-    viewBox="0 0 24 24"
+    viewBox="0 0 22 18"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-labelledby={titleId}
@@ -14,22 +14,9 @@ const SvgCustomSplit = ({ title, titleId, ...props }) => (
     <path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1ZM1 4a3 3 0 0 1 3-3h16a3 3 0 0 1 3 3v16a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3V4Zm15.437 1.362a.474.474 0 0 0-.692-.002L6.661 14.8a.52.52 0 0 0-.138.286l-.299 2.051c-.045.31.184.588.483.588h2.306c.129 0 .253-.054.344-.149l9.056-9.41a.528.528 0 0 0 .002-.723l-1.978-2.08Z"
-      fill="url(#CustomSplit_svg__a)"
+      d="M3.364 1.636h15.272c.527 0 .955.367.955.819v13.09c0 .452-.428.819-.955.819H3.364c-.528 0-.955-.367-.955-.819V2.456c0-.452.427-.819.955-.819ZM.5 2.455C.5 1.099 1.782 0 3.364 0h15.272C20.218 0 21.5 1.099 21.5 2.455v13.09c0 1.356-1.282 2.455-2.864 2.455H3.364C1.782 18 .5 16.901.5 15.546V2.455Zm14.735 1.114a.506.506 0 0 0-.66-.001L5.904 11.29a.404.404 0 0 0-.132.234l-.285 1.678c-.043.253.175.48.461.48h2.2a.496.496 0 0 0 .33-.12l8.643-7.7a.388.388 0 0 0 .002-.591l-1.888-1.703Z"
+      fill="#EFEFEF"
     />
-    <defs>
-      <linearGradient
-        id="CustomSplit_svg__a"
-        x1={12}
-        y1={1}
-        x2={12}
-        y2={23}
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor="#fff" />
-        <stop offset={1} stopColor="#ADACAC" />
-      </linearGradient>
-    </defs>
   </svg>
 );
 
